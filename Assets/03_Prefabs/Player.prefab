@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5938189561164351754}
   - component: {fileID: 6050591180565619636}
   - component: {fileID: 1853674030434607761}
+  - component: {fileID: 2847406527521187000}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -158,6 +159,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bd0f5abf-eaa8-4e5c-8a4f-14c83ded4e5c
     m_ActionName: Player/Inventory[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2847406527521187000}
+        m_TargetAssemblyTypeName: Interaction, Assembly-CSharp
+        m_MethodName: OnInteractInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7f3c430a-c468-4000-b034-a8cba35d582d
+    m_ActionName: Player/Interaction[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -193,7 +210,6 @@ MonoBehaviour:
   minXLook: -65
   maxXLook: 65
   lookSensitivity: 0.1
-  canLook: 1
 --- !u!114 &6050591180565619636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +229,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  canLook: 1
 --- !u!54 &1853674030434607761
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -240,6 +257,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2847406527521187000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210404942003993468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c3759833b443d4cbaf08dccd305164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkRate: 0.05
+  maxCheckDistance: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  curInteractGameObject: {fileID: 0}
+  promptText: {fileID: 0}
 --- !u!1 &3649277853251626812
 GameObject:
   m_ObjectHideFlags: 0
