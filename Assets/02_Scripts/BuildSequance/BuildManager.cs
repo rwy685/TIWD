@@ -29,16 +29,6 @@ public class BuildManager : MonoBehaviour
         Unregister(buildObject);
     }
 
-    //void TryInteract()
-    //{
-    //    if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, 3f))
-    //    {
-    //        if (hit.collider.TryGetComponent(out IBuildable buildable))
-    //        {
-    //            buildable.AddResource(1);
-    //        }
-    //    }
-    //}
 
     //public void TryUseResource(PlayerInventory inv, Vector3 playerPos)
     //{
