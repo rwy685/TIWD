@@ -8,6 +8,11 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     public void Init()
     {
+        Spawn();
+    }
+
+    private void Spawn()
+    {
         Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
     }
 }

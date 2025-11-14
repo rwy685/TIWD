@@ -10,5 +10,6 @@ public class Player : MonoBehaviour
     {
         controller = GetComponent<PlayerController>();
         playerCamera = GetComponent<PlayerCamera>();
+        GameManager.Instance.characterManager.player = this;
     }
 }

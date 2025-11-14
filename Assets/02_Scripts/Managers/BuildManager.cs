@@ -1,0 +1,41 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BuildManager : MonoBehaviour
+{
+
+    private List<BuildObject> buildables; //BuildObject을 가진 대상을 리스트화
+
+    private void Awake()
+    {
+         buildables = new List<BuildObject>();
+    }
+
+    public void Register(BuildObject buildObject) // 리스트에 등록
+    {
+        buildables.Add(buildObject);
+        buildObject.OnComplete += () => OnBuildComplete(buildObject); // 건축 필요 양과 같아질 경우 OnBuildComplte 호출
+    }
+
+    public void Unregister(BuildObject buildObject)
+    {
+        buildables.Remove(buildObject); // 건축완료시 리스트에서 제거용
+    }
+
+    private void OnBuildComplete(BuildObject buildObject)
+    {
+        buildObject.Build(); // 해당 건축구조물 만들기
+        Unregister(buildObject);
+    }
+
+
+    //public void TryUseResource(PlayerInventory inv, Vector3 playerPos)
+    //{
+    //    var buildable = GetClosestBuildable(playerPos);
+    //    if (buildable == null) return;
+
+    //    inv.ConsumeResource(1);              // 플레이어 인벤 변경
+    //    buildable.AddResource(1);            // 건축물 자원 채우기
+    //}
+
+}
