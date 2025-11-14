@@ -1,37 +1,95 @@
+using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Stats")]
-    public int health;
-    public float walkSpeed;
-    public float runSpeed;
+    [SerializeField] private EnemyData enemyData;
+    [SerializeField] private float minWanderDistance;
+    [SerializeField] private float maxWanderDistance;
 
-    [Header("AI")]
+
+    private Player player;
+
+    private WaitForSeconds wait;
     private NavMeshAgent agent;
-    public float detectDistance;
     private EnemyState enemyState;
-
-    [Header("Wandering")]
-    public float minWanderDistance;
-    public float maxWanderDistance;
-    public float minWanderWaitTime;
-    public float maxWanderWaitTime;
-
-    [Header("Combat")]
-    public int damage;
-    public float attackRate;
-    private float lastAttackTime;
-    public float attackDistance;
-
     private float playerDistance;
+    private float health;
+    private float wanderDelay;
 
-    public float fieldOfView = 120f;
 
+    private void Awake()
+    {
+        player = GameManager.Instance.characterManager.player;
+    }
+
+    private void Start()
+    {
+        agent.speed = enemyData.walkSpeed;
+        health = enemyData.maxHealth;
+        wait = new WaitForSeconds(wanderDelay);
+    }
 
     private void Update()
     {
-        
+        playerDistance = Vector3.Distance(transform.position, player.transform.position);
+
+        UpdateState();
+    }
+
+    private void SetState(EnemyState state)
+    {
+        enemyState = state;
+
+        switch (enemyState)
+        {
+            case EnemyState.Idle:
+                agent.speed = enemyData.walkSpeed;
+                agent.isStopped = true;
+                break;
+            case EnemyState.Wander:
+                agent.speed = enemyData.walkSpeed;
+                agent.isStopped = false;
+                break;
+            case EnemyState.Chase:
+                agent.speed = enemyData.runSpeed;
+                agent.isStopped = false;
+                break;
+        }
+    }
+
+    private void UpdateState()
+    {
+        if (enemyState == EnemyState.Wander && agent.remainingDistance < 0.1f)
+        {
+            SetState(EnemyState.Idle);
+            StartCoroutine(Wander());
+        }
+
+        if (enemyData.chaseDistance > playerDistance)
+        {
+            SetState(EnemyState.Chase);
+            Attack();
+        }
+    }
+
+    private void Attack()
+    {
+
+    }
+
+    private IEnumerator Wander()
+    {
+        yield return wait;
+
+        SetState(EnemyState.Wander);
+
+        NavMeshHit hit;
+        NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
+
+        agent.SetDestination(hit.position);
     }
 }
