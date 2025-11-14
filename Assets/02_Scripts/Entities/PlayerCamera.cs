@@ -10,6 +10,8 @@ public class PlayerCamera : MonoBehaviour
     public float lookSensitivity;
     private Vector2 mouseDelta;
 
+    [HideInInspector] public bool canLook = true;
+
     private void LateUpdate()
     {
         CameraLook();
@@ -27,5 +29,12 @@ public class PlayerCamera : MonoBehaviour
         cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
 
         transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
+    }
+
+    void ToggleCursor()
+    {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
     }
 }
