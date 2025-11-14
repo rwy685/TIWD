@@ -14,8 +14,8 @@ public interface IBuildable
 
 public abstract class BuildObject : MonoBehaviour, IBuildable
 {
-    public int NeededResource { get; protected set; }
-    public int CurrentResource { get; protected set; }
+    public int NeededResource { get;}
+    public int CurrentResource { get; private set; }
     public bool IsComplete
     {
         get
