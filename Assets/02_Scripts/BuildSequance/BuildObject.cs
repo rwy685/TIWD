@@ -7,6 +7,8 @@ public interface IBuildable
     int CurrentResource { get; }
     void AddResource(int amount);
     bool IsComplete { get; }
+
+    event Action OnComplete;
     void Build();
 }
 
