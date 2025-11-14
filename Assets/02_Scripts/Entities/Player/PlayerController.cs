@@ -1,17 +1,21 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
+    public float defaultSpeed = 5;
+    public float runSpeed = 10;
     private Vector2 curMovementInput;
     public float jumpPower;
     public LayerMask groundLayerMask;
 
     public Action inventory;
 
+    private PlayerState playerState;
     private Rigidbody rigidbody;
 
     private void Awake()
@@ -35,6 +39,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnRun(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            playerState = PlayerState.Run;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            playerState = PlayerState.Walk;
+        }
+    }
+
     public void OnJumpInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started && IsGrounded())
@@ -43,9 +59,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnAttackInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+
+        }
+    }
+
     private void Move()
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
+
+        if (playerState == PlayerState.Run)
+        {
+            moveSpeed = runSpeed;
+        }
+        else if (playerState == PlayerState.Walk)
+        {
+            moveSpeed = defaultSpeed;
+        }
+
         dir *= moveSpeed;
         dir.y = rigidbody.velocity.y;
 
