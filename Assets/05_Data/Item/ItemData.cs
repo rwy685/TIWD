@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Equipable,      // ÀåÂø ¾ÆÀÌÅÛ
-    Consumable,     // ¼Òºñ ¾ÆÀÌÅÛ
-    Resource        // ±âÅ¸ ÀÚ¿ø
+    Equipable,      // ì¥ì°© ì•„ì´í…œ
+    Consumable,     // ì†Œë¹„ ì•„ì´í…œ
+    Resource        // ê¸°íƒ€ ìì›
 }
 
 [CreateAssetMenu(fileName = "NewItem", menuName = "New Item")]
