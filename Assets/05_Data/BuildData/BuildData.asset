@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918da35803092574fb4b61ee89daf53c, type: 3}
   m_Name: BuildData
   m_EditorClassIdentifier: 
-  displayName: "\uC6B8\uD0C0\uB9AC"
-  displayDesc: "\uC801\uC758 \uC9C4\uC785\uC744 \uB9C9\uB294 \uAD6C\uC870\uBB3C\uC785\uB2C8\uB2E4."
-  buildType: 2
-  neededResource: 3
-  finalPrefab: {fileID: 0}
+  displayName: 
+  displayDesc: 
+  buildType: 0
+  requirements: []
+  completePrefab: {fileID: 0}

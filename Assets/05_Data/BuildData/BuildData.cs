@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -9,6 +10,13 @@ public enum BuildType
     Rock
 }
 
+[System.Serializable]
+public class BuildRequirement
+{
+    public BuildResourceData resource; // 필요한 자원 타입
+    public int amount; // 필요한 갯수
+}
+
 [CreateAssetMenu(fileName = "BuildData", menuName = "New BuildData")]
 public class BuildData : ScriptableObject
 {
@@ -18,9 +26,9 @@ public class BuildData : ScriptableObject
     public BuildType buildType;
 
     [Header("NeedResource")]
-    public int neededResource;
+    public List<BuildRequirement> requirements; // 자원 종류타입 여러개 필요
 
     [Header("BuildComplete")]
-    public GameObject CompletePrefab;
+    public GameObject completePrefab;
 }
 
