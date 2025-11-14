@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private PlayerState playerState;
     private Rigidbody rigidbody;
 
+    [HideInInspector] public bool canLook = true;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -111,7 +113,14 @@ public class PlayerController : MonoBehaviour
         if (callbackContext.phase == InputActionPhase.Started)
         {
             inventory?.Invoke();
-            //Player.playerCamera.ToggleCursor();
+            ToggleCursor();
         }
+    }
+
+    public void ToggleCursor()
+    {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
     }
 }
