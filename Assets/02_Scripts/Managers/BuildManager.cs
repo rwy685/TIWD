@@ -1,29 +1,29 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    public BuildManager Instance;
+    public BuildManager Instance { get; private set; }
 
-    private List<IBuildable> buildables = new List<IBuildable>(); //IBuildable을 가진 대상을 리스트화
+    private List<BuildObject> buildables = new List<BuildObject>(); //BuildObject을 가진 대상을 리스트화
 
     private void Awake()
     {
         Instance = this;
     }
 
-    public void Register(IBuildable buildObject) // 리스트에 등록
+    public void Register(BuildObject buildObject) // 리스트에 등록
     {
         buildables.Add(buildObject);
         buildObject.OnComplete += () => OnBuildComplete(buildObject); // 건축 필요 양과 같아질 경우 OnBuildComplte 호출
     }
 
-    public void Unregister(IBuildable buildObject)
+    public void Unregister(BuildObject buildObject)
     {
         buildables.Remove(buildObject); // 건축완료시 리스트에서 제거용
     }
 
-    private void OnBuildComplete(IBuildable buildObject)
+    private void OnBuildComplete(BuildObject buildObject)
     {
         buildObject.Build(); // 해당 건축구조물 만들기
         Unregister(buildObject);
