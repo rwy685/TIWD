@@ -24,8 +24,12 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         stamina.Add(stamina.passiveValue * Time.deltaTime);
 
         if (hunger.curValue <= 0)
-        { 
+        {
             playerHP.Minus(starvingDamage * Time.deltaTime);
+        }
+        else if (hunger.curValue >= 380)
+        {
+            playerHP.Add(playerHP.passiveValue * Time.deltaTime);
         }
 
         if (thirst.curValue <= 0)
@@ -67,6 +71,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void Die()
     {
+
         Time.timeScale = 0f;
         Debug.Log("D gym");
     }

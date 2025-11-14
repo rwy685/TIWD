@@ -7,7 +7,7 @@ public class Conditions : MonoBehaviour
     public float maxValue;
     public float startValue;
     public float passiveValue;
-    public Image uiBar;
+    //public Image uiBar;
 
 
 
@@ -19,7 +19,7 @@ public class Conditions : MonoBehaviour
 
     void Update()
     {
-        uiBar.fillAmount = GetPercentage();
+        //uiBar.fillAmount = GetPercentage();
     }
 
     public void Add(float amount)

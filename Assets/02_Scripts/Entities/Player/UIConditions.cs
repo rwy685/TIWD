@@ -8,4 +8,11 @@ public class UIConditions : MonoBehaviour
     public Conditions stamina;
     public Conditions hunger;
     public Conditions thirst;
+
+    private void Start()
+    {
+
+    }
 }
+
+
