@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    public BuildManager Instance { get; private set; }
 
-    private List<BuildObject> buildables = new List<BuildObject>(); //BuildObject을 가진 대상을 리스트화
+    private List<BuildObject> buildables; //BuildObject을 가진 대상을 리스트화
 
     private void Awake()
     {
-        Instance = this;
+         buildables = new List<BuildObject>();
     }
 
     public void Register(BuildObject buildObject) // 리스트에 등록
