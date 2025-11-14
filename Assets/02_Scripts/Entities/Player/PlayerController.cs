@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private PlayerState playerState;
     private Rigidbody rigidbody;
 
+    [HideInInspector] public bool canLook = true;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -63,7 +65,16 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
+            Attack();
+        }
+    }
 
+    public void OnInventoryButton(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.phase == InputActionPhase.Started)
+        {
+            inventory?.Invoke();
+            ToggleCursor();
         }
     }
 
@@ -85,6 +96,12 @@ public class PlayerController : MonoBehaviour
 
         rigidbody.velocity = dir;
     }
+
+    private void Attack()
+    {
+
+    }
+
     bool IsGrounded()
     {
         Ray[] rays = new Ray[4]
@@ -106,12 +123,10 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    public void OnInventoryButton(InputAction.CallbackContext callbackContext)
+    public void ToggleCursor()
     {
-        if (callbackContext.phase == InputActionPhase.Started)
-        {
-            inventory?.Invoke();
-            //Player.playerCamera.ToggleCursor();
-        }
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
     }
 }

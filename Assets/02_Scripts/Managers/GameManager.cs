@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameManager Instance;
+    public static GameManager Instance;
 
     private void Awake()
     {
@@ -12,5 +12,32 @@ public class GameManager : MonoBehaviour
             Instance = this;
     }
 
-    public float time = 0f;
+    public SpawnManager spawnManager;
+    public CharacterManager characterManager;
+
+    public float curTime = 0f;
+    public float nightTime;
+    public float endTime;
+    public bool isNight;
+
+    private void Start()
+    {
+        spawnManager.Init();
+    }
+
+    private void Update()
+    {
+        curTime += Time.deltaTime;
+
+        if (curTime > endTime && isNight)
+        {
+            isNight = false;
+            curTime = 0f;
+        }
+        else if (curTime > nightTime && !isNight)
+        {
+            isNight = true;
+            spawnManager.EnemySpawn();
+        }
+    }
 }

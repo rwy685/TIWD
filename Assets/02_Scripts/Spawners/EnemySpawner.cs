@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject[] enemyPrefab;
+    [SerializeField] private Transform[] spawnPoint;
+    [SerializeField] private float spawnTime;
+    [SerializeField] private int spawnCount;
+    [SerializeField] private int spawnDelay;
+
+    private int curCount = 0;
+    private WaitForSeconds wait;
+
+    public void Init()
     {
-        
+        Spawn();
+        wait = new WaitForSeconds(spawnDelay);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Spawn()
     {
-        
+        StartCoroutine(SpawnRoutine());
+    }
+
+    private IEnumerator SpawnRoutine()
+    {
+        while (curCount < spawnCount)
+        {
+            foreach (var spawn in spawnPoint)
+            {
+                int randIndex = Random.Range(0, enemyPrefab.Length);
+
+                Instantiate(enemyPrefab[randIndex], spawn.position, Quaternion.identity);
+                curCount++;
+            }
+            yield return wait;
+        }
     }
 }
