@@ -1,5 +1,7 @@
 using DG.Tweening;
+using JetBrains.Annotations;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
@@ -19,7 +21,7 @@ public class Enemy : MonoBehaviour
     private float playerDistance;
     private float health;
     private float wanderDelay;
-
+    private float lastAttackTime;
 
     private void Awake()
     {
@@ -63,33 +65,54 @@ public class Enemy : MonoBehaviour
 
     private void UpdateState()
     {
-        if (enemyState == EnemyState.Wander && agent.remainingDistance < 0.1f)
+        if (enemyState == EnemyState.Wander && agent.remainingDistance < 0.1f) //배회
         {
             SetState(EnemyState.Idle);
             StartCoroutine(Wander());
         }
 
-        if (enemyData.chaseDistance > playerDistance)
+        if (enemyData.attackDistance > playerDistance) //공격
+        {
+            SetState(EnemyState.Attack);
+            Attack();
+        }
+
+        else if (enemyData.chaseDistance > playerDistance) //추적
         {
             SetState(EnemyState.Chase);
-            Attack();
+            Chase();
+        }
+    }
+
+    private void Chase()
+    {
+        agent.isStopped = false;
+        NavMeshPath path = new NavMeshPath();
+        if (agent.CalculatePath(player.transform.position, path))
+        {
+            agent.SetDestination(player.transform.position);
         }
     }
 
     private void Attack()
     {
-
+        agent.isStopped = true;
+        if (Time.time - lastAttackTime > enemyData.attackRate)
+        {
+            lastAttackTime = Time.time;
+            //데미지 로직
+        }
     }
 
     private IEnumerator Wander()
     {
         yield return wait;
 
-        SetState(EnemyState.Wander);
-
         NavMeshHit hit;
         NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
 
         agent.SetDestination(hit.position);
+
+        SetState(EnemyState.Wander);
     }
 }
