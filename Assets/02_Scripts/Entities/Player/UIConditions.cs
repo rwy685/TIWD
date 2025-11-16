@@ -9,9 +9,12 @@ public class UIConditions : MonoBehaviour
     public Conditions hunger;
     public Conditions thirst;
 
-    private void Start()
+    public void Init()
     {
-
+        playerHP.Init();
+        stamina.Init();
+        hunger.Init();
+        thirst.Init();
     }
 }
 

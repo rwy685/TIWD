@@ -9,13 +9,18 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 {
     public UIConditions uiConditions;
 
-    Conditions playerHP { get { return uiConditions.playerHP; } }
-    Conditions stamina { get { return uiConditions.stamina; } }
-    Conditions hunger { get { return uiConditions.hunger; } }
-    Conditions thirst { get { return uiConditions.thirst; } }
+    Conditions playerHP => uiConditions.playerHP;
+    Conditions stamina => uiConditions.stamina;
+    Conditions hunger => uiConditions.hunger;
+    Conditions thirst => uiConditions.thirst;
 
     public float starvingDamage;
     public float thirstyDamage;
+
+    public void Init()
+    {
+        uiConditions.Init();
+    }
 
     private void Update()
     {

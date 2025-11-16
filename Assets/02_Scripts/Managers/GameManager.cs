@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        characterManager.Init();
+
+        characterManager.player.Init();
+
         spawnManager.Init();
     }
 

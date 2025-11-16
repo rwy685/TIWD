@@ -6,10 +6,12 @@ public class Player : MonoBehaviour
     public PlayerController controller;
     public PlayerCamera playerCamera;
 
-    private void Awake()
+    public void Init()
     {
         controller = GetComponent<PlayerController>();
         playerCamera = GetComponent<PlayerCamera>();
         GameManager.Instance.characterManager.player = this;
+
+        GetComponent<PlayerCondition>().Init();
     }
 }
