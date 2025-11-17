@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7246601928790961644}
   - component: {fileID: 8161843378548310809}
   - component: {fileID: 6238091468416151952}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4840,7 +4840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6709041428613490269}
   - component: {fileID: 2674731586381858140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4935,7 +4935,7 @@ GameObject:
   - component: {fileID: 4958711248624060366}
   - component: {fileID: 947336962766002293}
   - component: {fileID: 8398902998649143951}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CampFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5003,6 +5003,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4958711248624060366}
     m_Modifications:
+    - target: {fileID: -8961359253771211100, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5043,9 +5047,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -7029948723529949830, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
       propertyPath: m_Name
       value: Campfire
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767400413853537203, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148817236446094103, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507901977716847365, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606494168103106637, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

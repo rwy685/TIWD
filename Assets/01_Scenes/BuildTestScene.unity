@@ -851,7 +851,8 @@ GameObject:
   - component: {fileID: 1418355349}
   - component: {fileID: 1418355348}
   - component: {fileID: 1418355352}
-  m_Layer: 0
+  - component: {fileID: 1418355353}
+  m_Layer: 8
   m_Name: Pre_BuildObject_Campfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -957,6 +958,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: f9c10072254c88f4f9a888ae635599c9, type: 2}
+--- !u!114 &1418355353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418355347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489ad92582c144d45aba7cf1fd9d8851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildObject: {fileID: 1418355352}
 --- !u!1 &1588374901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,7 +1546,7 @@ MonoBehaviour:
   maxCheckDistance: 5
   layerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   curInteractGameObject: {fileID: 0}
   promptText: {fileID: 388210793}
 --- !u!1 &4098925316578121105
