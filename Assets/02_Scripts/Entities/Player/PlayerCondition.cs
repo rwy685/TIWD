@@ -6,17 +6,17 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 {
     public UIConditions uiConditions;
 
-    Conditions playerHP => uiConditions.playerHP;
-    Conditions stamina => uiConditions.stamina;
-    Conditions hunger => uiConditions.hunger;
-    Conditions thirst => uiConditions.thirst;
+    public Conditions playerHP => uiConditions.playerHP;
+    public Conditions stamina => uiConditions.stamina;
+    public Conditions hunger => uiConditions.hunger;
+    public Conditions thirst => uiConditions.thirst;
 
     public float starvingDamage;
     public float thirstyDamage;
 
     private void Awake()
     {
-
+        UIManager.Instance.Bind(this);
     }
 
     private void Update()
