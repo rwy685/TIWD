@@ -703,7 +703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curValue: 0
   maxValue: 100
-  startValue: 100
+  startValue: 10
   passiveValue: 1
   uiBar: {fileID: 475377676}
 --- !u!114 &745994587
@@ -1176,7 +1176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curValue: 0
   maxValue: 100
-  startValue: 100
+  startValue: 90
   passiveValue: 1
   uiBar: {fileID: 1306688248}
 --- !u!1 &1251476577
@@ -1554,7 +1554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curValue: 0
   maxValue: 100
-  startValue: 100
+  startValue: 10
   passiveValue: 1
   uiBar: {fileID: 713197797}
 --- !u!114 &1363118890
@@ -1698,8 +1698,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curValue: 0
   maxValue: 100
-  startValue: 100
-  passiveValue: 1
+  startValue: 0
+  passiveValue: 10
   uiBar: {fileID: 1251476579}
 --- !u!114 &1516831463
 MonoBehaviour:

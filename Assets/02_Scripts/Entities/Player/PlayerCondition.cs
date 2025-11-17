@@ -17,6 +17,11 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public float starvingDamage;
     public float thirstyDamage;
 
+    private void Awake()
+    {
+        Init();
+    }
+
     public void Init()
     {
         uiConditions.Init();
@@ -32,7 +37,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         {
             playerHP.Minus(starvingDamage * Time.deltaTime);
         }
-        else if (hunger.curValue >= 380)
+        else if (hunger.curValue >= 380) //fix예정
         {
             playerHP.Add(playerHP.passiveValue * Time.deltaTime);
         }
