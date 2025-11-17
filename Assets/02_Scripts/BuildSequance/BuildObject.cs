@@ -23,23 +23,32 @@ public class BuildObject : MonoBehaviour
     }
 
     // 자원 투입
-    public bool AddResource(ItemData item, int amount)
+    public bool AddResource(BuildResourceData resource, int amount)
+    {
+        if (!currentResources.ContainsKey(resource))
+            return false;
+
+        currentResources[resource] =
+            Mathf.Min(currentResources[resource] + amount,
+                      GetRequiredAmount(resource));
+
+        if (IsComplete())
+            OnComplete?.Invoke();
+
+        return true;
+    }
+
+    // 자원 요구량 체크
+    public int GetRequiredAmount(BuildResourceData resource)
     {
         foreach (var req in data.requirements)
         {
-            if (req.resource.itemData == item)
-            {
-                currentResources[req.resource] = Mathf.Min(currentResources[req.resource] + amount, req.amount);
-
-                if (IsComplete())
-                    OnComplete?.Invoke();
-
-                return true;
-            }
+            if (req.resource == resource)
+                return req.amount;
         }
-
-        return false;
+        return 0;
     }
+
 
     // 완성 여부 체크
     public bool IsComplete()

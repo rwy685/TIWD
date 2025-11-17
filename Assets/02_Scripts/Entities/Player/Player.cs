@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public PlayerCamera playerCamera;
 
     // 인벤토리 관련 변수
-    public ItemData acquiredItem;    // Player 가 현재 획득한 아이템
+    public BuildResourceData acquiredItem;    // Player 가 현재 획득한 아이템
     public Action addItem;           // 아이템 획득시 실행할 델리게이트
 
     // 컨디션 관련 변수
