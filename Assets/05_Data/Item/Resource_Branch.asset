@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8251e8dc18b92434789bbf16dd113ec2, type: 3}
+  m_Name: Resource_Branch
+  m_EditorClassIdentifier: 
+  displayName: "\uB098\uBB47\uAC00\uC9C0"
+  displayDesc: "\uBC14\uC2F9 \uB9C8\uB978 \uB098\uBB47\uAC00\uC9C0\uC774\uB2E4."
+  itemType: 2
+  inventoryIcon: {fileID: 0}
+  itemPrefab: {fileID: 458957456125337269, guid: 8b426427f5d234c47b46c5408921fc3e, type: 3}
+  equipableType: 0
+  attackPower: 0
+  gatherPower: 0
+  recoveryData: []
+  isStackable: 1
+  maxStack: 99
