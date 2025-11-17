@@ -6,9 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemyPrefab;
     [SerializeField] private Transform[] spawnPoint;
-    [SerializeField] private float spawnTime;
     [SerializeField] private int spawnCount;
-    [SerializeField] private int spawnDelay;
+    [SerializeField] private float spawnDelay;
 
     private int curCount = 0;
     private WaitForSeconds wait;
