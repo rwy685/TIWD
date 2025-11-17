@@ -16,12 +16,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     private void Awake()
     {
-        Init();
-    }
 
-    public void Init()
-    {
-        uiConditions.Init();
     }
 
     private void Update()
