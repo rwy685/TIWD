@@ -62,6 +62,8 @@ public class BuildObject : MonoBehaviour
         Instantiate(data.completePrefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }
+
+
 }
 
 
