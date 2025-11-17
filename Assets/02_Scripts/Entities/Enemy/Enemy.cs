@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private float minWanderDistance;
     [SerializeField] private float maxWanderDistance;
-    [SerializeField] private float wanderDelay = 2f; // 직접 입력 가능
+    [SerializeField] private float wanderDelay = 2f;
 
     private Player player;
     private NavMeshAgent agent;
