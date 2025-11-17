@@ -10,13 +10,19 @@ using UnityEngine;
 public enum ResourceType
 {
     Wood,
-    Stone
+    Stone,
+    Flint
 }
 
 [CreateAssetMenu(fileName = "BuildResourceData", menuName = "New BuildResourceData")]
 public class BuildResourceData : ScriptableObject
 {
+    [Header("Meta Info")]
+    public string displayName;
+
+    [Header("Inventory Item 연결")]
+    public ItemData itemData;
+
     [Header("Info")]
     public ResourceType resourceType;
-    public int amount;
 }
