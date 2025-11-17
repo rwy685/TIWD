@@ -464,100 +464,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &604525198
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4958711248624060366, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958711248624060366, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958711248624060366, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958711248624060366, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958711248624060366, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958711248624060366, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958711248624060366, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958711248624060366, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958711248624060366, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958711248624060366, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7613961797455438784, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-      propertyPath: m_Name
-      value: CampFire
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7613961797455438784, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 788158750}
-  m_SourcePrefab: {fileID: 100100000, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
---- !u!108 &604525199 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 2674731586381858140, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-  m_PrefabInstance: {fileID: 604525198}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &604525200 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 676473830911741154, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-  m_PrefabInstance: {fileID: 604525198}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &680701389 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3371956065218060917, guid: a7453cde4b8d357428d724a16d17ba27, type: 3}
   m_PrefabInstance: {fileID: 1751155225}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &788158747 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7613961797455438784, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
-  m_PrefabInstance: {fileID: 604525198}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &788158750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788158747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce873ffc741485f429920f5896795f3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireEffect: {fileID: 604525200}
-  fireLight: {fileID: 604525199}
 --- !u!1 &995258457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,6 +1567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   playerCamera: {fileID: 0}
+  acquiredItem: {fileID: 0}
 --- !u!4 &5541922014615583288
 Transform:
   m_ObjectHideFlags: 0
@@ -1848,4 +1760,3 @@ SceneRoots:
   - {fileID: 376853315}
   - {fileID: 1242527798}
   - {fileID: 1071444922}
-  - {fileID: 604525198}
