@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8251e8dc18b92434789bbf16dd113ec2, type: 3}
+  m_Name: Resource_Flint
+  m_EditorClassIdentifier: 
+  displayName: "\uBD80\uC2EF\uB3CC"
+  displayDesc: "\uBD88\uAF43\uC744 \uC77C\uC73C\uD0AC \uC218 \uC788\uC744 \uAC83
+    \uB2E4."
+  itemType: 2
+  inventoryIcon: {fileID: 0}
+  itemPrefab: {fileID: 61810250151856108, guid: 45790e106be6a034b856575da375f146, type: 3}
+  equipableType: 0
+  attackPower: 0
+  gatherPower: 0
+  recoveryData: []
+  isStackable: 1
+  maxStack: 99
