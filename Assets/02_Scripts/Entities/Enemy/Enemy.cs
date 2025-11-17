@@ -1,92 +1,125 @@
-using DG.Tweening;
-using JetBrains.Annotations;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
 
-public class Enemy : MonoBehaviour
+public interface IDamagable
+{
+    void TakePhysicalDamage(float damage);
+}
+public class Enemy : MonoBehaviour, IDamagable
 {
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private float minWanderDistance;
     [SerializeField] private float maxWanderDistance;
-
+    [SerializeField] private float wanderDelay = 2f; // 직접 입력 가능
 
     private Player player;
-
-    private WaitForSeconds wait;
     private NavMeshAgent agent;
     private EnemyState enemyState;
-    private float playerDistance;
+
     private float health;
-    private float wanderDelay;
+
+    private float playerDistance;
     private float lastAttackTime;
+
+    private Coroutine wanderCoroutine;
+    private WaitForSeconds wait;
 
     private void Awake()
     {
+        agent = GetComponent<NavMeshAgent>();
         player = GameManager.Instance.characterManager.player;
     }
 
     private void Start()
     {
-        agent.speed = enemyData.walkSpeed;
-        health = enemyData.maxHealth;
         wait = new WaitForSeconds(wanderDelay);
+        enemyState = EnemyState.Idle;
+        health = enemyData.maxHealth;
     }
 
     private void Update()
     {
+        if (player == null) return;
+
         playerDistance = Vector3.Distance(transform.position, player.transform.position);
-
         UpdateState();
-    }
-
-    private void SetState(EnemyState state)
-    {
-        enemyState = state;
-
-        switch (enemyState)
-        {
-            case EnemyState.Idle:
-                agent.speed = enemyData.walkSpeed;
-                agent.isStopped = true;
-                break;
-            case EnemyState.Wander:
-                agent.speed = enemyData.walkSpeed;
-                agent.isStopped = false;
-                break;
-            case EnemyState.Chase:
-                agent.speed = enemyData.runSpeed;
-                agent.isStopped = false;
-                break;
-        }
     }
 
     private void UpdateState()
     {
-        if (enemyState == EnemyState.Wander && agent.remainingDistance < 0.1f) //배회
+        if (playerDistance < enemyData.attackDistance)
         {
-            SetState(EnemyState.Idle);
-            StartCoroutine(Wander());
-        }
+            if (enemyState != EnemyState.Attack)
+                SetState(EnemyState.Attack);
 
-        if (enemyData.attackDistance > playerDistance) //공격
-        {
-            SetState(EnemyState.Attack);
             Attack();
+            return;
         }
 
-        else if (enemyData.chaseDistance > playerDistance) //추적
+        if (playerDistance < enemyData.chaseDistance)
         {
-            SetState(EnemyState.Chase);
+            if (enemyState != EnemyState.Chase)
+                SetState(EnemyState.Chase);
+
             Chase();
+            return;
+        }
+
+        if (enemyState == EnemyState.Wander)
+        {
+            if (!agent.pathPending && agent.remainingDistance < 0.2f)
+            {
+                SetState(EnemyState.Idle);
+            }
+            return;
+        }
+
+        if (enemyState == EnemyState.Idle)
+        {
+            SetState(EnemyState.Wander);
+            return;
+        }
+    }
+
+    private void SetState(EnemyState newState)
+    {
+        if (enemyState == newState) return;
+
+        enemyState = newState;
+
+        switch (enemyState)
+        {
+            case EnemyState.Idle:
+                agent.isStopped = true;
+
+                if (wanderCoroutine != null)
+                {
+                    StopCoroutine(wanderCoroutine);
+                    wanderCoroutine = null;
+                }
+                break;
+
+            case EnemyState.Wander:
+                agent.speed = enemyData.walkSpeed;
+                agent.isStopped = false;
+
+                wanderCoroutine = StartCoroutine(Wander());
+                break;
+
+            case EnemyState.Chase:
+                agent.speed = enemyData.runSpeed;
+                agent.isStopped = false;
+                break;
+
+            case EnemyState.Attack:
+                agent.isStopped = true;
+                break;
         }
     }
 
     private void Chase()
     {
-        agent.isStopped = false;
         NavMeshPath path = new NavMeshPath();
         if (agent.CalculatePath(player.transform.position, path))
         {
@@ -96,11 +129,19 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        agent.isStopped = true;
-        if (Time.time - lastAttackTime > enemyData.attackRate)
+        if (Time.time - lastAttackTime < enemyData.attackRate)
+            return;
+
+        lastAttackTime = Time.time;
+
+        Ray ray = new Ray(transform.position + Vector3.up * 1f, transform.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, enemyData.attackDistance))
         {
-            lastAttackTime = Time.time;
-            //데미지 로직
+            if (hit.collider.TryGetComponent(out IDamagable target))
+            {
+                target.TakePhysicalDamage(enemyData.damage);
+            }
         }
     }
 
@@ -108,11 +149,24 @@ public class Enemy : MonoBehaviour
     {
         yield return wait;
 
-        NavMeshHit hit;
-        NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
+        Vector3 randomPos = transform.position +
+            Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance);
 
+        NavMesh.SamplePosition(randomPos, out NavMeshHit hit, maxWanderDistance, NavMesh.AllAreas);
         agent.SetDestination(hit.position);
+    }
 
-        SetState(EnemyState.Wander);
+    public void TakePhysicalDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
