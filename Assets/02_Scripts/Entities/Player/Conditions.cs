@@ -11,7 +11,7 @@ public class Conditions : MonoBehaviour
 
 
 
-    public void Init()
+    public void Start()
     {
         curValue = startValue;
     }

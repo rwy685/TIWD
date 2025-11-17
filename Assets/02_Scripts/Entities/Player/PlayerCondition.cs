@@ -1,6 +1,7 @@
 using UnityEngine;
 
 
+
 public class PlayerCondition : MonoBehaviour, IDamagable
 {
     public UIConditions uiConditions;
@@ -15,12 +16,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     private void Awake()
     {
-        Init();
-    }
 
-    public void Init()
-    {
-        uiConditions.Init();
     }
 
     private void Update()
@@ -65,11 +61,6 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         hunger.Add(amount);        
     }
 
-    public void TakePhysicalDamage(int damage)
-    {
-        playerHP.Minus(damage);        
-    }
-
     public void Starving()
     {
         
@@ -84,6 +75,6 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void TakePhysicalDamage(float damage)
     {
-        throw new System.NotImplementedException();
+        playerHP.Minus(damage);
     }
 }

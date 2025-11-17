@@ -10,11 +10,16 @@ public class Player : MonoBehaviour
     public ItemData acquiredItem;    // Player 가 현재 획득한 아이템
     public Action addItem;           // 아이템 획득시 실행할 델리게이트
 
+    // 컨디션 관련 변수
+    public PlayerCondition condition;
+
+
     private void Awake()
     {
 
         controller = GetComponent<PlayerController>();
         playerCamera = GetComponent<PlayerCamera>();
+        condition = GetComponent<PlayerCondition>();
         //GameManager.Instance.characterManager.player = this;
     }
 
