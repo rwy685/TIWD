@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
     }
 
-    public SpawnManager spawnManager;
+    //public SpawnManager spawnManager;
     public CharacterManager characterManager;
     public BuildManager buildManager; // 빌드매니저 추가함
 
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
         characterManager.player.Init();
 
-        spawnManager.Init();
+        //spawnManager.Init();
     }
 
     private void Update()
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         else if (curTime > nightTime && !isNight)
         {
             isNight = true;
-            spawnManager.EnemySpawn();
+            //spawnManager.EnemySpawn();
         }
     }
 }
