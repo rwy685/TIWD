@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class Campfire : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject fireEffect;
+    public Light fireLight;
+
+    private bool isActive = false;
+
+    private void Start()
     {
-        
+        //건축 완성했을 때는 불이 꺼진 상태
+        fireEffect.SetActive(false);
+        fireLight.enabled = false;
+    }
+    public void ToggleFire()
+    {
+        isActive = !isActive;
+
+        fireEffect.SetActive(isActive);
+        fireLight.enabled = isActive;
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    
 }

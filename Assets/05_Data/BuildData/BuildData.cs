@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public enum BuildType
@@ -24,6 +25,7 @@ public class BuildData : ScriptableObject
     public string displayName;
     public string displayDesc;
     public BuildType buildType;
+    public Image icon;
 
     [Header("NeedResource")]
     public List<BuildRequirement> requirements; // 자원 종류타입 여러개 필요
