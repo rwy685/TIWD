@@ -23,28 +23,22 @@ public class BuildObject : MonoBehaviour
     }
 
     // 자원 투입
-    public void AddResource(BuildResourceData resource, int amount)
-    {
-        if (!currentResources.ContainsKey(resource))
-            return;  // 이 건축물은 해당 자원이 필요 없음
-
-        currentResources[resource] =
-            Mathf.Min(currentResources[resource] + amount,
-                      GetRequiredAmount(resource));
-
-        if (IsComplete())
-            OnComplete?.Invoke();
-    }
-
-    // 특정 자원의 필요량 가져오기
-    public int GetRequiredAmount(BuildResourceData resource)
+    public bool AddResource(ItemData item, int amount)
     {
         foreach (var req in data.requirements)
         {
-            if (req.resource == resource)
-                return req.amount;
+            if (req.resource.itemData == item)
+            {
+                currentResources[req.resource] = Mathf.Min(currentResources[req.resource] + amount, req.amount);
+
+                if (IsComplete())
+                    OnComplete?.Invoke();
+
+                return true;
+            }
         }
-        return 0;
+
+        return false;
     }
 
     // 완성 여부 체크
