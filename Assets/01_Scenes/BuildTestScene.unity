@@ -911,7 +911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 6361642670892881537}
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 1478525130839917290}
 --- !u!4 &1242527798
 Transform:
   m_ObjectHideFlags: 0
@@ -1744,7 +1744,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8762918512921735971, guid: c3553c167b8ada141adb86431cec5571, type: 3}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1813,7 +1813,7 @@ MonoBehaviour:
   maxCheckDistance: 5
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   curInteractGameObject: {fileID: 0}
   promptText: {fileID: 388210793}
 --- !u!4 &9122293832167232266
