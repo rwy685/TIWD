@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+
         controller = GetComponent<PlayerController>();
         playerCamera = GetComponent<PlayerCamera>();
         GameManager.Instance.characterManager.player = this;
