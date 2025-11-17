@@ -18,6 +18,8 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        throw new System.NotImplementedException();
+        GameManager.Instance.characterManager.player.acquiredItem = itemData;
+        GameManager.Instance.characterManager.player.addItem?.Invoke();
+        Destroy(gameObject);
     }
 }
