@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 918da35803092574fb4b61ee89daf53c, type: 3}
-  m_Name: BuildData_CampFire
+  m_Name: BuildData_Tent
   m_EditorClassIdentifier: 
-  displayName: "\uCEA0\uD504\uD30C\uC774"
-  displayDesc: "\uD50C\uB808\uC774\uC5B4\uC758 \uC628\uAE30\uB97C \uC720\uC9C0\uC2DC\uCF1C\uC90D\uB2C8\uB2E4."
-  buildType: 0
+  displayName: "\uD150\uD2B8"
+  displayDesc: "\uD50C\uB808\uC774\uC5B4\uC758 \uD734\uC2DD\uCC98\uC785\uB2C8\uB2E4."
+  buildType: 1
   icon: {fileID: 0}
   requirements:
   - resource: {fileID: 11400000, guid: 436074d6a9a74664fb5911f2c35da935, type: 2}
-    amount: 3
-  completePrefab: {fileID: 7613961797455438784, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
+    amount: 5
+  completePrefab: {fileID: 1773004061331627109, guid: f86f2ea402a68c841a14565457bf52ed, type: 3}

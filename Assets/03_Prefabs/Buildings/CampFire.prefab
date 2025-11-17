@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7246601928790961644}
   - component: {fileID: 8161843378548310809}
   - component: {fileID: 6238091468416151952}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -604,7 +604,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 500
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -4840,7 +4840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6709041428613490269}
   - component: {fileID: 2674731586381858140}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4935,7 +4935,8 @@ GameObject:
   - component: {fileID: 4958711248624060366}
   - component: {fileID: 947336962766002293}
   - component: {fileID: 8398902998649143951}
-  m_Layer: 8
+  - component: {fileID: 7873963794349454580}
+  m_Layer: 0
   m_Name: CampFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4995,6 +4996,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireEffect: {fileID: 676473830911741154}
   fireLight: {fileID: 2674731586381858140}
+--- !u!54 &7873963794349454580
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7613961797455438784}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &8641437178563864461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5005,7 +5033,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8961359253771211100, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5049,11 +5077,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8391222552659086748, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7029948723529949830, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
       propertyPath: m_Name
@@ -5061,23 +5089,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4767400413853537203, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5148817236446094103, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6507901977716847365, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6606494168103106637, guid: 0c24d68f0bc60c74289bf6cf53684ff6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

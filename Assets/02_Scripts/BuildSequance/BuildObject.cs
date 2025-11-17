@@ -25,12 +25,22 @@ public class BuildObject : MonoBehaviour
     // 자원 투입
     public bool AddResource(BuildResourceData resource, int amount)
     {
-        if (!currentResources.ContainsKey(resource))
-            return false;
+        Debug.Log($"[AddResource] 입력된 자원 SO : {resource.name}");
 
+        if (!currentResources.ContainsKey(resource))
+        {
+            Debug.LogWarning("[AddResource] currentResources에 해당 자원없음");
+            return false;
+        }
+
+        Debug.Log($"[AddResource] 기존 투입량: {currentResources[resource]}, 요구량: {GetRequiredAmount(resource)}");
+
+        int before = currentResources[resource];
         currentResources[resource] =
             Mathf.Min(currentResources[resource] + amount,
                       GetRequiredAmount(resource));
+
+        Debug.Log($"[AddResource] {resource.name} 증가: {before} → {currentResources[resource]}");
 
         if (IsComplete())
             OnComplete?.Invoke();
@@ -43,9 +53,14 @@ public class BuildObject : MonoBehaviour
     {
         foreach (var req in data.requirements)
         {
+            Debug.Log($"[GetRequiredAmount] 비교중: req.resource = {req.resource.name}, 입력: {resource.name}");
             if (req.resource == resource)
+            {
+                Debug.Log($"[GetRequiredAmount] 매칭 성공/ 요구량 {req.amount}");
                 return req.amount;
+            }
         }
+        Debug.LogWarning($"[GetRequiredAmount] 매칭 실패 / 요구량 0 반환");
         return 0;
     }
 
