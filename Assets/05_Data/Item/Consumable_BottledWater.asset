@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8251e8dc18b92434789bbf16dd113ec2, type: 3}
-  m_Name: Resource_Flint
+  m_Name: Consumable_BottledWater
   m_EditorClassIdentifier: 
-  displayName: "\uBD80\uC2EF\uB3CC"
-  displayDesc: "\uBD88\uAF43\uC744 \uC77C\uC73C\uD0AC \uC218 \uC788\uC744 \uAC83
-    \uAC19\uB2E4."
-  itemType: 2
+  displayName: "\uC0DD\uC218"
+  displayDesc: "\uB9C8\uC2DC\uBA74 \uAC08\uC99D\uC744 \uCC44\uC6B8 \uC218 \uC788\uB2E4."
+  itemType: 1
   inventoryIcon: {fileID: 0}
-  itemPrefab: {fileID: 61810250151856108, guid: 45790e106be6a034b856575da375f146, type: 3}
+  itemPrefab: {fileID: 0}
   equipableType: 0
   attackPower: 0
   gatherPower: 0
-  recoveryData: []
+  recoveryData:
+  - consumableType: 3
+    recoveryAmount: 50
   isStackable: 1
-  maxStack: 99
+  maxStack: 10
