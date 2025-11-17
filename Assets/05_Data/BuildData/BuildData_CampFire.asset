@@ -15,7 +15,10 @@ MonoBehaviour:
   displayName: Campfire
   displayDesc: PlayerHP+
   buildType: 0
+  icon: {fileID: 0}
   requirements:
   - resource: {fileID: 11400000, guid: 436074d6a9a74664fb5911f2c35da935, type: 2}
-    amount: 3
+    amount: 2
+  - resource: {fileID: 11400000, guid: b0ed87a73154d2a4aa02268b1c8f52cd, type: 2}
+    amount: 2
   completePrefab: {fileID: 7613961797455438784, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
