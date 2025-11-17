@@ -24,9 +24,27 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
     }
+
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private void SetState(PlayerState state)
+    {
+        playerState = state;
+
+        switch (playerState)
+        {
+            case PlayerState.Idle:
+                moveSpeed = defaultSpeed;
+                break;
+            case PlayerState.Run:
+                moveSpeed = runSpeed;
+                break;
+            case PlayerState.Attack:
+                break;
+        }
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -45,11 +63,11 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            playerState = PlayerState.Run;
+            SetState(PlayerState.Run);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            playerState = PlayerState.Walk;
+            SetState(PlayerState.Walk);
         }
     }
 
@@ -81,15 +99,6 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-
-        if (playerState == PlayerState.Run)
-        {
-            moveSpeed = runSpeed;
-        }
-        else if (playerState == PlayerState.Walk)
-        {
-            moveSpeed = defaultSpeed;
-        }
 
         dir *= moveSpeed;
         dir.y = rigidbody.velocity.y;
