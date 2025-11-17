@@ -14,7 +14,7 @@ public enum BuildType
 [System.Serializable]
 public class BuildRequirement
 {
-    public BuildResourceData resource; // 필요한 자원 타입
+    public BuildResourceData resource; // 필요한 자원 타입(인벤토리)
     public int amount; // 필요한 갯수
 }
 

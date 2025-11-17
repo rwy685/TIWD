@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0338a61b8fad004b9781baf746f98ea, type: 3}
-  m_Name: BuildResourceData_Stone
+  m_Name: BuildResourceData_Branch
   m_EditorClassIdentifier: 
-  resourceType: 1
-  amount: 1
+  displayName: "\uB098\uBB47\uAC00\uC9C0"
+  itemData: {fileID: 11400000, guid: 7ddc3c9ae5207bc4982a8858069ac895, type: 2}
+  resourceType: 0

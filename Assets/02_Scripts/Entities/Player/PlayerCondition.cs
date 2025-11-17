@@ -1,10 +1,6 @@
 using UnityEngine;
 
 
-public interface IDamagable
-{
-    void TakePhysicalDamage(int damage);
-}
 public class PlayerCondition : MonoBehaviour, IDamagable
 {
     public UIConditions uiConditions;
@@ -84,5 +80,10 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
         Time.timeScale = 0f;
         Debug.Log("D gym");
+    }
+
+    public void TakePhysicalDamage(float damage)
+    {
+        throw new System.NotImplementedException();
     }
 }
