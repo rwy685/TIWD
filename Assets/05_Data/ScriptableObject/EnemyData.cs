@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyData : MonoBehaviour
+public class EnemyData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string enemyName;
+    public float maxHealth;
+    public float walkSpeed;
+    public float runSpeed;
+    public float attackDistance; //공격사거리
+    public float chaseDistance; //추적범위
+    public float attackRate;
+    public float damage;
 }
