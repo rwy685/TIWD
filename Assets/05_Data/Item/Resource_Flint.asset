@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: "\uBD80\uC2EF\uB3CC"
   displayDesc: "\uBD88\uAF43\uC744 \uC77C\uC73C\uD0AC \uC218 \uC788\uC744 \uAC83
-    \uB2E4."
+    \uAC19\uB2E4."
   itemType: 2
   inventoryIcon: {fileID: 0}
   itemPrefab: {fileID: 61810250151856108, guid: 45790e106be6a034b856575da375f146, type: 3}
