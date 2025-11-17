@@ -14,4 +14,9 @@ public class Player : MonoBehaviour
 
         GetComponent<PlayerCondition>().Init();
     }
+
+    private void Awake()
+    {
+        Init();
+    }
 }
