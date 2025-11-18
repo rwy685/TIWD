@@ -19,6 +19,7 @@ public class BuildModeManager : MonoBehaviour
 
     private Material previewValidMat;
     private Material previewInvalidMat;
+    public Material constructionGhostMaterial;
 
     private Camera cam;
 
@@ -147,10 +148,18 @@ public class BuildModeManager : MonoBehaviour
             return;
         }
 
-        Instantiate(
+        // 1) 사전 건축물 생성
+        GameObject obj = Instantiate(
             currentBuildData.constructionPrefab,
             previewObject.transform.position,
-            previewObject.transform.rotation);
+            previewObject.transform.rotation
+        );
+
+        // 2) 스폰된 constructionPrefab에 고스트 머티리얼 적용
+        foreach (var rend in obj.GetComponentsInChildren<Renderer>())
+        {
+            rend.material = constructionGhostMaterial;
+        }
 
         ExitBuildMode();
     }

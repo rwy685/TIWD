@@ -1603,6 +1603,7 @@ MonoBehaviour:
   spawnManager: {fileID: 376853314}
   characterManager: {fileID: 1912571172}
   buildManager: {fileID: 429574356}
+  craftManager: {fileID: 0}
   buildModeManager: {fileID: 2122987168}
   curTime: 0
   nightTime: 0
@@ -2241,6 +2242,7 @@ MonoBehaviour:
   obstructionMask:
     serializedVersion: 2
     m_Bits: 0
+  constructionGhostMaterial: {fileID: 2100000, guid: 29af0be06e3c82948974f45f18a8843e, type: 2}
 --- !u!4 &2122987169
 Transform:
   m_ObjectHideFlags: 0
