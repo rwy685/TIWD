@@ -130,5 +130,45 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
+    // 인벤토리에 제작 아이템 추가
+    public bool AddItemToInventory(ItemData item, int amount = 1)
+    {
+        // 1) 중첩 가능 아이템인 경우
+        if (item.isStackable)
+        {
+            // 이미 존재하는 슬롯 검색
+            ItemSlot slot = GetItemSlot(item);
 
+            if (slot != null)
+            {
+                // 현재 슬롯에 더 넣을 수 있는 만큼 계산
+                int space = item.maxStack - slot.quantity;
+                int addCount = Mathf.Min(space, amount);
+
+                slot.quantity += addCount;
+                amount -= addCount;
+
+                // TODO: UI 갱신
+            }
+        }
+
+        // 2) 남은 개수가 있다면 빈 슬롯에 채우기
+        while (amount > 0)
+        {
+            ItemSlot emptySlot = GetEmptySlot();
+            if (emptySlot == null)
+                return false; // 인벤토리가 가득 차서 일부는 못 넣음 (필요하면 땅에 드랍도 가능)
+
+            int putCount = Mathf.Min(item.isStackable ? item.maxStack : 1, amount);
+
+            emptySlot.item = item;
+            emptySlot.quantity = putCount;
+
+            amount -= putCount;
+
+            // TODO: UI 갱신
+        }
+
+        return true;
+    }
 }

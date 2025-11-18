@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3537111934818535710}
   - component: {fileID: 8096961387337452174}
   - component: {fileID: 8582891462914262539}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Machete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
