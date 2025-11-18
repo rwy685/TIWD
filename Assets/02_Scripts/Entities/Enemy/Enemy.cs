@@ -90,22 +90,24 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             case EnemyState.Idle:
                 agent.isStopped = true;
-
+                animator.SetBool("IsWalk", false);
                 break;
 
             case EnemyState.Wander:
                 agent.speed = enemyData.walkSpeed;
                 agent.isStopped = false;
-
+                animator.SetBool("IsWalk", true);
                 break;
 
             case EnemyState.Chase:
                 agent.speed = enemyData.runSpeed;
                 agent.isStopped = false;
+                animator.SetBool("IsWalk", true);
                 break;
 
             case EnemyState.Attack:
                 agent.isStopped = true;
+                animator.SetTrigger("Attack");
                 break;
         }
     }
@@ -162,6 +164,10 @@ public class Enemy : MonoBehaviour, IDamagable
         if (health <= 0)
         {
             Die();
+        }
+        else
+        {
+            animator.SetTrigger("Hit");
         }
     }
 
