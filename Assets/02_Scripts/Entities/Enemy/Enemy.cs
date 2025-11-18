@@ -23,11 +23,13 @@ public class Enemy : MonoBehaviour, IDamagable
     private float lastAttackTime;
 
     private WaitForSeconds wait;
+    private Animator animator;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameManager.Instance.characterManager.player;
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -37,6 +39,7 @@ public class Enemy : MonoBehaviour, IDamagable
         health = enemyData.maxHealth;
 
         SetState(EnemyState.Wander);
+        animator.SetBool("IsSpawn", true);
     }
 
     private void Update()
