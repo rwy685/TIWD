@@ -34,6 +34,9 @@ public class Conditions : MonoBehaviour
 
     public float GetPercentage()
     {
+        if (maxValue <= 0f)
+            return 0f;
+
         return curValue / maxValue;
     }
 }
