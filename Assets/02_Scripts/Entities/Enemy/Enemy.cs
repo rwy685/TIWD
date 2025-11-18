@@ -52,6 +52,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     private void UpdateState()
     {
+        animator.speed = agent.speed / enemyData.walkSpeed;
         if (playerDistance < enemyData.attackDistance)
         {
             Debug.Log("1");
