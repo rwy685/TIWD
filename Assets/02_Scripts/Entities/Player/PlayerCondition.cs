@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class PlayerCondition : MonoBehaviour, IDamagable
 {
-    public UIConditions uiConditions;
+    //public UIConditions uiConditions;
 
-    public Conditions playerHP => uiConditions.playerHP;
-    public Conditions stamina => uiConditions.stamina;
-    public Conditions hunger => uiConditions.hunger;
-    public Conditions thirst => uiConditions.thirst;
+    //public Conditions playerHP => uiConditions.playerHP;
+    //public Conditions stamina => uiConditions.stamina;
+    //public Conditions hunger => uiConditions.hunger;
+    //public Conditions thirst => uiConditions.thirst;
+
+    //UIConditions대신 UIManager로 바꾸며 PlayerCondition이 Conditions를 참조하도록 변경
+    [Header("Condition References")]
+    public Conditions playerHP;
+    public Conditions stamina;
+    public Conditions hunger;
+    public Conditions thirst;
 
     public float starvingDamage;
     public float thirstyDamage;
 
-    private void Awake()
+    //호출 순서 문제로 Awake에서 Start로 바꿨습니다..
+    private void Start()
     {
         UIManager.Instance.Bind(this);
     }

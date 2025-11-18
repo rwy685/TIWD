@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour, IDamagable
     private float playerDistance;
     private float lastAttackTime;
 
-    private Coroutine wanderCoroutine;
     private WaitForSeconds wait;
 
     private void Awake()
@@ -36,6 +35,8 @@ public class Enemy : MonoBehaviour, IDamagable
         wait = new WaitForSeconds(wanderDelay);
         enemyState = EnemyState.Idle;
         health = enemyData.maxHealth;
+
+        SetState(EnemyState.Wander);
     }
 
     private void Update()
@@ -51,8 +52,7 @@ public class Enemy : MonoBehaviour, IDamagable
         if (playerDistance < enemyData.attackDistance)
         {
             Debug.Log("1");
-            if (enemyState != EnemyState.Attack)
-                SetState(EnemyState.Attack);
+            SetState(EnemyState.Attack);
 
             Attack();
             return;
@@ -61,8 +61,7 @@ public class Enemy : MonoBehaviour, IDamagable
         if (playerDistance < enemyData.chaseDistance)
         {
             Debug.Log("2");
-            if (enemyState != EnemyState.Chase)
-                SetState(EnemyState.Chase);
+            SetState(EnemyState.Chase);
 
             Chase();
             return;
@@ -70,26 +69,18 @@ public class Enemy : MonoBehaviour, IDamagable
 
         if (enemyState == EnemyState.Wander)
         {
-            if (!agent.pathPending && agent.remainingDistance < 0.2f)
+            if (agent.remainingDistance < 0.1f)
             {
                 Debug.Log("3");
                 SetState(EnemyState.Idle);
+                StartCoroutine(Wander());
             }
-            return;
-        }
-
-        if (enemyState == EnemyState.Idle)
-        {
-            Debug.Log("4");
-            SetState(EnemyState.Wander);
             return;
         }
     }
 
     private void SetState(EnemyState newState)
     {
-        if (enemyState == newState) return;
-
         enemyState = newState;
 
         switch (enemyState)
@@ -97,18 +88,12 @@ public class Enemy : MonoBehaviour, IDamagable
             case EnemyState.Idle:
                 agent.isStopped = true;
 
-                if (wanderCoroutine != null)
-                {
-                    StopCoroutine(wanderCoroutine);
-                    wanderCoroutine = null;
-                }
                 break;
 
             case EnemyState.Wander:
                 agent.speed = enemyData.walkSpeed;
                 agent.isStopped = false;
 
-                wanderCoroutine = StartCoroutine(Wander());
                 break;
 
             case EnemyState.Chase:
@@ -124,11 +109,18 @@ public class Enemy : MonoBehaviour, IDamagable
 
     private void Chase()
     {
+        if (playerDistance > enemyData.chaseDistance)
+        {
+            SetState(EnemyState.Wander);
+            return;
+        }
+
         NavMeshPath path = new NavMeshPath();
         if (agent.CalculatePath(player.transform.position, path))
         {
             agent.SetDestination(player.transform.position);
         }
+
     }
 
     private void Attack()
@@ -153,6 +145,7 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         yield return wait;
 
+        SetState(EnemyState.Wander);
         Vector3 randomPos = transform.position +
             Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance);
 
