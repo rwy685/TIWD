@@ -17,6 +17,6 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 10
   attackDistance: 5
-  chaseDistance: 100
+  chaseDistance: 8
   attackRate: 3
   damage: 20

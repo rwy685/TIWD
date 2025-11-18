@@ -195,8 +195,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: f634ea61f87ab6c47ba09a5f9043dfb1, type: 2}
-  minWanderDistance: 1
-  maxWanderDistance: 5
+  minWanderDistance: 10
+  maxWanderDistance: 20
   wanderDelay: 2
 --- !u!195 &8724571729856786893
 NavMeshAgent:
