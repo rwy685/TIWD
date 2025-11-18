@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8251e8dc18b92434789bbf16dd113ec2, type: 3}
-  m_Name: Equipable_WoodenClub
+  m_Name: Weapon_Bat
   m_EditorClassIdentifier: 
-  displayName: "\uB098\uBB34 \uBABD\uB465\uC774"
-  displayDesc: "\uB098\uBB34\uB85C \uB418\uC5B4 \uC788\uC5B4 \uADF8\uB2E5 \uD2BC\uD2BC\uD558\uC9C4
-    \uC54A\uB2E4."
+  displayName: "\uBABB \uBC15\uD78C \uBC30\uD2B8"
+  displayDesc: "\uB05D\uC5D0 \uBC15\uD78C \uBABB\uC774 \uB9E4\uC6B0 \uC704\uD611\uC801\uC774\uB2E4."
   itemType: 0
   inventoryIcon: {fileID: 0}
-  itemPrefab: {fileID: 1534571892579635120, guid: 001c44e25bc4be94182df662b5265067, type: 3}
-  equipableType: 2
-  attackPower: 1
-  gatherPower: 1
+  itemPrefab: {fileID: 9170293826237753380, guid: 1bed354a557ebe14a9bfe2648d6ddad9, type: 3}
+  equipableType: 1
+  attackPower: 20
+  gatherPower: 0
   recoveryData: []
   isStackable: 0
   maxStack: 1
