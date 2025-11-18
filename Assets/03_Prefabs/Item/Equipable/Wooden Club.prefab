@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1274234276166338579}
   - component: {fileID: 2453873313285056692}
   - component: {fileID: 2056067840176179292}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wooden Club
   m_TagString: Untagged
   m_Icon: {fileID: 0}

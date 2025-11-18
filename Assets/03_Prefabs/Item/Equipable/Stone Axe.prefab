@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5049305860249273238}
   - component: {fileID: 4333512336526675884}
   - component: {fileID: 5464059984363405060}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stone Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
