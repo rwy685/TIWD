@@ -7,14 +7,13 @@ using UnityEngine.UI;
 public class CraftingPanel : MonoBehaviour
 {
     [Header("Recipe List UI")]
-    public Transform recipeButtonList;       // RecipeButton 들이 들어있는 부모(스크롤뷰)
-    public Button[] recipeButtons;           // 각 버튼
-                                             // (Start에서 자동으로 가져올 예정)
+    public Transform recipeButtonList;       // RecipeButton 들의 부모 오브젝트
+    public Button[] recipeButtons;           // 각각의 레시피 버튼
 
     [Header("Recipe Info UI")]
-    public TextMeshProUGUI recipeNameText;   // 선택된 레시피 이름 표시
-    public TextMeshProUGUI[] ingredientTexts; // IngredientText1~3
-    public Button makeButton;                // "만들기" 버튼
+    public TextMeshProUGUI recipeNameText;      // 선택된 레시피 이름 표시
+    public TextMeshProUGUI[] ingredientTexts;   // IngredientText1~3
+    public Button makeButton;                   // "만들기" 버튼
 
     private CraftManager craftManager => GameManager.Instance.craftManager;
     private List<CraftData> craftRecipes => craftManager.GetAllRecipes();
@@ -22,13 +21,12 @@ public class CraftingPanel : MonoBehaviour
 
     void Start()
     {
-        // 버튼들 자동 인식
         recipeButtons = recipeButtonList.GetComponentsInChildren<Button>();
 
         // CraftData 리스트 개수와 버튼 수가 동일하다는 가정 하에 설정
         for (int i = 0; i < recipeButtons.Length; i++)
         {
-            int index = i; // 람다 캡처 문제 방지
+            int index = i;
             recipeButtons[i].onClick.AddListener(() =>
             {
                 OnRecipeButtonClicked(index);
@@ -46,18 +44,14 @@ public class CraftingPanel : MonoBehaviour
         ClearRecipeInfo();
     }
 
-    // ==============================
-    //      버튼 클릭 시 레시피 선택
-    // ==============================
+    // 버튼 클릭 시 레시피 선택
     void OnRecipeButtonClicked(int index)
     {
         selectedRecipe = craftRecipes[index];
         UpdateRecipeInfo(selectedRecipe);
     }
 
-    // ==============================
-    //         Info 업데이트
-    // ==============================
+    // Info 업데이트
     void UpdateRecipeInfo(CraftData recipe)
     {
         recipeNameText.text = recipe.resultItem.displayName;
@@ -78,9 +72,7 @@ public class CraftingPanel : MonoBehaviour
         makeButton.interactable = true;
     }
 
-    // ==============================
-    //     만들기 버튼 눌렀을 때
-    // ==============================
+    // 만들기 버튼 눌렀을 때
     void OnMakeButtonClicked()
     {
         if (selectedRecipe == null)
@@ -101,9 +93,7 @@ public class CraftingPanel : MonoBehaviour
         }
     }
 
-    // ==============================
-    //     Info 초기화
-    // ==============================
+    // Info 초기화
     void ClearRecipeInfo()
     {
         recipeNameText.text = "레시피를 선택하세요";
