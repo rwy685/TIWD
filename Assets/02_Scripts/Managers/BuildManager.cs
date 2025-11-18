@@ -68,13 +68,6 @@ public class BuildManager : MonoBehaviour
     public void TryUseResource(Player player)
     {
         Inventory inv = player.inventory;
-        ItemData item = player.acquiredItem;
-
-        if (item == null)
-        {
-            Debug.Log("[TryUseResource] 플레이어가 들고 있는 아이템 없음");
-            return;
-        }
 
         // 1) 가장 가까운 건축물 찾기
         BuildObject buildable = GetClosestBuildable(player.transform.position);
@@ -84,28 +77,30 @@ public class BuildManager : MonoBehaviour
             return;
         }
 
-        // 2) 이 아이템이 건설 자원으로 사용 가능한지 확인
-        BuildResourceData resourceType = buildable.GetResourceTypeByItem(item);
-        if (resourceType == null)
+        // 2) 건축물이 요구하는 재료들을 확인
+        foreach (var req in buildable.data.requirements)
         {
-            Debug.Log("[TryUseResource] 이 아이템은 해당 건축물에 투입할 수 없음");
-            return;
+            BuildResourceData resourceType = req.resource;
+
+            // acceptable Items 목록에서 인벤토리에 있는 아이템 찾기
+            foreach (var item in resourceType.acceptableItems)
+            {
+                if (inv.Has(item, 1))
+                {
+                    // 3) 인벤토리에서 소비
+                    if (inv.ConsumeMultiple(item, 1))
+                    {
+                        // 4) 건축물에 자원 투입
+                        buildable.AddResource(resourceType, 1);
+
+                        Debug.Log($"[TryUseResource] {item.name} 1개 사용 → {buildable.name}에 투입 완료");
+                        return;
+                    }
+                }
+            }
         }
 
-        // 3) 인벤토리에서 실제 자원 소비
-        if (!inv.ConsumeMultiple(item, 1))
-        {
-            Debug.Log("[TryUseResource] 인벤토리에 자원이 부족합니다.");
-            return;
-        }
-
-        // 4) 건축물에 자원 투입
-        bool result = buildable.AddResource(resourceType, 1);
-
-        if (result)
-            Debug.Log($"[TryUseResource] {item.name} 1개 사용 → {buildable.name}에 투입 완료");
+        Debug.Log("[TryUseResource] 인벤토리에 해당 자원이 없음");
     }
-
-
 
 }
