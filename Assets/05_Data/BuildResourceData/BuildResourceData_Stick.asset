@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: BuildResourceData_Stick
   m_EditorClassIdentifier: 
   displayName: "\uB098\uBB34\uB9C9\uB300"
-  itemData: {fileID: 11400000, guid: 81561e75bc11c6943986b960fb71efcc, type: 2}
+  acceptableItems:
+  - {fileID: 11400000, guid: 81561e75bc11c6943986b960fb71efcc, type: 2}
   resourceType: 0

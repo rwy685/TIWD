@@ -21,6 +21,9 @@ public class Inventory : MonoBehaviour
             itemSlots[i].index = i;
             itemSlots[i].inventory = this;
         }
+
+        GameManager.Instance.characterManager.player.inventory = this;
+
     }
 
     // 획득한 아이템을 인벤토리에 추가하는 함수
@@ -88,4 +91,44 @@ public class Inventory : MonoBehaviour
     {
         Instantiate(data.itemPrefab, throwPos.position, Quaternion.Euler(Vector3.one * Random.value * 360));
     }
+
+    // 인벤토리 재고 확인용
+    public bool Has(ItemData item, int amount)
+    {
+        int total = 0;
+        foreach (var slot in itemSlots)
+        {
+            if (slot.item == item)
+                total += slot.quantity;
+        }
+
+        return total >= amount;
+    }
+
+    // 인벤토리에서 아이템 소비
+
+    public bool ConsumeMultiple(ItemData item, int amount)
+    {
+        int remaining = amount;
+
+        for (int i = 0; i < itemSlots.Length; i++)
+        {
+            if (itemSlots[i].item == item)
+            {
+                int use = Mathf.Min(itemSlots[i].quantity, remaining); // 여러 슬롯에 나눠져있어도 같은 아이템이면 소비
+                itemSlots[i].quantity -= use;
+                remaining -= use;
+
+                if (itemSlots[i].quantity == 0)
+                    itemSlots[i].item = null;
+
+                if (remaining <= 0)
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
+
 }

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: BuildResourceData_Stone
   m_EditorClassIdentifier: 
   displayName: "\uB3CC"
-  itemData: {fileID: 11400000, guid: 35fb50165f07c1941af33f11ceb04fea, type: 2}
+  acceptableItems:
+  - {fileID: 11400000, guid: 35fb50165f07c1941af33f11ceb04fea, type: 2}
   resourceType: 1

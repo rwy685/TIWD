@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8251e8dc18b92434789bbf16dd113ec2, type: 3}
+  m_Name: Weapon_Bat
+  m_EditorClassIdentifier: 
+  displayName: "\uBABB \uBC15\uD78C \uBC30\uD2B8"
+  displayDesc: "\uB05D\uC5D0 \uBC15\uD78C \uBABB\uC774 \uB9E4\uC6B0 \uC704\uD611\uC801\uC774\uB2E4."
+  itemType: 0
+  inventoryIcon: {fileID: 0}
+  itemPrefab: {fileID: 9170293826237753380, guid: 1bed354a557ebe14a9bfe2648d6ddad9, type: 3}
+  equipableType: 1
+  attackPower: 20
+  gatherPower: 0
+  recoveryData: []
+  isStackable: 0
+  maxStack: 1

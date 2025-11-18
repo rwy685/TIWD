@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: BuildResourceData_Flint
   m_EditorClassIdentifier: 
   displayName: "\uBD80\uC2EF\uB3CC"
-  itemData: {fileID: 11400000, guid: a5c9f6d7e0009584ba1a22199711386f, type: 2}
+  acceptableItems:
+  - {fileID: 11400000, guid: a5c9f6d7e0009584ba1a22199711386f, type: 2}
   resourceType: 2
