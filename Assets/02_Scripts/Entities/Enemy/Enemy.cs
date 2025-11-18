@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         if (playerDistance < enemyData.attackDistance)
         {
+            Debug.Log("1");
             if (enemyState != EnemyState.Attack)
                 SetState(EnemyState.Attack);
 
@@ -59,6 +60,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
         if (playerDistance < enemyData.chaseDistance)
         {
+            Debug.Log("2");
             if (enemyState != EnemyState.Chase)
                 SetState(EnemyState.Chase);
 
@@ -70,6 +72,7 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             if (!agent.pathPending && agent.remainingDistance < 0.2f)
             {
+                Debug.Log("3");
                 SetState(EnemyState.Idle);
             }
             return;
@@ -77,6 +80,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
         if (enemyState == EnemyState.Idle)
         {
+            Debug.Log("4");
             SetState(EnemyState.Wander);
             return;
         }
