@@ -81,6 +81,20 @@ public class BuildObject : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // ItemData가 어떤 BuildResourceData로 투입 가능한지 반환
+    public BuildResourceData GetResourceTypeByItem(ItemData item)
+    {
+        foreach (var req in data.requirements)
+        {
+            foreach (var acceptable in req.resource.acceptableItems)
+            {
+                if (acceptable == item)
+                    return req.resource;
+            }
+        }
+
+        return null;
+    }
 
 }
 

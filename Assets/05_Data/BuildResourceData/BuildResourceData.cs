@@ -21,7 +21,7 @@ public class BuildResourceData : ScriptableObject
     public string displayName;
 
     [Header("Inventory Item 연결")]
-    public ItemData itemData;
+    public ItemData[] acceptableItems;
 
     [Header("Info")]
     public ResourceType resourceType;
