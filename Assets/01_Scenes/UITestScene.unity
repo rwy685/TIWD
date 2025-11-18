@@ -1320,19 +1320,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4715185905763360845, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
+    - target: {fileID: 4490654706236774409, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
       propertyPath: hunger
       value: 
       objectReference: {fileID: 1834227875}
-    - target: {fileID: 4715185905763360845, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
+    - target: {fileID: 4490654706236774409, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
       propertyPath: thirst
       value: 
       objectReference: {fileID: 923971073}
-    - target: {fileID: 4715185905763360845, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
+    - target: {fileID: 4490654706236774409, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
       propertyPath: stamina
       value: 
       objectReference: {fileID: 2081252895}
-    - target: {fileID: 4715185905763360845, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
+    - target: {fileID: 4490654706236774409, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
       propertyPath: playerHP
       value: 
       objectReference: {fileID: 387447063}
@@ -5291,6 +5291,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2010626935}
     m_Modifications:
+    - target: {fileID: 694560299617732910, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 694560299617732910, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 694560299617732910, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001609485087449009, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001609485087449009, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001609485087449009, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2062303329280608578, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5371,9 +5395,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2474677589785409253, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474677589785409253, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474677589785409253, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2493780706958751776, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
       propertyPath: m_Name
       value: ConditionalPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579168023152567618, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579168023152567618, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579168023152567618, guid: 375125d87488ec549a33f43ef498fafc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
