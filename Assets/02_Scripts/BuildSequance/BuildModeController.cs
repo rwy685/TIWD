@@ -6,11 +6,26 @@ using UnityEngine.InputSystem;
 public class BuildModeController : MonoBehaviour
 {
     private BuildModeManager buildMode;
+    public BuildData testBuildData; // Inspector에서 테스트용 SO 넣어두기
 
     private void Start()
     {
         buildMode = GameManager.Instance.buildModeManager;
     }
+
+    private void Update()
+    {
+        if (buildMode == null) return;  // 안전장치
+
+        if (Keyboard.current.digit1Key?.wasPressedThisFrame == true)
+        {
+            if (testBuildData != null)
+                buildMode.EnterBuildMode(testBuildData);
+            else
+                Debug.LogWarning("testBuildData가 설정되지 않았습니다!");
+        }
+    }
+
 
     // 
     // 빌드 모드 전용 컨트롤러

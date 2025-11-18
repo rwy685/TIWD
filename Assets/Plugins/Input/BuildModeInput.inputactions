@@ -16,9 +16,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Rotate",
+                    "name": "RotateLeft",
                     "type": "Button",
                     "id": "a80f7a0d-2f77-4d1d-8c0c-8b1eea8c7138",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotateRight",
+                    "type": "Button",
+                    "id": "a93cef0f-da26-41e2-9d97-71421b629de1",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -53,18 +62,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "377582f0-7d41-4853-8bba-c8f7dfae6290",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
+                    "action": "RotateLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -76,6 +74,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c3a220e-eaa3-4529-b884-5c91f2b65f89",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -32,5 +32,9 @@ public class BuildData : ScriptableObject
 
     [Header("BuildComplete")]
     public GameObject completePrefab;
+
+    [Header("Prefab")]
+    public GameObject previewPrefab;
+    public GameObject constructionPrefab;
 }
 

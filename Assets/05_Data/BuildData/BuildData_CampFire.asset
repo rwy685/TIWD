@@ -21,4 +21,6 @@ MonoBehaviour:
     amount: 4
   - resource: {fileID: 11400000, guid: b0ed87a73154d2a4aa02268b1c8f52cd, type: 2}
     amount: 1
-  completePrefab: {fileID: 7613961797455438784, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
+  completePrefab: {fileID: 7227863487484600276, guid: 8cac71d6fcaeffc4baa9d3a253e936b5, type: 3}
+  previewPrefab: {fileID: 2615279085193311492, guid: f54f045ec825108438b935f0e9975303, type: 3}
+  constructionPrefab: {fileID: 3081821676377757575, guid: 0ad042219b3f3e84dac81cdcc6214e4f, type: 3}
