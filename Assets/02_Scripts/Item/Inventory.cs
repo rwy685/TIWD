@@ -21,6 +21,9 @@ public class Inventory : MonoBehaviour
             itemSlots[i].index = i;
             itemSlots[i].inventory = this;
         }
+
+        GameManager.Instance.characterManager.player.inventory = this;
+
     }
 
     // 획득한 아이템을 인벤토리에 추가하는 함수

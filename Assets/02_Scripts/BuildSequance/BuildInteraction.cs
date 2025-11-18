@@ -13,8 +13,8 @@ public class BuildInteraction : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        buildObject.AddResource(buildObject.data.requirements[0].resource, 1);
-        Debug.Log("자원 투입됨");
+        Player player = GameManager.Instance.characterManager.player;
+        GameManager.Instance.buildManager.TryUseResource(player);
     }
 
 }
