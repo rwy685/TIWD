@@ -8,7 +8,7 @@ public class RecoveryData
     public int recoveryAmount;
 }
 
-[CreateAssetMenu(fileName = "NewItem", menuName = "New Item")]
+[CreateAssetMenu(fileName = "NewItem", menuName = "New ItemData")]
 public class ItemData : ScriptableObject
 {
     [Header("Info")]
