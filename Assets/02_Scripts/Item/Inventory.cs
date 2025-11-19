@@ -105,7 +105,7 @@ public class Inventory : MonoBehaviour
         return total >= amount;
     }
 
-    // 인벤토리에서 아이템 소비
+    // 인벤토리에서 아이템 소비 (건축용)
 
     public bool ConsumeMultiple(ItemData item, int amount)
     {
@@ -172,7 +172,7 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    //*빌드모드용 모든슬롯의 같은 ItemData 갯수 합산
+    //*빌드모드용 모든슬롯의 같은 ItemData 갯수 합산 (건축용)
     public int Count(ItemData item)
     {
         int total = 0;
@@ -185,4 +185,34 @@ public class Inventory : MonoBehaviour
 
         return total;
     }
+
+    //
+    // 소비아이템 사용
+    //
+
+    // 아이템 1개 소비
+    public bool ConsumeOne(ItemData item)
+    {
+        return ConsumeMultiple(item, 1);
+    }
+
+    // Consumable 타입일 때만 소비
+    public bool TryUseItem(ItemData item)
+    {
+        // 1) 소비 가능한 타입인지 확인
+        if (item.itemType != ItemType.Consumable)
+        {
+            Debug.LogWarning($"TryUseItem 실패: {item.displayName} 은 Consumable 타입이 아님!");
+            return false;
+        }
+
+        // 2) 인벤토리에 존재하는지 확인
+        if (!Has(item, 1))
+            return false;
+
+        // 3) 실제 소비
+        return ConsumeOne(item);
+    }
+
+
 }
