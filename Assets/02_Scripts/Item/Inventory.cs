@@ -10,8 +10,11 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         throwPos = GameManager.Instance.characterManager.player.transform;
-        
+
+        GameManager.Instance.characterManager.player.controller.inventory += Toggle;
         GameManager.Instance.characterManager.player.addItem += AddItem;
+
+        gameObject.SetActive(false);
 
         itemSlots = new ItemSlot[slotGrid.childCount];
 
@@ -24,6 +27,19 @@ public class Inventory : MonoBehaviour
 
         GameManager.Instance.characterManager.player.inventory = this;
 
+    }
+
+    // 인벤토리창 활성화/비활성화 함수
+    public void Toggle()
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     // 획득한 아이템을 인벤토리에 추가하는 함수
@@ -39,7 +55,8 @@ public class Inventory : MonoBehaviour
             if (curSlot != null)
             {
                 curSlot.quantity++;
-                // TODO : 아이템 슬롯 UI 갱신
+                // 테스트용 UI 갱신
+                curSlot.SetUI();
                 GameManager.Instance.characterManager.player.acquiredItem = null;
                 return;
             }
@@ -53,6 +70,8 @@ public class Inventory : MonoBehaviour
             emptySlot.item = curItem;
             emptySlot.quantity = 1;
             // TODO : 아이템 슬롯 UI 갱신
+            // 테스트용 UI 갱신
+            emptySlot.SetUI();
             GameManager.Instance.characterManager.player.acquiredItem = null;
             return;
         }

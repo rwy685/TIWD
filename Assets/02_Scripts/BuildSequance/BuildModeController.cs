@@ -6,23 +6,32 @@ using UnityEngine.InputSystem;
 public class BuildModeController : MonoBehaviour
 {
     private BuildModeManager buildMode;
-    public BuildData testBuildData; // Inspector에서 테스트용 SO 넣어두기
+
 
     private void Start()
     {
         buildMode = GameManager.Instance.buildModeManager;
+
+        if (buildMode == null)
+            Debug.LogError("[BuildModeController] BuildModeManager가 GameManager에 연결 안됨.");
     }
 
-    private void Update()
+    //
+    // 빌드모드 진입 입력 (B키로 예정)
+    //
+    public void OnBuildModeToggle(InputAction.CallbackContext ctx)
     {
-        if (buildMode == null) return;  // 안전장치
+        if (!ctx.started) return;
 
-        if (Keyboard.current.digit1Key?.wasPressedThisFrame == true)
+        if (!buildMode.IsBuildingMode)
         {
-            if (testBuildData != null)
-                buildMode.EnterBuildMode(testBuildData);
-            else
-                Debug.LogWarning("testBuildData가 설정되지 않았습니다!");
+            Debug.Log("Build Mode Enter");
+            buildMode.EnterBuildMode();      // 빌드모드 진입
+        }
+        else
+        {
+            Debug.Log("Build Mode Exit");
+            buildMode.ExitBuildMode(); // 빌드모드 종료
         }
     }
 
@@ -34,32 +43,31 @@ public class BuildModeController : MonoBehaviour
     // 마우스 좌클릭: 해당 위치 설치
     public void OnBuildPlace(InputAction.CallbackContext ctx)
     {
+        if (!ctx.started) return;
         if (!buildMode.IsBuildingMode) return;
-        if (ctx.phase == InputActionPhase.Started)
-            buildMode.TryPlaceStructure();
+
+        buildMode.TryPlaceStructure();
     }
 
     // Q: 사전구조물 설치방향 왼쪽으로 돌리기(반시계방향)
     public void OnBuildRotateLeft(InputAction.CallbackContext ctx)
     {
-        if (!buildMode.IsBuildingMode) return;
-        if (ctx.phase == InputActionPhase.Started)
+        if (ctx.started && buildMode.IsBuildingMode)
             buildMode.RotateLeft();
     }
+
 
     // E: 사전구조물 설치방향 오른쪽으로 돌리기(시계방향)
     public void OnBuildRotateRight(InputAction.CallbackContext ctx)
     {
-        if (!buildMode.IsBuildingMode) return;
-        if (ctx.phase == InputActionPhase.Started)
+        if (ctx.started && buildMode.IsBuildingMode)
             buildMode.RotateRight();
     }
 
     // ESC: 설치 취소
     public void OnBuildCancel(InputAction.CallbackContext ctx)
     {
-        if (!buildMode.IsBuildingMode) return;
-        if (ctx.phase == InputActionPhase.Started)
+        if (ctx.started && buildMode.IsBuildingMode)
             buildMode.ExitBuildMode();
     }
 }
