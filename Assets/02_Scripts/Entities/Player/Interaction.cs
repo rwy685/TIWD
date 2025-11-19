@@ -20,6 +20,7 @@ public class Interaction : MonoBehaviour
     private void Start()
     {
         camera = Camera.main;
+        UIManager.Instance.PromptSet(this);
     }
     private void Update()
     {
