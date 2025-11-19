@@ -7,6 +7,15 @@
             "id": "a65ff4a9-d486-4035-b17e-158ed86b17a1",
             "actions": [
                 {
+                    "name": "EnterBuildMode",
+                    "type": "Button",
+                    "id": "16f854c7-9262-4be9-ac02-e634169ea542",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Place",
                     "type": "Button",
                     "id": "2bac323b-c9bc-4c6f-8a46-13e6c7129f88",
@@ -85,6 +94,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RotateRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a7a5ccc-f94b-4448-9047-bf70c80045a6",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EnterBuildMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
