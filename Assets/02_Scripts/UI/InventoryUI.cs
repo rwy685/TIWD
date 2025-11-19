@@ -8,9 +8,4 @@ public class InventoryUI : MonoBehaviour
     {
         Instance = this;
     }
-
-    public void GiveTutorialItem()
-    {
-        Debug.Log("튜토리얼 아이템을 받았다");
-    }
 }

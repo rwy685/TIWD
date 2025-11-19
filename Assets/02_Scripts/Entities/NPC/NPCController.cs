@@ -9,6 +9,8 @@ public class NPCController : MonoBehaviour, IInteractable
     public string[] dialogues;
 
     [Header("Tutorial Item")]
+    public ItemData rewardItem;
+    public int rewardAmount = 1;
     public bool itemGiven = false;
 
     private void Start()
@@ -41,7 +43,9 @@ public class NPCController : MonoBehaviour, IInteractable
         {
             Debug.Log($"{npcName} 튜토리얼 아이템 지급");
 
-            InventoryUI.Instance.GiveTutorialItem();
+            Inventory playerInv = GameManager.Instance.characterManager.player.inventory;
+            playerInv.AddItemToInventory(rewardItem, 1);
+
             itemGiven = true;
         }
     }
