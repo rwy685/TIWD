@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2847406527521187000}
   - component: {fileID: 3876411850340496043}
   - component: {fileID: 2833241878932980469}
+  - component: {fileID: 6237644162204288034}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -320,6 +321,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curEquip: {fileID: 0}
   equipParent: {fileID: 7468706153844993103}
+--- !u!114 &6237644162204288034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210404942003993468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c278a9ea9b54a34382b06924acdc6a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}
+  stamina: {fileID: 0}
+  hunger: {fileID: 0}
+  thirst: {fileID: 0}
+  starvingDamage: 1
+  thirstyDamage: 1
 --- !u!1 &1779242415623750111
 GameObject:
   m_ObjectHideFlags: 0
