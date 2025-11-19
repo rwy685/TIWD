@@ -15,11 +15,12 @@ MonoBehaviour:
   displayName: "\uB098\uBB34\uB9C9\uB300"
   displayDesc: "\uC870\uAE08 \uD2BC\uD2BC\uD55C \uB098\uBB34 \uB9C9\uB300\uAE30\uC774\uB2E4."
   itemType: 2
-  inventoryIcon: {fileID: 0}
+  inventoryIcon: {fileID: 21300000, guid: f5dda35b17337534a84bed32352a4256, type: 3}
   itemPrefab: {fileID: 6110665052168963052, guid: 61993a2b477208643a84a018cbab36cc, type: 3}
   equipableType: 0
   attackPower: 0
   gatherPower: 0
+  equipPrefab: {fileID: 0}
   recoveryData: []
   isStackable: 1
   maxStack: 99

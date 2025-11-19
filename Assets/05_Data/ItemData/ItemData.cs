@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 [Serializable]
 public class RecoveryData
@@ -20,8 +21,8 @@ public class ItemData : ScriptableObject
 
     [Header("Equipable")]
     public EquipableType equipableType;
-    public int attackPower;     // 무기용
-    public int gatherPower;     // 도구용
+    //public float attackPower;     // 무기용
+    //public int gatherPower;     // 도구용
     public GameObject equipPrefab;
 
     [Header("Consumable")]

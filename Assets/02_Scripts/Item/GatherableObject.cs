@@ -3,12 +3,14 @@ using UnityEngine;
 
 public interface IGatherable
 {
+    void TakeGatheringDamage(int damage);
+
     void OnGathered();
 
     void DropItems();
 }
 
-public class GatherableObject : MonoBehaviour, IDamagable, IGatherable
+public class GatherableObject : MonoBehaviour, IGatherable
 {
     [Header("SpawnInfo")]
     [SerializeField] private int maxHP = 10;
@@ -24,9 +26,9 @@ public class GatherableObject : MonoBehaviour, IDamagable, IGatherable
         currentHP = maxHP;
     }
 
-    public void TakePhysicalDamage(float damage=1f)
+    public void TakeGatheringDamage(int damage)
     {
-        currentHP -= (int)damage;
+        currentHP -= damage;
 
         if (currentHP <= 0)
             OnGathered();
@@ -95,6 +97,6 @@ public class GatherableObject : MonoBehaviour, IDamagable, IGatherable
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
-            this.TakePhysicalDamage();
+            this.TakeGatheringDamage(1);
     }
 }

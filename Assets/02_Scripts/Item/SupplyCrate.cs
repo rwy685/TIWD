@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SupplyCrate : MonoBehaviour, IDamagable, IGatherable
+public class SupplyCrate : MonoBehaviour, IGatherable
 {
     [Header("SpawnInfo")]
     [SerializeField] private int maxHP = 10;     // 보급상자 최대 체력
@@ -15,9 +15,9 @@ public class SupplyCrate : MonoBehaviour, IDamagable, IGatherable
         currentHp = maxHP;
     }
 
-    public void TakePhysicalDamage(float damage=1f)
+    public void TakeGatheringDamage(int damage)
     {
-        currentHp -= (int)damage;
+        currentHp -= damage;
 
         if (currentHp <= 0)
             OnGathered();
@@ -78,6 +78,6 @@ public class SupplyCrate : MonoBehaviour, IDamagable, IGatherable
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
-            this.TakePhysicalDamage();
+            this.TakeGatheringDamage(1);
     }
 }
