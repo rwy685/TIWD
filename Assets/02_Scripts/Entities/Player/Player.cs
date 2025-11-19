@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance.characterManager.player = null)
+        if (GameManager.Instance.characterManager.player == null)
         {
             GameManager.Instance.characterManager.player = this;
         }
