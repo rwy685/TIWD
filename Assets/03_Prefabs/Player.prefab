@@ -280,7 +280,7 @@ MonoBehaviour:
   maxCheckDistance: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   curInteractGameObject: {fileID: 0}
   promptText: {fileID: 0}
 --- !u!136 &3876411850340496043
