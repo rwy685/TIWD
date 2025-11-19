@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,19 +27,29 @@ public class BuildModeManager : MonoBehaviour
     // ────────────────────────────────────────────────
     // 1) Build Mode Entry
     // ────────────────────────────────────────────────
-    public void EnterBuildMode(BuildData data)
+    public void EnterBuildMode()
     {
-        if (IsBuildingMode)
-            ExitBuildMode();
-
         IsBuildingMode = true;
+
+    }
+
+    public void SelectBuildData(BuildData data)
+    {
         currentBuildData = data;
 
+        Inventory inv = GameManager.Instance.characterManager.player.inventory;
+
+        // 자원 체크
+        if (!CheckResourceShortage(data, inv, out var shortfall))
+        {
+            return;
+        }
+
+        // 프리뷰 생성
         CreatePreviewObject(data);
 
-        // TODO: UI 담당자 요청
-        // BuildUI.Instance.ShowBuildPanel(currentBuildData);
     }
+
 
     // ────────────────────────────────────────────────
     // 2) Build Mode Exit
@@ -48,6 +57,7 @@ public class BuildModeManager : MonoBehaviour
     public void ExitBuildMode()
     {
         IsBuildingMode = false;
+
 
         if (previewObject != null)
             Destroy(previewObject);
