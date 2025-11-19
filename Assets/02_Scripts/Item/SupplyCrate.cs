@@ -32,7 +32,7 @@ public class SupplyCrate : MonoBehaviour, IDamagable, IGatherable
 
     public void DropItems()
     {
-        // TODO : 보급 아이템 드랍
+        // 보급 아이템 드랍
 
         // null 체크
         if (dropItems == null || dropItems.Length == 0)

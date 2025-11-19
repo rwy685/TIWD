@@ -11,7 +11,7 @@ public interface IGatherable
 public class GatherableObject : MonoBehaviour, IDamagable, IGatherable
 {
     [Header("SpawnInfo")]
-    [SerializeField] private int maxHP = 5;
+    [SerializeField] private int maxHP = 10;
     [SerializeField] private int currentHP;
     [SerializeField] private float respawnTime = 10f;
 
@@ -43,7 +43,7 @@ public class GatherableObject : MonoBehaviour, IDamagable, IGatherable
 
     public void DropItems()
     {
-        // TODO : 나무 or 돌 드랍
+        // 자원 아이템 드랍
 
         // null 체크
         if (dropItems == null || dropItems.Length == 0)
