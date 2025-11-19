@@ -18,12 +18,14 @@ public class PlayerController : MonoBehaviour
 
     private PlayerState playerState;
     private Rigidbody rigidbody;
+    private PlayerCondition condition;
 
     [HideInInspector] public bool canLook = true;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        condition = GetComponent<PlayerCondition>();
     }
 
     private void Start()
@@ -102,7 +104,7 @@ public class PlayerController : MonoBehaviour
     {
         if (playerState == PlayerState.Run && curMovementInput.magnitude > 0)
         {
-            if (GameManager.Instance.characterManager.player.condition.UseStamina(staminaCostRun * Time.fixedDeltaTime))
+            if (condition.UseStamina(staminaCostRun * Time.fixedDeltaTime))
             {
                 SetState(PlayerState.Walk);
             }
