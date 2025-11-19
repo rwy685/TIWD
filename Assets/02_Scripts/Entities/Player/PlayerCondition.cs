@@ -21,10 +21,17 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public float starvingDamage;
     public float thirstyDamage;
 
+    private float defaultStaminaRecover;
+    private float defaultThirstConsume;
+    private bool isDead = false;
+
     //호출 순서 문제로 Awake에서 Start로 바꿨습니다..
     private void Start()
     {
         UIManager.Instance.Bind(this);
+
+        defaultStaminaRecover = stamina.passiveValue;
+        defaultThirstConsume = thirst.passiveValue;
     }
 
     private void Update()
@@ -37,7 +44,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         {
             playerHP.Minus(starvingDamage * Time.deltaTime);
         }
-        else if (hunger.curValue >= 380) //fix예정
+        else if (hunger.curValue >= 70) // 허기가 70 이상일경우 자동회복
         {
             playerHP.Add(playerHP.passiveValue * Time.deltaTime);
         }
@@ -78,7 +85,8 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void Die()
     {
-
+        if (isDead) return;
+        isDead = true;
         Time.timeScale = 0f;
         Debug.Log("D gym");
     }
@@ -88,7 +96,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         playerHP.Minus(damage);
     }
 
-    public bool UseStamina(float amount)
+    public bool UseStamina(float amount)    // 한 번의 동작 (공격, 점프)에 사용하면 됩니다
     {
         if (stamina.curValue - amount < 0f)
         {
@@ -97,5 +105,15 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
         stamina.Minus(amount);
         return true;
+    }
+
+    public void RecoverOff()    // 스태미너 자동회복을 0으로 만드는 함수
+    {
+        stamina.passiveValue = 0f;
+    }
+
+    public void RecoverOn()     // 스태미너 자동회복의 기본값으로 다시 선언하는 함수
+    {
+        stamina.passiveValue = defaultStaminaRecover;
     }
 }

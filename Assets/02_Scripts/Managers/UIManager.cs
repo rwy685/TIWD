@@ -35,10 +35,10 @@ public class UIManager : MonoBehaviour
 
     public void Bind(PlayerCondition condition)
     {
-        hp = condition.playerHP;
-        hunger = condition.hunger;
-        thirst = condition.thirst;
-        stamina = condition.stamina;
+        condition.playerHP = hp;
+        condition.hunger = hunger;
+        condition.thirst = thirst;
+        condition.stamina = stamina;
     }
 
     public void ShowDialogue(string npcName, string[] npcLines)

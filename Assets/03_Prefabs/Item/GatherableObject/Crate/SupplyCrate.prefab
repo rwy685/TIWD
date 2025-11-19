@@ -99,8 +99,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d890f899db436c498678b7007a296f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 5
+  maxHP: 10
   currentHp: 0
+  dropItems:
+  - {fileID: 11400000, guid: bfebb2cb346355746a8d0b9d298c29c4, type: 2}
+  - {fileID: 11400000, guid: 7a7c301a5670a5c43bf8180ad02b7766, type: 2}
+  - {fileID: 11400000, guid: 755fd5c47771d44448c1c97f0aa3363c, type: 2}
+  - {fileID: 11400000, guid: 166bdcf553d123c4a865e8edd317c008, type: 2}
+  - {fileID: 11400000, guid: 490edf2dc8cd36d40b4590e9c1b1d352, type: 2}
+  - {fileID: 11400000, guid: 705bb463ac9c5bd4782be59f5ce13d80, type: 2}
+  dropRadius: 1.5
 --- !u!54 &901436160337891568
 Rigidbody:
   m_ObjectHideFlags: 0
