@@ -1,28 +1,76 @@
 using UnityEngine;
 
-public class SupplyCrate : MonoBehaviour
+public class SupplyCrate : MonoBehaviour, IDamagable, IGatherable
 {
-    [SerializeField] private int maxHp = 5;     // 보급상자 최대 체력
+    [Header("SpawnInfo")]
+    [SerializeField] private int maxHP = 10;     // 보급상자 최대 체력
     [SerializeField] private int currentHp;     // 보급상자 현재 체력
+
+    [Header("Drop Settings")]
+    [SerializeField] private DropData[] dropItems;
+    [SerializeField] private float dropRadius = 1.5f;   // 아이템 드랍 반경
 
     private void Awake()
     {
-        currentHp = maxHp;
+        currentHp = maxHP;
     }
 
-    public void TakeDamage(int damage = 1)
+    public void TakePhysicalDamage(float damage=1f)
     {
-        currentHp -= damage;
+        currentHp -= (int)damage;
+
         if (currentHp <= 0)
+            OnGathered();
+    }
+
+    public void OnGathered()
+    {
+        DropItems();
+
+        Destroy(gameObject);
+    }
+
+    public void DropItems()
+    {
+        // TODO : 보급 아이템 드랍
+
+        // null 체크
+        if (dropItems == null || dropItems.Length == 0)
         {
-            DestroyCrate();
+            Debug.LogWarning($"{gameObject.name} : 드랍할 아이템이 없습니다!");
+            return;
+        }
+
+        foreach (var dropData in dropItems)
+        {
+            // null 체크
+            if (dropData == null || dropData.dropPrefab == null)
+                continue;
+
+            // 드랍 확률 체크
+            float randomValue = Random.Range(0f, 100f);
+            if (randomValue <= dropData.dropChance)
+            {
+                // 드랍 개수 결정 (min ~ max 사이의 랜덤 값)
+                int dropCount = Random.Range(dropData.minDropCount, dropData.maxDropCount + 1);
+
+                // 결정된 개수만큼 아이템 생성
+                for (int i = 0; i < dropCount; i++)
+                {
+                    SpawnDropItem(dropData.dropPrefab);
+                }
+            }
         }
     }
 
-    private void DestroyCrate()
+    void SpawnDropItem(GameObject itemPrefab)
     {
-        // TODO : 보급상자 파괴 시 효과 및 아이템 드랍 로직 추가
-        Destroy(gameObject);
+        // 오브젝트 주변의 랜덤한 위치 계산
+        Vector2 randomCircle = Random.insideUnitCircle * dropRadius;
+        Vector3 dropPosition = transform.position + new Vector3(randomCircle.x, 0.5f, randomCircle.y);
+
+        // 아이템 생성
+        Instantiate(itemPrefab, dropPosition, Quaternion.identity);
     }
 
     // Test용 충돌 처리 (플레이어와 충돌 시 데미지 받음)
@@ -30,6 +78,6 @@ public class SupplyCrate : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
-            this.TakeDamage();
+            this.TakePhysicalDamage();
     }
 }
