@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip dayBgm;
     public AudioClip nightBgm;
     public AudioClip gameOverBgm;
+    public AudioClip titleBgm;
 
     AudioSource audioSource;
 
@@ -16,11 +17,14 @@ public class AudioManager : MonoBehaviour
         Day,
         Night,
         GameOver,
+        Title
     }
 
     public enum SFXType
     { 
-    
+        Attack,
+        Walk,
+        Monster
     }
 
     public Dictionary<BGMType, AudioClip> bgms;
