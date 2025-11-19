@@ -22,6 +22,7 @@ public class ItemData : ScriptableObject
     public EquipableType equipableType;
     public int attackPower;     // 무기용
     public int gatherPower;     // 도구용
+    public GameObject equipPrefab;
 
     [Header("Consumable")]
     public RecoveryData[] recoveryData;

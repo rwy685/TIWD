@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 
 public class Equipment : MonoBehaviour
 {
+    public Equip curEquip;
     private Player player;
 
     void Start()
@@ -15,11 +16,19 @@ public class Equipment : MonoBehaviour
         player = GameManager.Instance.characterManager.player;
     }
 
-    public void Equip(ItemData data)
+    public void EquipNew(ItemData data)
     {
+        UnEquip();
+       // curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<Equip>();
+        Debug.Log("장착");
     }
 
     public void UnEquip()
     {
+        if (curEquip != null)
+        {
+            Destroy(curEquip.gameObject);
+            curEquip = null;
+        }
     }
 }
