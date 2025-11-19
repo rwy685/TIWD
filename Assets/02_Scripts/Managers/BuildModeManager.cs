@@ -19,6 +19,8 @@ public class BuildModeManager : MonoBehaviour
 
     private Camera cam;
 
+    private Dictionary<ItemData, int> consumedForPreview = new(); //프리뷰 설치취소시 자원환불 저장용
+ 
     private void Awake()
     {
         cam = Camera.main;
@@ -61,6 +63,8 @@ public class BuildModeManager : MonoBehaviour
             return;
         }
 
+        consumedForPreview.Clear(); // 기존 기록 삭제
+
         // 3) 자원 소비 (프리뷰를 꺼내는 순간 자원 사용)
         foreach (var req in data.requirements)
         {
@@ -86,10 +90,30 @@ public class BuildModeManager : MonoBehaviour
         if (previewObject != null)
             Destroy(previewObject);
 
+        RefundPreviewResources(); //프리뷰 취소 ESC/B를 통해 나갈 때 소비한 자원 환불
+
         currentBuildData = null;
 
         // TODO: UI 나가기 버튼? or 지금 상태에서는 B를 한번 더 누르면 종료됨.
         
+    }
+
+    //자원 환불
+    private void RefundPreviewResources()
+    {
+        if (consumedForPreview.Count == 0)
+            return;
+
+        Inventory inv = GameManager.Instance.characterManager.player.inventory;
+
+        foreach (var pair in consumedForPreview)
+        {
+            inv.AddItemToInventory(pair.Key, pair.Value);
+        }
+
+        consumedForPreview.Clear();
+
+        Debug.Log("[Build] 프리뷰 취소 → 소비한 자원 환불 완료");
     }
 
     // 
