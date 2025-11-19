@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918da35803092574fb4b61ee89daf53c, type: 3}
   m_Name: BuildData_CampFire
   m_EditorClassIdentifier: 
-  displayName: "\uCEA0\uD504\uD30C\uC774"
+  displayName: "\uCEA0\uD504\uD30C\uC774\uC5B4"
   displayDesc: "\uD50C\uB808\uC774\uC5B4\uC758 \uC628\uAE30\uB97C \uC720\uC9C0\uC2DC\uCF1C\uC90D\uB2C8\uB2E4."
   buildType: 0
   icon: {fileID: 0}
