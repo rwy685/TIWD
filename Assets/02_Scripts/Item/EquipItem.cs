@@ -9,6 +9,7 @@ public class EquipItem : MonoBehaviour
     public float attackDistance;
 
     public int damage;
+    public int gatherPower;
 
     private Animator animator;
     private Camera camera;
@@ -44,6 +45,10 @@ public class EquipItem : MonoBehaviour
             if (hit.collider.TryGetComponent(out Enemy enemy))
             {
                 enemy.TakePhysicalDamage(damage);
+            }
+            else if (hit.collider.TryGetComponent(out IGatherable gatherable))
+            {
+                gatherable.TakeGatheringDamage(gatherPower);
             }
         }
     }
