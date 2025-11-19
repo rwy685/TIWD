@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float defaultSpeed = 5;
     public float runSpeed = 10;
+    public float staminaCostRun = 1;
     private Vector2 curMovementInput;
     public float jumpPower;
     public LayerMask groundLayerMask;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        SetState(PlayerState.Idle);
     }
 
     private void FixedUpdate()
@@ -46,6 +48,9 @@ public class PlayerController : MonoBehaviour
         switch (playerState)
         {
             case PlayerState.Idle:
+                moveSpeed = defaultSpeed;
+                break;
+            case PlayerState.Walk:
                 moveSpeed = defaultSpeed;
                 break;
             case PlayerState.Run:
@@ -70,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnRun(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Started)
         {
             SetState(PlayerState.Run);
         }
@@ -107,8 +112,16 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
+        if (playerState == PlayerState.Run && curMovementInput.magnitude > 0)
+        {
+            if (GameManager.Instance.characterManager.player.condition.UseStamina(staminaCostRun * Time.fixedDeltaTime))
+            {
+                SetState(PlayerState.Walk);
+            }
+        }
 
+        Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
+        
         dir *= moveSpeed;
         dir.y = rigidbody.velocity.y;
 
