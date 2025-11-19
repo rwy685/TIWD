@@ -23,11 +23,13 @@ public class Enemy : MonoBehaviour, IDamagable
     private float lastAttackTime;
 
     private WaitForSeconds wait;
+    private Animator animator;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameManager.Instance.characterManager.player;
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -37,6 +39,7 @@ public class Enemy : MonoBehaviour, IDamagable
         health = enemyData.maxHealth;
 
         SetState(EnemyState.Wander);
+        animator.SetBool("IsSpawn", true);
     }
 
     private void Update()
@@ -49,6 +52,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     private void UpdateState()
     {
+        animator.speed = agent.speed / enemyData.walkSpeed;
         if (playerDistance < enemyData.attackDistance)
         {
             Debug.Log("1");
@@ -87,22 +91,24 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             case EnemyState.Idle:
                 agent.isStopped = true;
-
+                animator.SetBool("IsWalk", false);
                 break;
 
             case EnemyState.Wander:
                 agent.speed = enemyData.walkSpeed;
                 agent.isStopped = false;
-
+                animator.SetBool("IsWalk", true);
                 break;
 
             case EnemyState.Chase:
                 agent.speed = enemyData.runSpeed;
                 agent.isStopped = false;
+                animator.SetBool("IsWalk", true);
                 break;
 
             case EnemyState.Attack:
                 agent.isStopped = true;
+                animator.SetTrigger("Attack");
                 break;
         }
     }
@@ -159,6 +165,10 @@ public class Enemy : MonoBehaviour, IDamagable
         if (health <= 0)
         {
             Die();
+        }
+        else
+        {
+            animator.SetTrigger("Hit");
         }
     }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6176088308151830288}
   - component: {fileID: 651550029131522015}
   - component: {fileID: 6662474907227454713}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wooden Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}

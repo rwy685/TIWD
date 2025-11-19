@@ -14,7 +14,7 @@ public class BuildInteraction : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         Player player = GameManager.Instance.characterManager.player;
-        GameManager.Instance.buildManager.TryUseResource(player);
+        GameManager.Instance.buildManager.TryUseResource(player, buildObject);
     }
 
 }

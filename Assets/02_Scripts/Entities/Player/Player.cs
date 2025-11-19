@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 {
     public PlayerController controller;
     public PlayerCamera playerCamera;
+    public Equipment equipment;
 
     // 인벤토리 관련 변수
     public ItemData acquiredItem;    // Player 가 현재 획득한 아이템
