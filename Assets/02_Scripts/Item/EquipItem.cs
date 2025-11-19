@@ -8,8 +8,6 @@ public class EquipItem : MonoBehaviour
     private bool attacking;
     public float attackDistance;
 
-    [Header("Combat")]
-    public bool doesDealDamage;
     public int damage;
 
     private Animator animator;

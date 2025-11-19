@@ -30,7 +30,7 @@ public class Equipment : MonoBehaviour
         }
     }
 
-    public void OnUseEquipItem(InputAction.CallbackContext context)
+    public void OnAttackInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started && curEquip != null && controller.canLook)
         {
