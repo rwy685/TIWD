@@ -20,6 +20,7 @@ MonoBehaviour:
   equipableType: 2
   attackPower: 0
   gatherPower: 5
+  equipPrefab: {fileID: 5479032356899490474, guid: 270cbb349c14eb145894426676deba41, type: 3}
   recoveryData: []
   isStackable: 0
   maxStack: 1

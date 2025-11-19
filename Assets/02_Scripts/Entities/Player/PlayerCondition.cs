@@ -51,6 +51,8 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         {
             Die();
         }
+
+        
     }
 
 
@@ -84,5 +86,16 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public void TakePhysicalDamage(float damage)
     {
         playerHP.Minus(damage);
+    }
+
+    public bool UseStamina(float amount)
+    {
+        if (stamina.curValue - amount < 0f)
+        {
+            return false;
+        }
+
+        stamina.Minus(amount);
+        return true;
     }
 }
