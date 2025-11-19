@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour, IDamagable
     private WaitForSeconds wait;
     private Animator animator;
 
+    public float fieldOfView = 120f;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -53,7 +55,7 @@ public class Enemy : MonoBehaviour, IDamagable
     private void UpdateState()
     {
         animator.speed = agent.speed / enemyData.walkSpeed;
-        if (playerDistance < enemyData.attackDistance)
+        if (playerDistance < enemyData.attackDistance && IsPlayerInFieldOfView())
         {
             Debug.Log("1");
             SetState(EnemyState.Attack);
@@ -157,6 +159,13 @@ public class Enemy : MonoBehaviour, IDamagable
 
         NavMesh.SamplePosition(randomPos, out NavMeshHit hit, maxWanderDistance, NavMesh.AllAreas);
         agent.SetDestination(hit.position);
+    }
+
+    bool IsPlayerInFieldOfView()
+    {
+        Vector3 directionToPlayer = player.transform.position - transform.position;
+        float angle = Vector3.Angle(transform.forward, directionToPlayer);
+        return angle < fieldOfView * 0.5f;
     }
 
     public void TakePhysicalDamage(float damage)
