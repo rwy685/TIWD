@@ -24,9 +24,9 @@ public class BuildModeManager : MonoBehaviour
         cam = Camera.main;
     }
 
-    // ────────────────────────────────────────────────
-    // 1) Build Mode Entry
-    // ────────────────────────────────────────────────
+    //
+    // 1) 빌드 모드 진입
+    //
     public void EnterBuildMode()
     {
         IsBuildingMode = true;
@@ -35,25 +35,49 @@ public class BuildModeManager : MonoBehaviour
 
     public void SelectBuildData(BuildData data)
     {
+        if (data == null)
+        {
+            Debug.LogWarning("[Build] SelectBuildData 호출됨, data = null.");
+            return;
+        }
+
+        // 1) 기존 프리뷰가 있으면 제거 (중복 생성 방지)
+        if (previewObject != null)
+        {
+            Destroy(previewObject);
+            previewObject = null;
+        }
+
         currentBuildData = data;
 
         Inventory inv = GameManager.Instance.characterManager.player.inventory;
 
-        // 자원 체크
+        // 2) 자원 부족 체크
         if (!CheckResourceShortage(data, inv, out var shortfall))
         {
+            Debug.Log("해당 건물을 만드는 자원이 부족해 Preview 생성 실패");
+
+            // TODO: UI 자원부족 
             return;
         }
 
-        // 프리뷰 생성
+        // 3) 자원 소비 (프리뷰를 꺼내는 순간 자원 사용)
+        foreach (var req in data.requirements)
+        {
+            inv.ConsumeMultiple(req.item, req.amount);
+        }
+
+        // 4) 프리뷰 생성
         CreatePreviewObject(data);
 
+        Debug.Log($"'{data.displayName}' 프리뷰 생성 및 자원 소비");
     }
 
 
-    // ────────────────────────────────────────────────
-    // 2) Build Mode Exit
-    // ────────────────────────────────────────────────
+
+    // 
+    // 2) 빌드 모드 나가기
+    //
     public void ExitBuildMode()
     {
         IsBuildingMode = false;
@@ -64,18 +88,19 @@ public class BuildModeManager : MonoBehaviour
 
         currentBuildData = null;
 
-        // TODO: UI 담당자 요청
-        // BuildUI.Instance.HideBuildPanel();
+        // TODO: UI 나가기 버튼? or 지금 상태에서는 B를 한번 더 누르면 종료됨.
+        
     }
 
-    // ────────────────────────────────────────────────
+    // 
     // 3) Preview 생성
-    // ────────────────────────────────────────────────
+    // 
     private void CreatePreviewObject(BuildData data)
     {
         previewObject = Instantiate(data.previewPrefab);
         previewRenderers = previewObject.GetComponentsInChildren<Renderer>();
 
+        //리소스 폴더의 투명 머터리얼 가져옴 (설치가능 시 초록색 / 불가능 시 붉은 색)
         previewValidMat = Resources.Load<Material>("TestMaterial/PreviewValid");
         previewInvalidMat = Resources.Load<Material>("TestMaterial/PreviewInvalid");
 
@@ -83,7 +108,9 @@ public class BuildModeManager : MonoBehaviour
             rend.material = previewValidMat;
     }
 
-    // ────────────────────────────────────────────────
+    //
+    // 프리뷰 들고 있는 상태에서 이동시 위치 업데이트
+    //
     private void Update()
     {
         if (!IsBuildingMode) return;
@@ -93,10 +120,11 @@ public class BuildModeManager : MonoBehaviour
 
     private void UpdatePreviewPosition()
     {
-        Ray ray = cam.ScreenPointToRay(
-            new Vector3(Screen.width / 2, Screen.height / 2));
+        Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 30f, groundMask))
+        // Ground Layer 추가 예정
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 30f, groundMask)) 
         {
             if (previewObject == null) return;
             previewObject.transform.position = hit.point;
@@ -106,9 +134,9 @@ public class BuildModeManager : MonoBehaviour
         }
     }
 
-    // ────────────────────────────────────────────────
+    // 
     // 4) 설치 가능 여부 검사
-    // ────────────────────────────────────────────────
+    // 
     private bool CheckPlacementValidity()
     {
         Bounds bounds = GetPreviewBounds();
@@ -138,45 +166,46 @@ public class BuildModeManager : MonoBehaviour
             rend.material = valid ? previewValidMat : previewInvalidMat;
     }
 
-    // ────────────────────────────────────────────────
+    // 
     // 5) 설치 시도
-    // ────────────────────────────────────────────────
+    // 
     public void TryPlaceStructure()
     {
+        //  빌드모드가 아니면 설치 시도 무시
+        if (!IsBuildingMode)
+            return;
+
+        //  프리뷰가 없으면 설치 불가 (카탈로그에서 선택 안 한 상태)
+        if (previewObject == null)
+        {
+            Debug.LogWarning("[Build] 설치 불가: 프리뷰가 없습니다. 먼저 건축물을 선택하세요.");
+            return;
+        }
+
+        //  설치 위치 체크 (충돌)
         if (!CheckPlacementValidity())
         {
-            Debug.Log("설치 불가: 충돌 감지됨");
+            Debug.Log("[Build] 설치 불가: 충돌이 감지되었습니다.");
             return;
         }
 
-        Inventory inv = GameManager.Instance.characterManager.player.inventory;
-
-        // 1) 자원 부족 체크
-        if (!CheckResourceShortage(currentBuildData, inv, out var shortfall))
-        {
-            // TODO: UI 담당자 요청
-            // BuildUI.Instance.ShowShortage(shortfall);
-            Debug.Log("설치 불가: 자원이 부족합니다.");
-            return;
-        }
-
-        // 2) 자원 소비
-        foreach (var req in currentBuildData.requirements)
-            inv.ConsumeMultiple(req.item, req.amount);
-
-        // 3) 완성 건물 생성
+        //  완성 건축물 생성
         Instantiate(
             currentBuildData.completePrefab,
             previewObject.transform.position,
             previewObject.transform.rotation
         );
 
+        Debug.Log($"[Build] '{currentBuildData.displayName}' 설치 완료");
+
+        //  빌드모드 종료 (프리뷰 삭제 + 상태 초기화 + UI 정리)
         ExitBuildMode();
     }
 
-    // ────────────────────────────────────────────────
+
+    // 
     // 6) 자원 부족 리스트 계산
-    // ────────────────────────────────────────────────
+    // 
     public bool CheckResourceShortage(BuildData data, Inventory inv,
         out Dictionary<ItemData, int> shortfall)
     {
@@ -193,9 +222,9 @@ public class BuildModeManager : MonoBehaviour
         return shortfall.Count == 0;
     }
 
-    // ────────────────────────────────────────────────
+    // 
     // 7) 회전 기능
-    // ────────────────────────────────────────────────
+    // 
     public void RotateLeft()
     {
         if (!IsBuildingMode) return;
