@@ -16,10 +16,6 @@ public class PlayerController : MonoBehaviour
 
     public Action inventory;
 
-    private float attackRate = 1;
-    private float lastAttackTime;
-    private float attackDistance = 3; //임시
-    private float damage = 10; //임시
     private PlayerState playerState;
     private Rigidbody rigidbody;
 
@@ -93,14 +89,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnAttackInput(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            Attack();
-        }
-    }
-
     public void OnInventoryButton(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.phase == InputActionPhase.Started)
@@ -126,24 +114,6 @@ public class PlayerController : MonoBehaviour
         dir.y = rigidbody.velocity.y;
 
         rigidbody.velocity = dir;
-    }
-
-    private void Attack()
-    {
-        if (Time.time - lastAttackTime < attackRate)
-            return;
-
-        lastAttackTime = Time.time;
-
-        Ray ray = new Ray(transform.position + Vector3.up * 1f, transform.forward);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, attackDistance))
-        {
-            if (hit.collider.TryGetComponent(out IDamagable target))
-            {
-                target.TakePhysicalDamage(damage);
-            }
-        }
     }
 
     bool IsGrounded()

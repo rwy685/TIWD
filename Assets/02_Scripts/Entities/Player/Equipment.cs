@@ -9,7 +9,7 @@ using UnityEngine.InputSystem.XR;
 
 public class Equipment : MonoBehaviour
 {
-    public Equip curEquip;
+    public EquipItem curEquip;
     public Transform equipParent;
     private Player player;
     private PlayerController controller;
@@ -23,7 +23,7 @@ public class Equipment : MonoBehaviour
     public void EquipNew(ItemData data)
     {
         UnEquip();
-        curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<Equip>();
+        curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<EquipItem>();
         Debug.Log("장착");
     }
 
