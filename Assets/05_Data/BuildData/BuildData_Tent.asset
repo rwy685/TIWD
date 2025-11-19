@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   requirements:
   - item: {fileID: 11400000, guid: 81561e75bc11c6943986b960fb71efcc, type: 2}
-    amount: 6
+    amount: 4
   - item: {fileID: 11400000, guid: 35fb50165f07c1941af33f11ceb04fea, type: 2}
     amount: 2
   previewPrefab: {fileID: 5083888240618380507, guid: 5243e5503abab194f9221c9cb3d0394d, type: 3}

@@ -30,9 +30,10 @@ public class Equipment : MonoBehaviour
         }
     }
 
-    public void OnAttackInput(InputAction.CallbackContext context)
+    // InputSystemManager -> PlayerController -> Equipment 로 들어와서 여기서 로직만 담당
+    public void OnAttackInput()
     {
-        if (context.phase == InputActionPhase.Started && curEquip != null && controller.canLook)
+        if (curEquip != null && controller.canLook)
         {
             curEquip.OnUse();
         }
