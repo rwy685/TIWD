@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 
     public SpawnManager spawnManager;
     public CharacterManager characterManager;
-    public BuildManager buildManager; // 빌드매니저 추가함
     public CraftManager craftManager;
     public BuildModeManager buildModeManager; // 건축모드매니저 추가
 

@@ -5,21 +5,18 @@ using UnityEngine;
 public class BuildModeManager : MonoBehaviour
 {
     public bool IsBuildingMode { get; private set; }
-
     private BuildData currentBuildData;
 
-    // Preview
     private GameObject previewObject;
     private Renderer[] previewRenderers;
 
     [Header("Preview Settings")]
     public float rotateSpeed = 50f;
-    public LayerMask groundMask;        // 지면
-    public LayerMask obstructionMask;   // 설치 불가 충돌 레이어
+    public LayerMask groundMask;
+    public LayerMask obstructionMask;
 
     private Material previewValidMat;
     private Material previewInvalidMat;
-    public Material constructionGhostMaterial;
 
     private Camera cam;
 
@@ -29,7 +26,7 @@ public class BuildModeManager : MonoBehaviour
     }
 
     // ────────────────────────────────────────────────
-    // 1) 건축모드 진입
+    // 1) Build Mode Entry
     // ────────────────────────────────────────────────
     public void EnterBuildMode(BuildData data)
     {
@@ -41,12 +38,12 @@ public class BuildModeManager : MonoBehaviour
 
         CreatePreviewObject(data);
 
-        // 필요하면 UI 켜기
-        // BuildUI.Show()
+        // TODO: UI 담당자 요청
+        // BuildUI.Instance.ShowBuildPanel(currentBuildData);
     }
 
     // ────────────────────────────────────────────────
-    // 2) 건축모드 종료
+    // 2) Build Mode Exit
     // ────────────────────────────────────────────────
     public void ExitBuildMode()
     {
@@ -57,28 +54,25 @@ public class BuildModeManager : MonoBehaviour
 
         currentBuildData = null;
 
-        // 필요하면 UI 끄기
-        // BuildUI.Hide()
+        // TODO: UI 담당자 요청
+        // BuildUI.Instance.HideBuildPanel();
     }
 
     // ────────────────────────────────────────────────
-    // 3) 프리뷰 생성
+    // 3) Preview 생성
     // ────────────────────────────────────────────────
     private void CreatePreviewObject(BuildData data)
     {
         previewObject = Instantiate(data.previewPrefab);
-
         previewRenderers = previewObject.GetComponentsInChildren<Renderer>();
 
         previewValidMat = Resources.Load<Material>("TestMaterial/PreviewValid");
         previewInvalidMat = Resources.Load<Material>("TestMaterial/PreviewInvalid");
 
         foreach (var rend in previewRenderers)
-            rend.material = previewValidMat; // 기본값 설치 가능
+            rend.material = previewValidMat;
     }
 
-    // ────────────────────────────────────────────────
-    // 4) Update - 프리뷰 위치 업데이트
     // ────────────────────────────────────────────────
     private void Update()
     {
@@ -94,6 +88,7 @@ public class BuildModeManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 30f, groundMask))
         {
+            if (previewObject == null) return;
             previewObject.transform.position = hit.point;
 
             bool valid = CheckPlacementValidity();
@@ -102,14 +97,10 @@ public class BuildModeManager : MonoBehaviour
     }
 
     // ────────────────────────────────────────────────
-    // 5) 설치 가능 여부 검사
+    // 4) 설치 가능 여부 검사
     // ────────────────────────────────────────────────
     private bool CheckPlacementValidity()
     {
-        if (previewObject == null)
-            return false;
-
-        // 프리뷰의 Renderer bounds로 충돌 체크
         Bounds bounds = GetPreviewBounds();
 
         Collider[] hits = Physics.OverlapBox(
@@ -138,30 +129,58 @@ public class BuildModeManager : MonoBehaviour
     }
 
     // ────────────────────────────────────────────────
-    // 6) 설치 확정
+    // 5) 설치 시도
     // ────────────────────────────────────────────────
     public void TryPlaceStructure()
     {
         if (!CheckPlacementValidity())
         {
-            Debug.Log("설치 불가!");
+            Debug.Log("설치 불가: 충돌 감지됨");
             return;
         }
 
-        // 1) 사전 건축물 생성
-        GameObject obj = Instantiate(
-            currentBuildData.constructionPrefab,
+        Inventory inv = GameManager.Instance.characterManager.player.inventory;
+
+        // 1) 자원 부족 체크
+        if (!CheckResourceShortage(currentBuildData, inv, out var shortfall))
+        {
+            // TODO: UI 담당자 요청
+            // BuildUI.Instance.ShowShortage(shortfall);
+            Debug.Log("설치 불가: 자원이 부족합니다.");
+            return;
+        }
+
+        // 2) 자원 소비
+        foreach (var req in currentBuildData.requirements)
+            inv.ConsumeMultiple(req.item, req.amount);
+
+        // 3) 완성 건물 생성
+        Instantiate(
+            currentBuildData.completePrefab,
             previewObject.transform.position,
             previewObject.transform.rotation
         );
 
-        // 2) 스폰된 constructionPrefab에 고스트 머티리얼 적용
-        foreach (var rend in obj.GetComponentsInChildren<Renderer>())
+        ExitBuildMode();
+    }
+
+    // ────────────────────────────────────────────────
+    // 6) 자원 부족 리스트 계산
+    // ────────────────────────────────────────────────
+    public bool CheckResourceShortage(BuildData data, Inventory inv,
+        out Dictionary<ItemData, int> shortfall)
+    {
+        shortfall = new();
+
+        foreach (var req in data.requirements)
         {
-            rend.material = constructionGhostMaterial;
+            int has = inv.Count(req.item);
+
+            if (has < req.amount)
+                shortfall[req.item] = req.amount - has;
         }
 
-        ExitBuildMode();
+        return shortfall.Count == 0;
     }
 
     // ────────────────────────────────────────────────
@@ -179,6 +198,7 @@ public class BuildModeManager : MonoBehaviour
         previewObject.transform.Rotate(Vector3.up, rotateSpeed);
     }
 }
+
 
 
 

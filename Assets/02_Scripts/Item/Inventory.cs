@@ -171,4 +171,18 @@ public class Inventory : MonoBehaviour
 
         return true;
     }
+
+    //*빌드모드용 모든슬롯의 같은 ItemData 갯수 합산
+    public int Count(ItemData item)
+    {
+        int total = 0;
+
+        foreach (var slot in itemSlots)
+        {
+            if (slot.item == item)
+                total += slot.quantity;
+        }
+
+        return total;
+    }
 }
