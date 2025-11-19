@@ -9,16 +9,13 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float defaultSpeed = 5;
     public float runSpeed = 10;
+    public float staminaCostRun = 1;
     private Vector2 curMovementInput;
     public float jumpPower;
     public LayerMask groundLayerMask;
 
     public Action inventory;
 
-    private float attackRate = 1;
-    private float lastAttackTime;
-    private float attackDistance = 3; //임시
-    private float damage = 10; //임시
     private PlayerState playerState;
     private Rigidbody rigidbody;
 
@@ -32,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        SetState(PlayerState.Idle);
     }
 
     private void FixedUpdate()
@@ -46,6 +44,9 @@ public class PlayerController : MonoBehaviour
         switch (playerState)
         {
             case PlayerState.Idle:
+                moveSpeed = defaultSpeed;
+                break;
+            case PlayerState.Walk:
                 moveSpeed = defaultSpeed;
                 break;
             case PlayerState.Run:
@@ -70,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnRun(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Started)
         {
             SetState(PlayerState.Run);
         }
@@ -88,14 +89,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnAttackInput(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            Attack();
-        }
-    }
-
     public void OnInventoryButton(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.phase == InputActionPhase.Started)
@@ -107,30 +100,20 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
+        if (playerState == PlayerState.Run && curMovementInput.magnitude > 0)
+        {
+            if (GameManager.Instance.characterManager.player.condition.UseStamina(staminaCostRun * Time.fixedDeltaTime))
+            {
+                SetState(PlayerState.Walk);
+            }
+        }
 
+        Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
+        
         dir *= moveSpeed;
         dir.y = rigidbody.velocity.y;
 
         rigidbody.velocity = dir;
-    }
-
-    private void Attack()
-    {
-        if (Time.time - lastAttackTime < attackRate)
-            return;
-
-        lastAttackTime = Time.time;
-
-        Ray ray = new Ray(transform.position + Vector3.up * 1f, transform.forward);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, attackDistance))
-        {
-            if (hit.collider.TryGetComponent(out IDamagable target))
-            {
-                target.TakePhysicalDamage(damage);
-            }
-        }
     }
 
     bool IsGrounded()
