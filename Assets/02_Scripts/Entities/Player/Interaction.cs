@@ -20,6 +20,7 @@ public class Interaction : MonoBehaviour
     private void Start()
     {
         camera = Camera.main;
+        UIManager.Instance.PromptSet(this);
     }
     private void Update()
     {
@@ -49,7 +50,7 @@ public class Interaction : MonoBehaviour
             {
                 curInteractGameObject = null;
                 curInteractable = null;
-                //promptText.gameObject.SetActive(false);
+                promptText.gameObject.SetActive(false);
             }
         }
     }
