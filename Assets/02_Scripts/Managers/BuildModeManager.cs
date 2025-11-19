@@ -137,30 +137,26 @@ public class BuildModeManager : MonoBehaviour
     // 
     // 4) 설치 가능 여부 검사
     // 
-    private bool CheckPlacementValidity()
+    private bool CheckPlacementValidity() // 프리뷰와 충돌하는 게 있는 지 검사하는 기능
     {
-        Bounds bounds = GetPreviewBounds();
+        Bounds bounds = GetPreviewBounds(); 
 
-        Collider[] hits = Physics.OverlapBox(
-            bounds.center,
-            bounds.extents,
-            previewObject.transform.rotation,
-            obstructionMask);
+        Collider[] hits = Physics.OverlapBox(bounds.center, bounds.extents, previewObject.transform.rotation, obstructionMask); // Collider가 하나라도 겹치면 설치 불가
 
         return hits.Length == 0;
     }
 
     private Bounds GetPreviewBounds()
     {
-        Bounds bounds = new Bounds(previewObject.transform.position, Vector3.zero);
+        Bounds bounds = new Bounds(previewObject.transform.position, Vector3.zero); // 프리뷰의 경계 값
 
         foreach (var rend in previewRenderers)
-            bounds.Encapsulate(rend.bounds);
+            bounds.Encapsulate(rend.bounds); // Encapsulate -> 프리뷰안의 bounds를 반복해서 전체를 감싸는 경계(박스)로 합침
 
         return bounds;
     }
 
-    private void UpdatePreviewMaterial(bool valid)
+    private void UpdatePreviewMaterial(bool valid) // 설치 가능여부에 따라 프리뷰 색(머티리얼) 변경 하는 기능
     {
         foreach (var rend in previewRenderers)
             rend.material = valid ? previewValidMat : previewInvalidMat;
@@ -206,17 +202,16 @@ public class BuildModeManager : MonoBehaviour
     // 
     // 6) 자원 부족 리스트 계산
     // 
-    public bool CheckResourceShortage(BuildData data, Inventory inv,
-        out Dictionary<ItemData, int> shortfall)
+    public bool CheckResourceShortage(BuildData data, Inventory inv, out Dictionary<ItemData, int> shortfall)
     {
         shortfall = new();
 
-        foreach (var req in data.requirements)
+        foreach (var req in data.requirements) //빌드 데이터의 요구자원량에서 요구량을 반복 체크
         {
-            int has = inv.Count(req.item);
+            int has = inv.Count(req.item); // 인벤토리의 자원 카운팅
 
             if (has < req.amount)
-                shortfall[req.item] = req.amount - has;
+                shortfall[req.item] = req.amount - has; // 자원부족량 = 자원요구량 - 자원보유량 
         }
 
         return shortfall.Count == 0;
