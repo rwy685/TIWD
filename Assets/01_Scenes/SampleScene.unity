@@ -3582,11 +3582,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 125f7efe8f91aff4abd37bd1d4e5970f, type: 3}
---- !u!1 &808954225 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 210404942003993468, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-  m_PrefabInstance: {fileID: 1323175530}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &841878251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6033,35 +6028,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261139772}
   m_CullTransparentMesh: 1
---- !u!114 &1298121179 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3241091080364984693, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-  m_PrefabInstance: {fileID: 1323175530}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808954225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e05eea7265658bc4d9c1d2a3c6a4f4fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1298121187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808954225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c278a9ea9b54a34382b06924acdc6a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHP: {fileID: 841878256}
-  stamina: {fileID: 841878252}
-  hunger: {fileID: 841878255}
-  thirst: {fileID: 841878254}
-  starvingDamage: 1
-  thirstyDamage: 1
 --- !u!1001 &1310662879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6131,94 +6097,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b897b91def57a2940a0f0042d364c50d, type: 3}
---- !u!1001 &1323175530
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 210404942003993468, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4490654706236774409, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: hunger
-      value: 
-      objectReference: {fileID: 841878255}
-    - target: {fileID: 4490654706236774409, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: thirst
-      value: 
-      objectReference: {fileID: 841878254}
-    - target: {fileID: 4490654706236774409, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: stamina
-      value: 
-      objectReference: {fileID: 841878252}
-    - target: {fileID: 4490654706236774409, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: playerHP
-      value: 
-      objectReference: {fileID: 841878256}
-    - target: {fileID: 4490654706236774409, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: thirstyDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4490654706236774409, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: starvingDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5631290252352581399, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5631290252352581399, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5631290252352581399, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5631290252352581399, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5631290252352581399, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5631290252352581399, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5631290252352581399, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5631290252352581399, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5631290252352581399, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5631290252352581399, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6050591180565619636, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1298121179}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 210404942003993468, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1298121187}
-  m_SourcePrefab: {fileID: 100100000, guid: 3fed51c961f0da44e8ee6f346926f26d, type: 3}
 --- !u!1001 &1332377969
 PrefabInstance:
   m_ObjectHideFlags: 0

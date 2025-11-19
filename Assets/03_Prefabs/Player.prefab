@@ -116,8 +116,8 @@ MonoBehaviour:
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6050591180565619636}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 2833241878932980469}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
         m_MethodName: OnAttackInput
         m_Mode: 0
         m_Arguments:
