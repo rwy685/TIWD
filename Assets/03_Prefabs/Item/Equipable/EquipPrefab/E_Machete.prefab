@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8079101788931075138}
   - component: {fileID: 8096961387337452174}
   - component: {fileID: -4001068671079067427}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: E_Machete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,3 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f3499a9af0ae94f91a4a490c26bb44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRate: 0
+  attackDistance: 0
+  doesDealDamage: 0
+  damage: 0
