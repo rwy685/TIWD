@@ -8,9 +8,12 @@ public class BuildModeController : MonoBehaviour
     private BuildModeManager buildMode;
 
 
-    private void Awake()
+    private void Start()
     {
         buildMode = GameManager.Instance.buildModeManager;
+
+        if (buildMode == null)
+            Debug.LogError("[BuildModeController] BuildModeManager가 GameManager에 연결 안됨.");
     }
 
     //
