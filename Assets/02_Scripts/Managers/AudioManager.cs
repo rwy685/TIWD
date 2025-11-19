@@ -5,12 +5,22 @@ using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour
 {
 
+    public AudioClip dayBgm;
+    public AudioClip nightBgm;
+    public AudioClip gameOverBgm;
+
     AudioSource audioSource;
+
     public enum BGMType
     { 
         Day,
         Night,
         GameOver,
+    }
+
+    public enum SFXType
+    { 
+    
     }
 
     public Dictionary<BGMType, AudioClip> bgms;
@@ -19,6 +29,21 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.clip = bgms[type];
         audioSource.Play();
+    }
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        bgms = new Dictionary<BGMType, AudioClip>()
+    {
+        { BGMType.Day, dayBgm },
+        { BGMType.Night, nightBgm },
+        { BGMType.GameOver, gameOverBgm },
+    };
     }
 }
 
