@@ -16,15 +16,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Place",
-                    "type": "Button",
-                    "id": "2bac323b-c9bc-4c6f-8a46-13e6c7129f88",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "RotateLeft",
                     "type": "Button",
                     "id": "a80f7a0d-2f77-4d1d-8c0c-8b1eea8c7138",
@@ -37,6 +28,15 @@
                     "name": "RotateRight",
                     "type": "Button",
                     "id": "a93cef0f-da26-41e2-9d97-71421b629de1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Place",
+                    "type": "Button",
+                    "id": "2bac323b-c9bc-4c6f-8a46-13e6c7129f88",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",

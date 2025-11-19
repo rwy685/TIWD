@@ -2,15 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public enum BuildType
-{
-    CampFire,
-    Tent, 
-    Fence,
-    Rock
-}
-
 [System.Serializable]
 public class BuildRequirement
 {
@@ -30,7 +21,6 @@ public class BuildData : ScriptableObject
     [Header("Info")]
     public string displayName;
     public string displayDesc;
-    public BuildType buildType;
     public Image icon;
 
     [Header("NeedResource")]
