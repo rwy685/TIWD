@@ -23,6 +23,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     private float defaultStaminaRecover;
     private float defaultThirstConsume;
+    private bool isDead = false;
 
     //호출 순서 문제로 Awake에서 Start로 바꿨습니다..
     private void Start()
@@ -84,7 +85,8 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void Die()
     {
-
+        if (isDead) return;
+        isDead = true;
         Time.timeScale = 0f;
         Debug.Log("D gym");
     }
