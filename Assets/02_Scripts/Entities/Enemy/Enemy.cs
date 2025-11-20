@@ -18,7 +18,6 @@ public class Enemy : MonoBehaviour, IDamagable
     private float playerDistance;
     private float lastAttackTime;
 
-    private WaitForSeconds wait;
     private Animator animator;
     private Coroutine coroutine;
 
@@ -37,8 +36,6 @@ public class Enemy : MonoBehaviour, IDamagable
 
     private void Start()
     {
-        wait = new WaitForSeconds(wanderDelay);
-        enemyState = EnemyState.Idle;
         health = enemyData.maxHealth;
 
         SetState(EnemyState.Wander);
@@ -57,33 +54,29 @@ public class Enemy : MonoBehaviour, IDamagable
     private void UpdateState()
     {
         animator.speed = agent.speed / enemyData.walkSpeed;
-        if (playerDistance < enemyData.attackDistance && IsPlayerInFieldOfView())
+        if (playerDistance <= enemyData.attackDistance && IsPlayerInFieldOfView())
         {
-            Debug.Log("1");
             SetState(EnemyState.Attack);
 
             Attack();
             return;
         }
 
-        if (playerDistance < enemyData.chaseDistance)
+        if (playerDistance <= enemyData.chaseDistance)
         {
-            Debug.Log("2");
             SetState(EnemyState.Chase);
 
             Chase();
             return;
         }
 
-        if (enemyState == EnemyState.Wander)
+        if (enemyState != EnemyState.Idle)
         {
-            if (agent.remainingDistance < 0.1f)
+            if (agent.remainingDistance < 0.2f)
             {
-                Debug.Log("3");
                 SetState(EnemyState.Idle);
-                StartCoroutine(Wander());
+                Invoke("Wander", wanderDelay);
             }
-            return;
         }
     }
 
@@ -135,7 +128,6 @@ public class Enemy : MonoBehaviour, IDamagable
         if(player == null) return;
         if (playerDistance > enemyData.chaseDistance)
         {
-            SetState(EnemyState.Wander);
             return;
         }
 
@@ -166,16 +158,28 @@ public class Enemy : MonoBehaviour, IDamagable
         }
     }
 
-    private IEnumerator Wander()
+    private void Wander()
     {
-        yield return wait;
-
+        Debug.Log("배회");
         SetState(EnemyState.Wander);
-        Vector3 randomPos = transform.position +
-            Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance);
+        agent.SetDestination(GetWanderLocation());
+    }
 
-        NavMesh.SamplePosition(randomPos, out NavMeshHit hit, maxWanderDistance, NavMesh.AllAreas);
-        agent.SetDestination(hit.position);
+    private Vector3 GetWanderLocation()
+    {
+        NavMeshHit hit;
+
+        NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
+
+        int i = 0;
+        while (Vector3.Distance(transform.position, hit.position) < enemyData.attackDistance)
+        {
+            NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
+            i++;
+            if (i == 30) break;
+        }
+
+        return hit.position;
     }
 
     bool IsPlayerInFieldOfView()
