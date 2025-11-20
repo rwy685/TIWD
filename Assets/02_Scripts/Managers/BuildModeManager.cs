@@ -13,6 +13,7 @@ public class BuildModeManager : MonoBehaviour
     
     private BuildPreviewController previewController;
     private BuildResourceHandler resourceHandler;
+    public BuildResourceHandler ResourceHandler => resourceHandler;
     private BuildPlacementSystem placementSystem;
 
     public BuildCatalogUI catalogUI;  // 직접 연결(임시) 추후 UI매니저 통해서 연결
@@ -69,6 +70,7 @@ public class BuildModeManager : MonoBehaviour
         }
         //  프리뷰 생성
         previewController.CreatePreviewObject(data);
+        IsCatalogOpen = false;
     }
 
     // =====================================================
@@ -140,11 +142,8 @@ public class BuildModeManager : MonoBehaviour
     {
         if (!IsBuildingMode || IsCatalogOpen) return;
 
-        if (!previewController.HasPreview())
-        {
-            Debug.LogWarning("[Build] 설치 불가: 프리뷰가 없습니다. 먼저 건축물을 선택하세요.");
-            return;
-        }
+        if (!previewController.HasPreview()) return;
+  
         if (!previewController.CheckPlacementValidity())
         {
             Debug.Log("[Build] 설치 불가: 충돌이 감지되었습니다.");
