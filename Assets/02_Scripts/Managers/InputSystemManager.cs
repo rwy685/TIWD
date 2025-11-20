@@ -1,14 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-enum InputMode
-{
-    Basic, // 플레이어 조작
-    BuildMode // 빌드 모드
-}
 public class InputSystemManager : MonoBehaviour
 {
-    public enum InputMode { Basic, BuildMode }
+    public enum InputMode { Basic, BuildMode } // Basic 기본 // BuildMode 건축모드
     public InputMode CurrentMode = InputMode.Basic;
 
     private PlayerController player;
@@ -123,8 +118,14 @@ public class InputSystemManager : MonoBehaviour
 
     public void OnBuildDismantle(InputAction.CallbackContext ctx)
     {
-        if (CurrentMode == InputMode.BuildMode && ctx.started)
+        if (CurrentMode == InputMode.BuildMode)
             buildMode.OnBuildDismantle(ctx);
+    }
+
+    public void OnBuildCatalogOpen(InputAction.CallbackContext ctx)
+    {
+        if (CurrentMode == InputMode.BuildMode)
+            buildMode.OnToggleCatalog(ctx);
     }
 
 }

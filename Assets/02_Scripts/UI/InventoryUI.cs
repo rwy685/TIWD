@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -26,8 +27,20 @@ public class InventoryUI : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    IEnumerator Start()
     {
+        while (inventory == null)
+        {
+            if (GameManager.Instance != null &&
+                GameManager.Instance.characterManager != null &&
+                GameManager.Instance.characterManager.player != null)
+            {
+                inventory = GameManager.Instance.characterManager.player.inventory;
+            }
+
+            yield return null;
+        }
+
         GenerateSlots();
         RefreshAllSlots();
     }
@@ -138,7 +151,7 @@ public class InventoryUI : MonoBehaviour
     }
 
 
-    // 🔥 필터 버튼
+    // 필터 버튼
     public void OnClickAllFilter() => SetFilter(FilterType.All);
     public void OnClickEquipFilter() => SetFilter(FilterType.Equip);
     public void OnClickConsumeFilter() => SetFilter(FilterType.Consumable);

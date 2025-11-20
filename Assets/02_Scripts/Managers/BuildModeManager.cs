@@ -13,7 +13,13 @@ public class BuildModeManager : MonoBehaviour
     
     private BuildPreviewController previewController;
     private BuildResourceHandler resourceHandler;
+    public BuildResourceHandler ResourceHandler => resourceHandler;
     private BuildPlacementSystem placementSystem;
+
+    public BuildCatalogUI catalogUI;  // 직접 연결(임시) 추후 UI매니저 통해서 연결
+    public BuildCatalog buildCatalog;
+    public BuildModeUI buildModeUI;
+    public bool IsCatalogOpen { get; private set; }
 
     private void Start()
     {
@@ -39,8 +45,7 @@ public class BuildModeManager : MonoBehaviour
         IsBuildingMode = true;
 
         // [UI] 빌드 모드 패널 켜기
-        //if (UIManager.Instance != null)
-        //    UIManager.Instance.OpenBuildUI();
+        buildModeUI.ShowBuildModePanel();
     }
 
     public void SelectBuildData(BuildData data)
@@ -65,6 +70,39 @@ public class BuildModeManager : MonoBehaviour
         }
         //  프리뷰 생성
         previewController.CreatePreviewObject(data);
+        IsCatalogOpen = false;
+    }
+
+    // =====================================================
+    //  카탈로그 열기
+    // =====================================================
+    public void ToggleCatalog()
+    {
+        if (!IsBuildingMode) return;
+
+        IsCatalogOpen = !IsCatalogOpen;
+
+        var player = GameManager.Instance.characterManager.player;
+
+        if (IsCatalogOpen)
+        {
+            catalogUI.Open();
+
+            // 입력 잠금
+            player.controller.canLook = false; // 마우스 룩 금지
+
+        }
+        else
+        {
+            catalogUI.Close();
+
+            player.controller.canLook = true;  // 다시 마우스 룩 활성화
+        }
+    }
+
+    public void OnCatalogSelected(BuildData data) //카탈로그에서 BuildData 선택
+    {
+        SelectBuildData(data);    
     }
 
     // =====================================================
@@ -74,11 +112,15 @@ public class BuildModeManager : MonoBehaviour
     {
         IsBuildingMode = false;
 
-        // [UI] 빌드 모드 패널 끄기
-        //if (UIManager.Instance != null)
-        //    UIManager.Instance.CloseBuildUI();
+        if (IsCatalogOpen)
+        {
+            catalogUI.Close();
+            IsCatalogOpen = false;
+        }
 
         previewController.DestroyPreview();
+
+        buildModeUI.HideBuildModePanel(); // 빌드모드 패널 끄기
 
         currentBuildData = null;
     }
@@ -98,13 +140,10 @@ public class BuildModeManager : MonoBehaviour
     // =====================================================
     public void TryPlaceStructure()
     {
-        if (!IsBuildingMode) return;
+        if (!IsBuildingMode || IsCatalogOpen) return;
 
-        if (!previewController.HasPreview())
-        {
-            Debug.LogWarning("[Build] 설치 불가: 프리뷰가 없습니다. 먼저 건축물을 선택하세요.");
-            return;
-        }
+        if (!previewController.HasPreview()) return;
+  
         if (!previewController.CheckPlacementValidity())
         {
             Debug.Log("[Build] 설치 불가: 충돌이 감지되었습니다.");
@@ -149,13 +188,13 @@ public class BuildModeManager : MonoBehaviour
     // =====================================================
     public void RotateLeft()
     {
-        if (!IsBuildingMode) return;
+        if (!IsBuildingMode || IsCatalogOpen) return;
         previewController.Rotate(-1);
     }
 
     public void RotateRight()
     {
-        if (!IsBuildingMode) return;
+        if (!IsBuildingMode || IsCatalogOpen) return;
         previewController.Rotate(1);
     }
 

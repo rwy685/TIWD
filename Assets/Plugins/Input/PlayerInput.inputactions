@@ -113,6 +113,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "BuildCatalog",
+                    "type": "Button",
+                    "id": "a82fcc31-9276-43f5-8183-7436e225a943",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -289,6 +298,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "BuildDismantle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09a972ec-f674-4491-bdc4-60d5985f6942",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BuildCatalog",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
