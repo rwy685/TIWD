@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5936171607593813582}
   - component: {fileID: 2779868606256632824}
   - component: {fileID: 14927079921729447}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4840,7 +4840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3316215479851920264}
   - component: {fileID: 5260546199315134794}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4935,7 +4935,7 @@ GameObject:
   - component: {fileID: 5135504802242302267}
   - component: {fileID: 3904660381836825320}
   - component: {fileID: 1412970604189603014}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rock.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5018,7 +5018,7 @@ GameObject:
   - component: {fileID: 4313441658453144264}
   - component: {fileID: 8567847440501712156}
   - component: {fileID: 1458697983458953387}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5099,7 +5099,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2211497957948081412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Campfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5136,7 +5136,7 @@ GameObject:
   - component: {fileID: 6503898680770543175}
   - component: {fileID: 706050134503061008}
   - component: {fileID: 957871151445117652}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CampFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5196,6 +5196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireEffect: {fileID: 851804824767619065}
   fireLight: {fileID: 5260546199315134794}
+  buildData: {fileID: 0}
 --- !u!54 &957871151445117652
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5234,7 +5235,7 @@ GameObject:
   - component: {fileID: 8969428839803944431}
   - component: {fileID: 444633996097558761}
   - component: {fileID: 3656405293924908419}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
