@@ -18,11 +18,6 @@ public class Inventory : MonoBehaviour
 
         throwPos = player.transform;
 
-        // ----- TODO : InventoryUI.cs 로 옮겨 가시면 됩니다! -----
-        // Start() 에서 등록해주세요! 추후에 player.inventoty 로 수정하시면 될 것 같습니다!
-        player.controller.inventory += Toggle;  
-        // -------------------------------------------------------
-
         player.addItem += AddItem;
 
         gameObject.SetActive(false);
@@ -39,21 +34,6 @@ public class Inventory : MonoBehaviour
         player.inventory = this;
 
     }
-
-    // ----- TODO : InventoryUI.cs 로 옮겨 가시면 됩니다! -----
-    // 인벤토리창 활성화/비활성화 함수
-    public void Toggle()
-    {
-        if (gameObject.activeInHierarchy)
-        {
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            gameObject.SetActive(true);
-        }
-    }
-    // -------------------------------------------------------
 
     // 획득한 아이템을 인벤토리에 추가하는 함수
     void AddItem()

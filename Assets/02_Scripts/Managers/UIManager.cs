@@ -172,4 +172,17 @@ public class UIManager : MonoBehaviour
     {
         return IsDialogueOpen || IsInventoryOpen;
     }
+
+    [Header("=== Prompt UI ===")]
+    public GameObject promptPanel;
+    public TMP_Text promptText;
+
+    public void PromptSet(bool active, string text = "")
+    {
+        if (promptPanel != null)
+            promptPanel.SetActive(active);
+
+        if (promptText != null)
+            promptText.text = text;
+    }
 }

@@ -7,9 +7,9 @@ public class InventoryUI : MonoBehaviour
     public static InventoryUI Instance;
 
     [Header("References")]
-    public Inventory inventory;      // 플레이어 인벤토리
-    public Transform slotParent;     // 슬롯을 담을 GridLayoutGroup
-    public GameObject slotPrefab;    // Slot 프리팹
+    public Inventory inventory;
+    public Transform slotParent;
+    public GameObject slotPrefab;
 
     [Header("Generated UI")]
     public Image[] slotIcons;
@@ -18,7 +18,6 @@ public class InventoryUI : MonoBehaviour
     [Header("Filter")]
     public FilterType currentFilter = FilterType.All;
     public enum FilterType { All, Equip, Consumable, Resource }
-   
 
     public int slotCount = 16;
 
@@ -33,18 +32,17 @@ public class InventoryUI : MonoBehaviour
         RefreshAllSlots();
     }
 
-    // =====================================
-    // 🔥 슬롯 자동 생성
-    // =====================================
+ 
+    // 슬롯 자동 생성
     void GenerateSlots()
     {
         slotIcons = new Image[slotCount];
         slotTexts = new TMP_Text[slotCount];
-
         inventory.itemSlots = new ItemSlot[slotCount];
 
         for (int i = 0; i < slotCount; i++)
         {
+            // 슬롯 프리팹 생성
             GameObject slotObj = Instantiate(slotPrefab, slotParent);
 
             Image icon = slotObj.transform.Find("Icon").GetComponent<Image>();
@@ -53,46 +51,45 @@ public class InventoryUI : MonoBehaviour
             slotIcons[i] = icon;
             slotTexts[i] = qty;
 
-            // SlotClickHandler 자동 추가
+            // 슬롯 클릭 핸들러
             SlotClickHandler click = slotObj.GetComponent<SlotClickHandler>();
             if (click == null)
                 click = slotObj.AddComponent<SlotClickHandler>();
             click.index = i;
 
-            // ItemSlot 자동 생성
-            ItemSlot newSlot = slotObj.AddComponent<ItemSlot>();
+            // ItemSlot 생성
+            ItemSlot newSlot = slotObj.GetComponent<ItemSlot>();
+            if (newSlot == null)
+                newSlot = slotObj.AddComponent<ItemSlot>();
+
             newSlot.index = i;
             newSlot.quantity = 0;
             newSlot.item = null;
             newSlot.inventory = inventory;
+
             inventory.itemSlots[i] = newSlot;
 
-            // 기본 비활성화 처리
+            // 기본 비활성화
             icon.color = new Color(1, 1, 1, 0);
             qty.text = "";
         }
     }
 
-    // =====================================
-    // 🔥 슬롯 갱신 + 필터 적용
-    // =====================================
+  
+    // 슬롯 갱신 + 필터 적용
     public void RefreshAllSlots()
     {
+        if (inventory.itemSlots == null)
+            return;
+
         for (int i = 0; i < inventory.itemSlots.Length; i++)
         {
             ItemSlot slot = inventory.itemSlots[i];
 
-            // 필터에 맞지 않으면 감추기
-            if (!PassFilter(slot))
-            {
-                slotIcons[i].sprite = null;
-                slotIcons[i].color = new Color(1, 1, 1, 0);
-                slotTexts[i].text = "";
-                continue;
-            }
+            // 필터 통과 여부
+            bool visible = PassFilter(slot);
 
-            // 빈 슬롯
-            if (slot.item == null)
+            if (!visible || slot.item == null)
             {
                 slotIcons[i].sprite = null;
                 slotIcons[i].color = new Color(1, 1, 1, 0);
@@ -108,7 +105,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    // 필터 함수
+    // 필터 체크
     private bool PassFilter(ItemSlot slot)
     {
         if (currentFilter == FilterType.All)
@@ -121,35 +118,31 @@ public class InventoryUI : MonoBehaviour
         {
             case FilterType.Equip:
                 return slot.item.itemType == ItemType.Equipable;
-
             case FilterType.Consumable:
                 return slot.item.itemType == ItemType.Consumable;
-
             case FilterType.Resource:
                 return slot.item.itemType == ItemType.Resource;
         }
-
         return true;
     }
 
-    // =====================================
-    // 🔥 슬롯 클릭 시 설명창 업데이트
-    // =====================================
+
+    //  슬롯 클릭 → 설명창 갱신
     public void OnSlotClicked(int index)
     {
         ItemSlot slot = inventory.itemSlots[index];
 
+        // UIManager → inventoryPanel 안에서 InventoryPanelUI 가져오기
         InventoryPanelUI desc = UIManager.Instance.inventoryPanel.GetComponent<InventoryPanelUI>();
         desc.UpdateDescription(slot);
     }
 
-    // =====================================
-    // 🔥 필터 버튼 연결 함수들
-    // =====================================
+
+    // 🔥 필터 버튼
+    public void OnClickAllFilter() => SetFilter(FilterType.All);
     public void OnClickEquipFilter() => SetFilter(FilterType.Equip);
     public void OnClickConsumeFilter() => SetFilter(FilterType.Consumable);
     public void OnClickResourceFilter() => SetFilter(FilterType.Resource);
-    public void OnClickAllFilter() => SetFilter(FilterType.All);
 
     void SetFilter(FilterType filter)
     {
