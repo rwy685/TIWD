@@ -121,11 +121,12 @@ public class InputSystemManager : MonoBehaviour
             buildMode.OnBuildRotateRight(ctx);
     }
 
-    public void OnBuildCancel(InputAction.CallbackContext ctx)
+    public void OnBuildDismantle(InputAction.CallbackContext ctx)
     {
-        if (CurrentMode == InputMode.BuildMode)
-            buildMode.OnBuildCancel(ctx);
+        if (CurrentMode == InputMode.BuildMode && ctx.started)
+            buildMode.OnBuildDismantle(ctx);
     }
+
 }
 
 
