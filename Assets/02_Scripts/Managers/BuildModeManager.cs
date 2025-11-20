@@ -69,8 +69,9 @@ public class BuildModeManager : MonoBehaviour
             return;
         }
         //  프리뷰 생성
-        previewController.CreatePreviewObject(data);
         IsCatalogOpen = false;
+        previewController.CreatePreviewObject(data);
+        
     }
 
     // =====================================================
