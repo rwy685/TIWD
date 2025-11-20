@@ -133,8 +133,7 @@ public class InventoryUI : MonoBehaviour
         ItemSlot slot = inventory.itemSlots[index];
 
         // UIManager → inventoryPanel 안에서 InventoryPanelUI 가져오기
-        InventoryPanelUI desc = UIManager.Instance.inventoryPanel.GetComponent<InventoryPanelUI>();
-        desc.UpdateDescription(slot);
+        InventoryPanelUI desc = UIManager.Instance.inventoryPanel.GetComponentInChildren<InventoryPanelUI>();
     }
 
 
