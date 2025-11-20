@@ -15,12 +15,12 @@ public class BuildModeManager : MonoBehaviour
     private BuildResourceHandler resourceHandler;
     private BuildPlacementSystem placementSystem;
 
-    private void Awake()
+    private void Start()
     {
-        previewController = new BuildPreviewController(groundMask, obstructionMask, rotateSpeed);
+        var playerCam = GameManager.Instance.characterManager.player.playerCamera.GetComponentInChildren<Camera>();
+        previewController = new BuildPreviewController(playerCam, groundMask, obstructionMask, rotateSpeed);
         resourceHandler = new BuildResourceHandler();
         placementSystem = new BuildPlacementSystem();
-
         
     }
 
@@ -31,6 +31,10 @@ public class BuildModeManager : MonoBehaviour
     public void EnterBuildMode()
     {
         IsBuildingMode = true;
+
+        // [UI] 빌드 모드 패널 켜기
+        if (UIManager.Instance != null)
+            UIManager.Instance.OpenBuildUI();
     }
 
     public void SelectBuildData(BuildData data)
