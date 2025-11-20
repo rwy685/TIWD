@@ -18,9 +18,7 @@ MonoBehaviour:
   inventoryIcon: {fileID: 0}
   itemPrefab: {fileID: 1534571892579635120, guid: 001c44e25bc4be94182df662b5265067, type: 3}
   equipableType: 2
-  attackPower: 0
-  gatherPower: 1
-  equipPrefab: {fileID: 1534571892579635120, guid: d24374724ac3a0a48a622ee8167d7903, type: 3}
+  equipPrefab: {fileID: 1534571892579635120, guid: 001c44e25bc4be94182df662b5265067, type: 3}
   recoveryData: []
   isStackable: 0
   maxStack: 1
