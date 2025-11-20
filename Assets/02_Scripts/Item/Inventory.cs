@@ -14,6 +14,8 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         StartCoroutine(WaitForPlayerSpawned());
+
+        InventoryUI.Instance.inventory = this;
     }
 
     IEnumerator WaitForPlayerSpawned()
@@ -56,18 +58,6 @@ public class Inventory : MonoBehaviour
         
     }
 
-    // 인벤토리 테스트용 !! 인벤토리창 활성화/비활성화 함수
-    /*public void Toggle()
-    {
-        if (gameObject.activeInHierarchy)
-        {
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            gameObject.SetActive(true);
-        }
-    }*/
 
     // 획득한 아이템을 인벤토리에 추가하는 함수
     void AddItem()

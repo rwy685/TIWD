@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     public void ToggleInventory()
     {
         inventory?.Invoke();
-        ToggleCursor();
+        //ToggleCursor();
     }
 
     public void TryAttack()
