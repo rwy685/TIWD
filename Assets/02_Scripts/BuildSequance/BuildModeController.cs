@@ -52,6 +52,12 @@ public class BuildModeController : MonoBehaviour
             buildMode.TryDismantle();
     }
 
+    public void OnToggleCatalog(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+            buildMode.ToggleCatalog();
+    }
+
 }
 
 

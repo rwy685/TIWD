@@ -15,6 +15,10 @@ public class BuildModeManager : MonoBehaviour
     private BuildResourceHandler resourceHandler;
     private BuildPlacementSystem placementSystem;
 
+    public BuildCatalogUI catalogUI;  // 직접 연결(임시) 추후 UI매니저 통해서 연결
+    public BuildCatalog buildCatalog;
+    public bool IsCatalogOpen { get; private set; }
+
     private void Start()
     {
         Camera cam = Camera.main;
@@ -68,15 +72,49 @@ public class BuildModeManager : MonoBehaviour
     }
 
     // =====================================================
+    //  카탈로그 열기
+    // =====================================================
+    public void ToggleCatalog()
+    {
+        if (!IsBuildingMode) return;
+
+        IsCatalogOpen = !IsCatalogOpen;
+
+        var player = GameManager.Instance.characterManager.player;
+
+        if (IsCatalogOpen)
+        {
+            catalogUI.Open();
+
+            // 입력 잠금
+            player.controller.canLook = false; // 마우스 룩 금지
+
+        }
+        else
+        {
+            catalogUI.Close();
+
+            player.controller.canLook = true;  // 다시 마우스 룩 활성화
+        }
+    }
+
+    public void OnCatalogSelected(BuildData data) //카탈로그에서 BuildData 선택
+    {
+        SelectBuildData(data);    
+    }
+
+    // =====================================================
     //  빌드 모드 나가기
     // =====================================================
     public void ExitBuildMode()
     {
         IsBuildingMode = false;
 
-        // [UI] 빌드 모드 패널 끄기
-        //if (UIManager.Instance != null)
-        //    UIManager.Instance.CloseBuildUI();
+        if (IsCatalogOpen)
+        {
+            catalogUI.Close();
+            IsCatalogOpen = false;
+        }
 
         previewController.DestroyPreview();
 
@@ -98,7 +136,7 @@ public class BuildModeManager : MonoBehaviour
     // =====================================================
     public void TryPlaceStructure()
     {
-        if (!IsBuildingMode) return;
+        if (!IsBuildingMode || IsCatalogOpen) return;
 
         if (!previewController.HasPreview())
         {
@@ -149,13 +187,13 @@ public class BuildModeManager : MonoBehaviour
     // =====================================================
     public void RotateLeft()
     {
-        if (!IsBuildingMode) return;
+        if (!IsBuildingMode || IsCatalogOpen) return;
         previewController.Rotate(-1);
     }
 
     public void RotateRight()
     {
-        if (!IsBuildingMode) return;
+        if (!IsBuildingMode || IsCatalogOpen) return;
         previewController.Rotate(1);
     }
 
