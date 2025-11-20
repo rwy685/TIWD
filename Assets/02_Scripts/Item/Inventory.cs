@@ -33,6 +33,8 @@ public class Inventory : MonoBehaviour
 
     void Init()
     {
+        slotGrid = UIManager.Instance.inventoryPanel.gameObject.transform.Find("Middle_SlotGrid");
+
         throwPos = player.transform;
 
         //player.controller.inventory += Toggle;    // 인벤토리 테스트용 !!

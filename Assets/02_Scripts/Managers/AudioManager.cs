@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
 
     public AudioClip dayBgm;
     public AudioClip nightBgm;
@@ -57,6 +58,7 @@ public class AudioManager : MonoBehaviour
     };
 
         currentBGM = BGMType.Day;
+        PlayBGM(BGMType.Day);
     }
 
     private void Update()
