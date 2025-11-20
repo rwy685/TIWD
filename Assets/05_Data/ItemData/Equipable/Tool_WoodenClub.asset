@@ -15,10 +15,10 @@ MonoBehaviour:
   displayName: "\uB098\uBB34 \uBABD\uB465\uC774"
   displayDesc: "\uC870\uC7A1\uD55C \uB098\uBB34 \uBABD\uB465\uC774\uB2E4."
   itemType: 0
-  inventoryIcon: {fileID: 0}
+  inventoryIcon: {fileID: 21300000, guid: a46adc5909a9b9848a8e757543d3755a, type: 3}
   itemPrefab: {fileID: 1534571892579635120, guid: 001c44e25bc4be94182df662b5265067, type: 3}
   equipableType: 2
-  equipPrefab: {fileID: 1534571892579635120, guid: 001c44e25bc4be94182df662b5265067, type: 3}
+  equipPrefab: {fileID: 992493304881168681, guid: d24374724ac3a0a48a622ee8167d7903, type: 3}
   recoveryData: []
   isStackable: 0
   maxStack: 1

@@ -15,11 +15,10 @@ MonoBehaviour:
   displayName: "\uAD6C\uAE09\uC0C1\uC790"
   displayDesc: "\uC0C1\uCC98\uB97C \uCE58\uB8CC\uD560 \uC218 \uC788\uB2E4."
   itemType: 1
-  inventoryIcon: {fileID: 0}
-  itemPrefab: {fileID: 0}
+  inventoryIcon: {fileID: 21300000, guid: 4ca016e3cb64b8c47b15a04ec8b58195, type: 3}
+  itemPrefab: {fileID: 6454092670955273150, guid: f6fcbe528b4f7984f83fa81eacead311, type: 3}
   equipableType: 0
-  attackPower: 0
-  gatherPower: 0
+  equipPrefab: {fileID: 0}
   recoveryData:
   - consumableType: 0
     recoveryAmount: 50
