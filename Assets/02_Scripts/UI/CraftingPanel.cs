@@ -12,8 +12,10 @@ public class CraftingPanel : MonoBehaviour
     [Header("Recipe Button Labels (TMP Text)")]
     public TMP_Text[] recipeButtonLabels;
 
-    [Header("Recipe Info UI")]
-    public TMP_Text recipeNameText;
+    //public TMP_Text recipeNameText;
+
+    [Header("Ingredient Icons")]
+    public Image[] ingredientIcons;
     public TMP_Text[] ingredientTexts;
 
     [Header("Make Button")]
@@ -23,6 +25,9 @@ public class CraftingPanel : MonoBehaviour
     // 내부 데이터
     private CraftData[] craftRecipes;
     private CraftData selectedRecipe;
+
+    public Image resultItemIcon;
+    public TMP_Text resultItemNameText;
 
     void Start()
     {
@@ -62,7 +67,7 @@ public class CraftingPanel : MonoBehaviour
     // =====================================
     // 버튼 클릭 시 레시피 선택
     // =====================================
-    private void OnRecipeButtonClicked(int index)
+    public void OnRecipeButtonClicked(int index)
     {
         if (index < 0 || index >= craftRecipes.Length)
             return;
@@ -79,20 +84,35 @@ public class CraftingPanel : MonoBehaviour
     // =====================================
     private void UpdateRecipeInfo(CraftData recipe)
     {
-        //recipeNameText.text = recipe.resultItem.displayName;
+        int count = recipe.ingredients.Length;
 
-        // 재료 표시
-        for (int i = 0; i < ingredientTexts.Length; i++)
+        for (int i = 0; i < ingredientIcons.Length; i++)
         {
-            if (i < recipe.ingredients.Length)
+            if (i < count)
             {
                 var ing = recipe.ingredients[i];
+
+                // 아이콘
+                ingredientIcons[i].sprite = ing.item.inventoryIcon;
+                ingredientIcons[i].color = Color.white;
+
+                // 텍스트 (재료 이름 + 수량)
                 ingredientTexts[i].text = $"{ing.item.displayName} x {ing.amount}";
+
+                // 슬롯 활성화
+                ingredientIcons[i].transform.parent.gameObject.SetActive(true);
             }
             else
             {
+                // 남는 슬롯 숨김
+                ingredientIcons[i].sprite = null;
+                ingredientIcons[i].color = new Color(1, 1, 1, 0);
                 ingredientTexts[i].text = "";
+
+                ingredientIcons[i].transform.parent.gameObject.SetActive(false);
             }
+
+            resultItemIcon.sprite = recipe.resultItem.inventoryIcon;
         }
     }
 
@@ -102,6 +122,11 @@ public class CraftingPanel : MonoBehaviour
     // =====================================
     public void OnMakeButtonClicked()
     {
+        Debug.Log("=== CRAFT 테스트 ===");
+        Debug.Log("선택된 레시피 결과 아이템: " + selectedRecipe.resultItem.displayName);
+        Debug.Log("재료 충족 여부: " + GameManager.Instance.craftManager.CanCraft(selectedRecipe));
+
+
         if (selectedRecipe == null) return;
 
         GameManager.Instance.craftManager.DoCraft(selectedRecipe);

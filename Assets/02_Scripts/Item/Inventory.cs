@@ -124,6 +124,8 @@ public class Inventory : MonoBehaviour
                 total += slot.quantity;
         }
 
+        Debug.Log($"[INVENTORY CHECK] 요청 아이템: {item.displayName}, 필요: {amount}, 보유: {total}, itemData 동일?: {(total > 0 ? "YES" : "NO")}");
+
         return total >= amount;
     }
 
