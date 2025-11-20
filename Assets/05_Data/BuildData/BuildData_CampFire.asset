@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: BuildData_CampFire
   m_EditorClassIdentifier: 
   displayName: "\uCEA0\uD504\uD30C\uC774\uC5B4"
-  displayDesc: "\uD50C\uB808\uC774\uC5B4\uC758 \uC628\uAE30\uB97C \uC720\uC9C0\uC2DC\uCF1C\uC90D\uB2C8\uB2E4."
+  displayDesc: "\uC0C1\uD638\uC791\uC6A9\uC744 \uD1B5\uD574 \uBD88\uC744 \uBD99\uC784."
   icon: {fileID: 21300000, guid: a427b0a5da607c048ac46cb58286b242, type: 3}
   requirements:
   - item: {fileID: 11400000, guid: 81561e75bc11c6943986b960fb71efcc, type: 2}
-    amount: 4
+    amount: 3
   - item: {fileID: 11400000, guid: a5c9f6d7e0009584ba1a22199711386f, type: 2}
     amount: 1
   previewPrefab: {fileID: 2615279085193311492, guid: f54f045ec825108438b935f0e9975303, type: 3}

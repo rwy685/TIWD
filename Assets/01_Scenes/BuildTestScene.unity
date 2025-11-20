@@ -230,10 +230,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent
       objectReference: {fileID: 0}
-    - target: {fileID: 3598248116034117661, guid: f86f2ea402a68c841a14565457bf52ed, type: 3}
-      propertyPath: insideLight
-      value: 
-      objectReference: {fileID: 1468215135}
     - target: {fileID: 4340569074677873883, guid: f86f2ea402a68c841a14565457bf52ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.5
@@ -7379,11 +7375,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458373982}
   m_CullTransparentMesh: 1
---- !u!108 &1468215135 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5622309552572808847, guid: f86f2ea402a68c841a14565457bf52ed, type: 3}
-  m_PrefabInstance: {fileID: 10535553}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1487354630
 GameObject:
   m_ObjectHideFlags: 0
