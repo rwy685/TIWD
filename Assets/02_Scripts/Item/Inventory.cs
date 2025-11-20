@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -5,19 +6,36 @@ public class Inventory : MonoBehaviour
     // 플레이어 캐싱용 변수
     [SerializeField] private Player player;
 
-    // ----- TODO : InventoryUI.cs 로 옮겨 가시면 됩니다! -----
     public Transform slotGrid;      // ItemSlot 들이 배치될 그리드 UI
     public ItemSlot[] itemSlots;   // 인벤토리 내의 모든 아이템 슬롯
-    // -------------------------------------------------------
 
     private Transform throwPos;    // 아이템을 버릴 위치
 
     void Start()
     {
+        StartCoroutine(WaitForPlayerSpawned());
+    }
+
+    IEnumerator WaitForPlayerSpawned()
+    {
+        // player가 생성될 때까지 대기
+        while (GameManager.Instance == null ||
+               GameManager.Instance.characterManager == null ||
+               GameManager.Instance.characterManager.player == null)
+        {
+            yield return null; // 한 프레임 대기
+        }
+
         player = GameManager.Instance.characterManager.player;
 
+        Init();
+    }
+
+    void Init()
+    {
         throwPos = player.transform;
 
+        //player.controller.inventory += Toggle;    // 인벤토리 테스트용 !!
         player.addItem += AddItem;
 
         gameObject.SetActive(false);
@@ -32,8 +50,20 @@ public class Inventory : MonoBehaviour
         }
 
         player.inventory = this;
-
     }
+
+    // 인벤토리 테스트용 !! 인벤토리창 활성화/비활성화 함수
+    /*public void Toggle()
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
+    }*/
 
     // 획득한 아이템을 인벤토리에 추가하는 함수
     void AddItem()
