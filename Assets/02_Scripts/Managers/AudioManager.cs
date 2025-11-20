@@ -7,8 +7,10 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip dayBgm;
     public AudioClip nightBgm;
-    public AudioClip gameOverBgm;
-    public AudioClip titleBgm;
+    /*public AudioClip gameOverBgm;
+    public AudioClip titleBgm;*/
+
+    private BGMType currentBGM;
 
     AudioSource audioSource;
 
@@ -31,8 +33,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBGM(BGMType type)
     {
+        Debug.Log("PlayBGM 호출됨: " + type);
+
         audioSource.clip = bgms[type];
         audioSource.Play();
+
+        Debug.Log("Clip 이름: " + audioSource.clip);
+        Debug.Log("IsPlaying: " + audioSource.isPlaying);
     }
 
     private void Awake()
@@ -46,8 +53,26 @@ public class AudioManager : MonoBehaviour
     {
         { BGMType.Day, dayBgm },
         { BGMType.Night, nightBgm },
-        { BGMType.GameOver, gameOverBgm },
+        //{ BGMType.GameOver, gameOverBgm },
     };
+
+        currentBGM = BGMType.Day;
+    }
+
+    private void Update()
+    {
+        if (!GameManager.Instance.isNight && currentBGM != BGMType.Day)
+        {
+            Debug.Log("낮브금재생");
+            PlayBGM(BGMType.Day);
+            currentBGM = BGMType.Day;
+        }
+        else if (GameManager.Instance.isNight && currentBGM != BGMType.Night)
+        {
+            Debug.Log("밤브금재생");
+            PlayBGM(BGMType.Night);
+            currentBGM = BGMType.Night;
+        }
     }
 }
 
