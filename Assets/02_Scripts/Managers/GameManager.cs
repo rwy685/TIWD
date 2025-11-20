@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public float curTime = 0f;
     public float nightTime;
     public float endTime;
+    public int day = 1;
     public bool isNight;
 
     private void Start()
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
 
         if (curTime >= endTime && isNight)
         {
+            day++;
             isNight = false;
             curTime = 0f;
         }
