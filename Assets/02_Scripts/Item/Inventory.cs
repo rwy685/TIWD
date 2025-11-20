@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -14,8 +15,26 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(WaitForPlayerSpawned());
+    }
+
+    IEnumerator WaitForPlayerSpawned()
+    {
+        // player가 생성될 때까지 대기
+        while (GameManager.Instance == null ||
+               GameManager.Instance.characterManager == null ||
+               GameManager.Instance.characterManager.player == null)
+        {
+            yield return null; // 한 프레임 대기
+        }
+
         player = GameManager.Instance.characterManager.player;
 
+        Init();
+    }
+
+    void Init()
+    {
         throwPos = player.transform;
 
         player.addItem += AddItem;
