@@ -45,6 +45,13 @@ public class BuildModeController : MonoBehaviour
         if (ctx.started)
             buildMode.ExitBuildMode();
     }
+
+    public void OnBuildDismantle(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+            buildMode.TryDismantle();
+    }
+
 }
 
 

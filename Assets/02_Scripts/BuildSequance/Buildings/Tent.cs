@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tent : MonoBehaviour
+public class Tent : MonoBehaviour, IInteractable
 {
     public Light insideLight;   // 텐트 내부를 밝히는 라이트
+    public BuildData buildData;
+    private bool isActive = false;
 
     private void Start()
     {
@@ -12,20 +14,22 @@ public class Tent : MonoBehaviour
             insideLight.enabled = false; // 기본은 꺼진 상태
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void ToggleLight()
     {
-        // Player만 반응하도록
-        if (other.CompareTag("Player"))
-        {
-            insideLight.enabled = true;
-        }
+        isActive = !isActive;
+
+        insideLight.enabled = isActive;
     }
 
-    private void OnTriggerExit(Collider other)
+    public string GetInteractPrompt()
     {
-        if (other.CompareTag("Player"))
-        {
-            insideLight.enabled = false;
-        }
+        string prompt = $"{buildData.displayName}\n{buildData.displayDesc}";
+        return prompt;
     }
+
+    public void OnInteract()
+    {
+        ToggleLight();
+    }
+
 }

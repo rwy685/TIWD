@@ -15,12 +15,18 @@ public class BuildModeManager : MonoBehaviour
     private BuildResourceHandler resourceHandler;
     private BuildPlacementSystem placementSystem;
 
-    private void Awake()
+    private void Start()
     {
-        previewController = new BuildPreviewController(groundMask, obstructionMask, rotateSpeed);
+        Camera cam = Camera.main;
+        if (cam == null)
+        {
+            var player = GameManager.Instance.characterManager.player;
+            if (player != null)
+                cam = player.GetComponentInChildren<Camera>();
+        }
+        previewController = new BuildPreviewController(cam, groundMask, obstructionMask, rotateSpeed);
         resourceHandler = new BuildResourceHandler();
-        placementSystem = new BuildPlacementSystem();
-
+        placementSystem = new BuildPlacementSystem(cam);
         
     }
 
@@ -31,6 +37,10 @@ public class BuildModeManager : MonoBehaviour
     public void EnterBuildMode()
     {
         IsBuildingMode = true;
+
+        // [UI] 빌드 모드 패널 켜기
+        //if (UIManager.Instance != null)
+        //    UIManager.Instance.OpenBuildUI();
     }
 
     public void SelectBuildData(BuildData data)
@@ -64,7 +74,9 @@ public class BuildModeManager : MonoBehaviour
     {
         IsBuildingMode = false;
 
-        //[UI 가이드] : 빌드 모드 패널 비활성화 /  BuildCatalog SO를 UI도 끄기 
+        // [UI] 빌드 모드 패널 끄기
+        //if (UIManager.Instance != null)
+        //    UIManager.Instance.CloseBuildUI();
 
         previewController.DestroyPreview();
 
@@ -116,14 +128,24 @@ public class BuildModeManager : MonoBehaviour
 
         //프리뷰 제거
         previewController.DestroyPreview();
-        currentBuildData = null;
 
         Debug.Log($"[Build] '{currentBuildData.displayName}' 설치 완료");
+        currentBuildData = null;
 
     }
 
     // =====================================================
-    // 7) 회전 기능
+    //  설치된 건축물 파괴
+    // =====================================================
+
+    public void TryDismantle()
+    {
+        placementSystem.DismantleStructure();
+    }
+
+
+    // =====================================================
+    //  회전
     // =====================================================
     public void RotateLeft()
     {
@@ -136,6 +158,7 @@ public class BuildModeManager : MonoBehaviour
         if (!IsBuildingMode) return;
         previewController.Rotate(1);
     }
+
 }
 
 
