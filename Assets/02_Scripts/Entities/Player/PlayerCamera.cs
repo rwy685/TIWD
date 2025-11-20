@@ -15,9 +15,9 @@ public class PlayerCamera : MonoBehaviour
         CameraLook();
     }
 
-    public void OnLook(InputAction.CallbackContext context)
+    public void SetLookInput(Vector2 input)
     {
-        mouseDelta = context.ReadValue<Vector2>();
+        mouseDelta = input;
     }
 
     private void CameraLook()

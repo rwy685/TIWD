@@ -23,7 +23,5 @@ public class Campfire : MonoBehaviour
         fireLight.enabled = isActive;
 
     }
-
-    
     
 }
