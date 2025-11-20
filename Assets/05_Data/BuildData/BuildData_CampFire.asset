@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: "\uCEA0\uD504\uD30C\uC774\uC5B4"
   displayDesc: "\uD50C\uB808\uC774\uC5B4\uC758 \uC628\uAE30\uB97C \uC720\uC9C0\uC2DC\uCF1C\uC90D\uB2C8\uB2E4."
-  buildType: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a427b0a5da607c048ac46cb58286b242, type: 3}
   requirements:
   - item: {fileID: 11400000, guid: 81561e75bc11c6943986b960fb71efcc, type: 2}
     amount: 4
