@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Playables;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 10;
     public float staminaCostRun = 1;
     private Vector2 curMovementInput;
+
     public float jumpPower;
     public LayerMask groundLayerMask;
 
@@ -18,12 +17,15 @@ public class PlayerController : MonoBehaviour
 
     private PlayerState playerState;
     private Rigidbody rigidbody;
+    private PlayerCondition condition;
 
     [HideInInspector] public bool canLook = true;
+    public Equipment equipment; // Player가 가지고 있는 Equipment 컴포넌트
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        condition = GetComponent<PlayerCondition>();
     }
 
     private void Start()
@@ -44,72 +46,76 @@ public class PlayerController : MonoBehaviour
         switch (playerState)
         {
             case PlayerState.Idle:
-                moveSpeed = defaultSpeed;
-                break;
             case PlayerState.Walk:
                 moveSpeed = defaultSpeed;
                 break;
+
             case PlayerState.Run:
                 moveSpeed = runSpeed;
                 break;
+
             case PlayerState.Attack:
                 break;
         }
     }
 
-    public void OnMoveInput(InputAction.CallbackContext context)
+    // ============================================================
+    //  InputSystemManager 에서 받은 입력값을 직접 전달하는 구조
+    // ============================================================
+
+    // 이동 입력값만 받는다 (값만 전달)
+    public void SetMoveInput(Vector2 input)
     {
-        if (context.phase == InputActionPhase.Performed)
-        {
-            curMovementInput = context.ReadValue<Vector2>();
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            curMovementInput = Vector2.zero;
-        }
+        curMovementInput = input;
     }
 
-    public void OnRun(InputAction.CallbackContext context)
+    // 걷기 → 뛰기 상태 전환
+    public void StartRun()
     {
-        if (context.phase == InputActionPhase.Started)
-        {
-            SetState(PlayerState.Run);
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            SetState(PlayerState.Walk);
-        }
+        condition.RecoverOff();
+        SetState(PlayerState.Run);
     }
 
-    public void OnJumpInput(InputAction.CallbackContext context)
+    public void StopRun()
     {
-        if (context.phase == InputActionPhase.Started && IsGrounded())
-        {
-            rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
-        }
+        condition.RecoverOn();
+        SetState(PlayerState.Walk);
     }
 
-    public void OnInventoryButton(InputAction.CallbackContext callbackContext)
+    public void TryJump()
     {
-        if (callbackContext.phase == InputActionPhase.Started)
-        {
-            inventory?.Invoke();
-            ToggleCursor();
-        }
+        if (IsGrounded())
+            rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
     }
+
+    public void ToggleInventory()
+    {
+        inventory?.Invoke();
+        ToggleCursor();
+    }
+
+    public void TryAttack()
+    {
+        if (equipment != null)
+            equipment.OnAttackInput();
+    }
+    // ============================================================
 
     private void Move()
     {
+        // 달리기 상태에서 스태미너를 소모
         if (playerState == PlayerState.Run && curMovementInput.magnitude > 0)
         {
-            if (GameManager.Instance.characterManager.player.condition.UseStamina(staminaCostRun * Time.fixedDeltaTime))
+            if (!condition.UseStamina(staminaCostRun * Time.fixedDeltaTime))
             {
+                condition.RecoverOn();
+                // 스태미너 고갈 → 걷기로 전환
                 SetState(PlayerState.Walk);
             }
         }
 
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-        
+
         dir *= moveSpeed;
         dir.y = rigidbody.velocity.y;
 

@@ -24,19 +24,20 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        spawnManager.Init();
+        characterManager.Init();
+        spawnManager.ItemSpawn();
     }
 
     private void Update()
     {
         curTime += Time.deltaTime;
 
-        if (curTime > endTime && isNight)
+        if (curTime >= endTime && isNight)
         {
             isNight = false;
             curTime = 0f;
         }
-        else if (curTime > nightTime && !isNight)
+        else if (curTime >= nightTime && !isNight)
         {
             isNight = true;
             spawnManager.EnemySpawn();

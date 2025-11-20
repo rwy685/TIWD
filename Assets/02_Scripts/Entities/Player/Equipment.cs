@@ -5,13 +5,11 @@ public class Equipment : MonoBehaviour
 {
     public EquipItem curEquip;
     public Transform equipParent;
-    private Player player;
     private PlayerController controller;
 
-    void Start()
+    void Awake()
     {
-        player = GameManager.Instance.characterManager.player;
-        controller = player.controller;
+        controller = GetComponent<PlayerController>();
     }
 
     public void EquipNew(ItemData data)
@@ -30,9 +28,10 @@ public class Equipment : MonoBehaviour
         }
     }
 
-    public void OnAttackInput(InputAction.CallbackContext context)
+    // InputSystemManager -> PlayerController -> Equipment 로 들어와서 여기서 로직만 담당
+    public void OnAttackInput()
     {
-        if (context.phase == InputActionPhase.Started && curEquip != null && controller.canLook)
+        if (curEquip != null && controller.canLook)
         {
             curEquip.OnUse();
         }

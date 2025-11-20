@@ -1,15 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-public interface IGatherable
-{
-    void TakeGatheringDamage(int damage);
-
-    void OnGathered();
-
-    void DropItems();
-}
-
 public class GatherableObject : MonoBehaviour, IGatherable
 {
     [Header("SpawnInfo")]
