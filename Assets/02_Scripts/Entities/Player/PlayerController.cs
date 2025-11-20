@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerState playerState;
     private Rigidbody rigidbody;
+    private PlayerCondition condition;
 
     [HideInInspector] public bool canLook = true;
     public Equipment equipment; // Player가 가지고 있는 Equipment 컴포넌트
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        condition = GetComponent<PlayerCondition>();
     }
 
     private void Start()
@@ -102,8 +104,7 @@ public class PlayerController : MonoBehaviour
         // 달리기 상태에서 스태미너를 소모
         if (playerState == PlayerState.Run && curMovementInput.magnitude > 0)
         {
-            if (!GameManager.Instance.characterManager.player.condition
-                .UseStamina(staminaCostRun * Time.fixedDeltaTime))
+            if (!condition.UseStamina(staminaCostRun * Time.fixedDeltaTime))
             {
                 // 스태미너 고갈 → 걷기로 전환
                 SetState(PlayerState.Walk);

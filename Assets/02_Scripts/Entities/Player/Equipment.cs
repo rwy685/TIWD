@@ -5,13 +5,11 @@ public class Equipment : MonoBehaviour
 {
     public EquipItem curEquip;
     public Transform equipParent;
-    private Player player;
     private PlayerController controller;
 
-    void Start()
+    void Awake()
     {
-        player = GameManager.Instance.characterManager.player;
-        controller = player.controller;
+        controller = GetComponent<PlayerController>();
     }
 
     public void EquipNew(ItemData data)
