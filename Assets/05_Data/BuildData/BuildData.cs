@@ -21,7 +21,7 @@ public class BuildData : ScriptableObject
     [Header("Info")]
     public string displayName;
     public string displayDesc;
-    public Image icon;
+    public Sprite icon;
 
     [Header("NeedResource")]
     public List<BuildRequirement> requirements; // 자원 종류타입 여러개 필요
