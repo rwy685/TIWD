@@ -24,14 +24,5 @@ public class Player : MonoBehaviour
         playerCamera = GetComponent<PlayerCamera>();
         condition = GetComponent<PlayerCondition>();
         equipment = GetComponent<Equipment>();
-        GameManager.Instance.characterManager.player = this;
-    }
-
-    private void Start()
-    {
-        if (GameManager.Instance.characterManager.player == null)
-        {
-            GameManager.Instance.characterManager.player = this;
-        }
     }
 }

@@ -887,7 +887,6 @@ GameObject:
   m_Component:
   - component: {fileID: 204169435}
   - component: {fileID: 204169434}
-  - component: {fileID: 204169436}
   m_Layer: 0
   m_Name: CharacterManager
   m_TagString: Untagged
@@ -907,6 +906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f5cdd9bedbccc478a254157388fdf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 0}
+  spawnPoint: {fileID: 0}
   player: {fileID: 0}
 --- !u!4 &204169435
 Transform:
@@ -923,19 +924,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1074940075}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &204169436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 204169433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f5cdd9bedbccc478a254157388fdf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1001 &206111540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2506,17 +2494,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452586621}
   m_CullTransparentMesh: 1
---- !u!114 &493439557 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1101278817768694504, guid: ea3123f69a8ebce4da3957f6887f643f, type: 3}
-  m_PrefabInstance: {fileID: 984819534}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 613074f3358e8704bba9866b36373afa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &520524347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,6 +2722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bbef0b099e2ad47a576af0ec104fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  promptText: {fileID: 0}
   hp: {fileID: 841878256}
   hunger: {fileID: 841878255}
   thirst: {fileID: 841878254}
@@ -8402,7 +8380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0305ad5c5c8c3cc4dbf8cab488542449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpawner: {fileID: 493439557}
   enemySpawner: {fileID: 609035178}
   itemSpawner: {fileID: 0}
 --- !u!1 &1900347307
