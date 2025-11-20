@@ -24,12 +24,13 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     private float defaultStaminaRecover;
     private float defaultThirstConsume;
     private bool isDead = false;
+    
 
     //호출 순서 문제로 Awake에서 Start로 바꿨습니다..
     private void Start()
     {
-        UIManager.Instance.Bind(this);
 
+        UIManager.Instance.Bind(this);
         defaultStaminaRecover = stamina.passiveValue;
         defaultThirstConsume = thirst.passiveValue;
     }
@@ -44,7 +45,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         {
             playerHP.Minus(starvingDamage * Time.deltaTime);
         }
-        else if (hunger.curValue >= 70) // 허기가 70 이상일경우 자동회복
+        else if (hunger.curValue >= 240) // 허기가 240 이상일경우 자동회복
         {
             playerHP.Add(playerHP.passiveValue * Time.deltaTime);
         }
@@ -52,6 +53,16 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         if (thirst.curValue <= 0)
         {
             playerHP.Minus(thirstyDamage * Time.deltaTime);
+        }
+
+        if (GameManager.Instance.isNight == true)
+
+        {
+            thirst.passiveValue = defaultThirstConsume;
+        }
+        else
+        {
+            thirst.passiveValue = defaultThirstConsume * 2;
         }
 
         if (playerHP.curValue <= 0)

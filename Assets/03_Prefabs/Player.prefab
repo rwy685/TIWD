@@ -327,7 +327,7 @@ MonoBehaviour:
   moveSpeed: 5
   defaultSpeed: 5
   runSpeed: 10
-  staminaCostRun: 1
+  staminaCostRun: 5
   jumpPower: 3
   groundLayerMask:
     serializedVersion: 2

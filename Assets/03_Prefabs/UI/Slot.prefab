@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e288a8c127a5b40bf977852fbcf669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iconImage: {fileID: 0}
+  itemText: {fileID: 0}
   inventory: {fileID: 0}
   item: {fileID: 0}
   quantity: 0
@@ -268,7 +270,7 @@ GameObject:
   - component: {fileID: 1593769081758631714}
   - component: {fileID: 1101498728302748019}
   m_Layer: 5
-  m_Name: QuantitiyText
+  m_Name: QuantityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,8 +350,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -40,16 +40,18 @@ public class Inventory : MonoBehaviour
 
         gameObject.SetActive(false);
 
-        itemSlots = new ItemSlot[slotGrid.childCount];
+        //itemSlots = new ItemSlot[slotGrid.childCount];
 
-        for (int i = 0; i < itemSlots.Length; i++)
-        {
-            itemSlots[i] = slotGrid.GetChild(i).GetComponent<ItemSlot>();
-            itemSlots[i].index = i;
-            itemSlots[i].inventory = this;
-        }
+        //for (int i = 0; i < itemSlots.Length; i++)
+        //{
+        //    itemSlots[i] = slotGrid.GetChild(i).GetComponent<ItemSlot>();
+        //    itemSlots[i].index = i;
+        //    itemSlots[i].inventory = this;
+        //}
 
+        //slotGrid기반초기화제거/슬롯자동생성방식사용
         player.inventory = this;
+        
     }
 
     // 인벤토리 테스트용 !! 인벤토리창 활성화/비활성화 함수
