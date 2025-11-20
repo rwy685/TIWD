@@ -5,8 +5,6 @@ using System.Collections;
 
 public class InventoryUI : MonoBehaviour
 {
-    public static InventoryUI Instance;
-
     [Header("References")]
     public Inventory inventory;
     public Transform slotParent;
@@ -24,23 +22,12 @@ public class InventoryUI : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        
     }
 
-    IEnumerator Start()
+    public void Init()
     {
-        while (inventory == null)
-        {
-            if (GameManager.Instance != null &&
-                GameManager.Instance.characterManager != null &&
-                GameManager.Instance.characterManager.player != null)
-            {
-                inventory = GameManager.Instance.characterManager.player.inventory;
-            }
-
-            yield return null;
-        }
-
+        inventory = GameManager.Instance.characterManager.player.inventory;
         GenerateSlots();
         RefreshAllSlots();
     }
@@ -146,7 +133,7 @@ public class InventoryUI : MonoBehaviour
         ItemSlot slot = inventory.itemSlots[index];
 
         // UIManager → inventoryPanel 안에서 InventoryPanelUI 가져오기
-        InventoryPanelUI desc = UIManager.Instance.inventoryPanel.GetComponent<InventoryPanelUI>();
+        InventoryPanelUI desc = UIManager.Instance.inventoryPanel.GetComponentInChildren<InventoryPanelUI>();
         desc.UpdateDescription(slot);
     }
 

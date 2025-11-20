@@ -16,15 +16,18 @@ public class GameManager : MonoBehaviour
     public CharacterManager characterManager;
     public CraftManager craftManager;
     public BuildModeManager buildModeManager; // 건축모드매니저 추가
+    public InventoryUI inventoryUI;
 
     public float curTime = 0f;
     public float nightTime;
     public float endTime;
+    public int day = 1;
     public bool isNight;
 
     private void Start()
     {
         characterManager.Init();
+        inventoryUI.Init();
         spawnManager.ItemSpawn();
     }
 
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
 
         if (curTime >= endTime && isNight)
         {
+            day++;
             isNight = false;
             curTime = 0f;
         }
