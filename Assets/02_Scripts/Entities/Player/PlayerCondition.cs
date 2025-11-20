@@ -45,7 +45,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         {
             playerHP.Minus(starvingDamage * Time.deltaTime);
         }
-        else if (hunger.curValue >= 70) // 허기가 240 이상일경우 자동회복
+        else if (hunger.curValue >= 240) // 허기가 240 이상일경우 자동회복
         {
             playerHP.Add(playerHP.passiveValue * Time.deltaTime);
         }
