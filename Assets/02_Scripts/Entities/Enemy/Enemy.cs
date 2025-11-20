@@ -27,7 +27,11 @@ public class Enemy : MonoBehaviour, IDamagable
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameManager.Instance.characterManager.player;
+        if (GameManager.Instance != null)
+        {
+            player = GameManager.Instance.characterManager.player;
+        }
+        
         animator = GetComponent<Animator>();
     }
 
@@ -43,10 +47,11 @@ public class Enemy : MonoBehaviour, IDamagable
 
     private void Update()
     {
+        UpdateState();
+
         if (player == null) return;
 
         playerDistance = Vector3.Distance(transform.position, player.transform.position);
-        UpdateState();
     }
 
     private void UpdateState()
@@ -127,6 +132,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     private void Chase()
     {
+        if(player == null) return;
         if (playerDistance > enemyData.chaseDistance)
         {
             SetState(EnemyState.Wander);
@@ -174,6 +180,8 @@ public class Enemy : MonoBehaviour, IDamagable
 
     bool IsPlayerInFieldOfView()
     {
+        if(player == null)
+            return false;
         Vector3 directionToPlayer = player.transform.position - transform.position;
         float angle = Vector3.Angle(transform.forward, directionToPlayer);
         return angle < fieldOfView * 0.5f;
