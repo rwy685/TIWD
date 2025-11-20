@@ -32,12 +32,12 @@ public class GameManager : MonoBehaviour
     {
         curTime += Time.deltaTime;
 
-        if (curTime > endTime && isNight)
+        if (curTime >= endTime && isNight)
         {
             isNight = false;
             curTime = 0f;
         }
-        else if (curTime > nightTime && !isNight)
+        else if (curTime >= nightTime && !isNight)
         {
             isNight = true;
             spawnManager.EnemySpawn();

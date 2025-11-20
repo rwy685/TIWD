@@ -36,5 +36,7 @@ public class EnemySpawner : MonoBehaviour
             }
             yield return wait;
         }
+
+        curCount = 0;
     }
 }
