@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        spawnManager.Init();
+        characterManager.Init();
+        spawnManager.ItemSpawn();
     }
 
     private void Update()
