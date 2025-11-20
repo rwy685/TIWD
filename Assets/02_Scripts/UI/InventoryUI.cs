@@ -101,7 +101,7 @@ public class InventoryUI : MonoBehaviour
             slotIcons[i].sprite = slot.item.inventoryIcon;
             slotIcons[i].color = Color.white;
 
-            slotTexts[i].text = slot.quantity > 1 ? slot.quantity.ToString() : "";
+            slotTexts[i].text = slot.quantity > 0 ? slot.quantity.ToString() : "";
         }
     }
 

@@ -227,11 +227,11 @@ public class Inventory : MonoBehaviour
                 {
                     GameManager.Instance.characterManager.player.condition.Heal(type.recoveryAmount);
                 }
-                if (type.consumableType == ConsumableType.Hunger)
+                if (type.consumableType == ConsumableType.Thirst)
                 {
                     GameManager.Instance.characterManager.player.condition.Drink(type.recoveryAmount);
                 }
-                if (type.consumableType == ConsumableType.Thirst)
+                if (type.consumableType == ConsumableType.Hunger)
                 {
                     GameManager.Instance.characterManager.player.condition.Eat(type.recoveryAmount);
                 }

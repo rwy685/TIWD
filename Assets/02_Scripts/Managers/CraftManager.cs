@@ -54,6 +54,7 @@ public class CraftManager : MonoBehaviour
         }
         // 3) 결과 아이템 인벤토리에 추가
         inventory.AddItemToInventory(recipe.resultItem, recipe.resultAmount);
+        GameManager.Instance.inventoryUI.RefreshAllSlots();
         Debug.Log("[DoCraft] 제작 완료: " + recipe.resultItem.displayName);
         return true;
 
