@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class CraftingPanel : MonoBehaviour
 {
     [Header("Recipe List UI")]
-    public Transform recipeButtonList;       // RecipeButton 들의 부모 오브젝트
-    public Button[] recipeButtons;           // 각각의 레시피 버튼
+    public Transform recipeButtonList;
+    public Button[] recipeButtons;
 
     [Header("Recipe Info UI")]
-    public TextMeshProUGUI recipeNameText;      // 선택된 레시피 이름 표시
-    public TextMeshProUGUI[] ingredientTexts;   // IngredientText1~3
-    public Button makeButton;                   // "만들기" 버튼
+    public TextMeshProUGUI recipeNameText;
+    public TextMeshProUGUI[] ingredientTexts;
+    public Button makeButton;
 
     private CraftManager craftManager => GameManager.Instance.craftManager;
     private List<CraftData> craftRecipes => craftManager.GetAllRecipes();
@@ -23,84 +23,88 @@ public class CraftingPanel : MonoBehaviour
     {
         recipeButtons = recipeButtonList.GetComponentsInChildren<Button>();
 
-        // CraftData 리스트 개수와 버튼 수가 동일하다는 가정 하에 설정
         for (int i = 0; i < recipeButtons.Length; i++)
         {
             int index = i;
-            recipeButtons[i].onClick.AddListener(() =>
-            {
-                OnRecipeButtonClicked(index);
-            });
+            recipeButtons[i].onClick.AddListener(() => OnRecipeButtonClicked(index));
 
-            // 버튼에 레시피 이름 표시
             TextMeshProUGUI txt = recipeButtons[i].GetComponentInChildren<TextMeshProUGUI>();
             txt.text = craftRecipes[index].resultItem.displayName;
         }
 
-        // 만들기 버튼 이벤트 설정
         makeButton.onClick.AddListener(OnMakeButtonClicked);
-
-        // 시작할 땐 Info 비워두기
         ClearRecipeInfo();
     }
 
-    // 버튼 클릭 시 레시피 선택
     void OnRecipeButtonClicked(int index)
     {
         selectedRecipe = craftRecipes[index];
         UpdateRecipeInfo(selectedRecipe);
     }
 
-    // Info 업데이트
     void UpdateRecipeInfo(CraftData recipe)
     {
         recipeNameText.text = recipe.resultItem.displayName;
 
-        // 재료 텍스트 초기화
+        // 텍스트 초기화
         for (int i = 0; i < ingredientTexts.Length; i++)
-            ingredientTexts[i].text = "";
-
-        // 재료 표시 (최대 3개 가정)
-        for (int i = 0; i < recipe.ingredients.Length && i < ingredientTexts.Length; i++)
         {
-            string name = recipe.ingredients[i].item.displayName;
-            int amount = recipe.ingredients[i].amount;
-
-            ingredientTexts[i].text = $"{name} x {amount}";
+            ingredientTexts[i].text = "";
+            ingredientTexts[i].color = Color.white;
         }
 
-        makeButton.interactable = true;
+        // 플레이어 인벤토리
+        var inventory = GameManager.Instance.characterManager.player.inventory;
+
+        // 재료 표시 + 회색 처리
+        for (int i = 0; i < recipe.ingredients.Length && i < ingredientTexts.Length; i++)
+        {
+            var ing = recipe.ingredients[i];
+            int have = inventory.Count(ing.item);
+            int need = ing.amount;
+
+            ingredientTexts[i].text = $"{ing.item.displayName}  {have}/{need}";
+
+            // 재료 부족하면 회색 처리
+            if (have < need)
+                ingredientTexts[i].color = Color.gray;
+        }
+
+        // 🔥 제작 가능 여부에 따라 버튼 활성화
+        makeButton.interactable = craftManager.CanCraft(recipe);
     }
 
-    // 만들기 버튼 눌렀을 때
     void OnMakeButtonClicked()
     {
         if (selectedRecipe == null)
             return;
 
-        // 제작 시도
         bool success = craftManager.DoCraft(selectedRecipe);
 
         if (success)
         {
             Debug.Log($"제작 성공: {selectedRecipe.resultItem.displayName}");
-            // 다시 Info 업데이트 (재료 부족 표시 등을 반영)
+
+            // 재료 소모 후 다시 UI 업데이트
             UpdateRecipeInfo(selectedRecipe);
             InventoryUI.Instance.RefreshAllSlots();
         }
         else
         {
             Debug.Log("재료 부족으로 제작 실패");
+            UpdateRecipeInfo(selectedRecipe);
         }
     }
 
-    // Info 초기화
     void ClearRecipeInfo()
     {
         recipeNameText.text = "레시피를 선택하세요";
 
         foreach (var t in ingredientTexts)
+        {
             t.text = "";
+            t.color = Color.white;
+        }
 
         makeButton.interactable = false;
     }

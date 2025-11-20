@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BuildPreviewController
@@ -18,10 +19,9 @@ public class BuildPreviewController
     private float rotateSpeed;
 
     //BuildModeManager에서 설정값을 전달받도록 변경
-    public BuildPreviewController(LayerMask groundMask, LayerMask obstructionMask, float rotateSpeed)
+    public BuildPreviewController(Camera camera, LayerMask groundMask, LayerMask obstructionMask, float rotateSpeed)
     {
-        cam = Camera.main;
-
+        this.cam = camera;
         this.groundMask = groundMask;
         this.obstructionMask = obstructionMask;
         this.rotateSpeed = rotateSpeed;

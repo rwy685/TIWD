@@ -2104,7 +2104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691011238462760813, guid: a7453cde4b8d357428d724a16d17ba27, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3371956065218060917, guid: a7453cde4b8d357428d724a16d17ba27, type: 3}
       propertyPath: m_LocalScale.x
@@ -5266,7 +5266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691011238462760813, guid: a7453cde4b8d357428d724a16d17ba27, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3371956065218060917, guid: a7453cde4b8d357428d724a16d17ba27, type: 3}
       propertyPath: m_LocalScale.x
@@ -9451,7 +9451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691011238462760813, guid: a7453cde4b8d357428d724a16d17ba27, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3371956065218060917, guid: a7453cde4b8d357428d724a16d17ba27, type: 3}
       propertyPath: m_LocalScale.x
@@ -9988,7 +9988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691011238462760813, guid: a7453cde4b8d357428d724a16d17ba27, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3371956065218060917, guid: a7453cde4b8d357428d724a16d17ba27, type: 3}
       propertyPath: m_LocalScale.x
@@ -12068,7 +12068,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 384
   curInteractGameObject: {fileID: 0}
-  promptText: {fileID: 775058062}
 --- !u!1 &4098925316578121105
 GameObject:
   m_ObjectHideFlags: 0
