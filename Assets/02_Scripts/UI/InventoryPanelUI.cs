@@ -58,7 +58,7 @@ public class InventoryPanelUI : MonoBehaviour
                 curSlot.inventory.TryUseItem(item);
                 Debug.Log($"{item.displayName} 사용");
 
-                InventoryUI.Instance.RefreshAllSlots();
+                GameManager.Instance.inventoryUI.RefreshAllSlots();
                 UpdateDescription(curSlot);
                 break;
 
@@ -69,7 +69,7 @@ public class InventoryPanelUI : MonoBehaviour
                     Equipment eq = GameManager.Instance.characterManager.player.GetComponent<Equipment>();
                     eq.EquipNew(item);
 
-                    InventoryUI.Instance.RefreshAllSlots();
+                    GameManager.Instance.inventoryUI.RefreshAllSlots();
                     UpdateDescription(curSlot);
                     break;
                 }
@@ -99,7 +99,7 @@ public class InventoryPanelUI : MonoBehaviour
                 Debug.Log($"{item.displayName} 해제 완료");
             }
 
-            InventoryUI.Instance.RefreshAllSlots();
+            GameManager.Instance.inventoryUI.RefreshAllSlots();
             UpdateDescription(curSlot);
             return;
         }
@@ -114,7 +114,7 @@ public class InventoryPanelUI : MonoBehaviour
 
             Debug.Log($"{item.displayName} 버림");
 
-            InventoryUI.Instance.RefreshAllSlots();
+            GameManager.Instance.inventoryUI.RefreshAllSlots();
             UpdateDescription(curSlot);
         }
     }
@@ -123,7 +123,7 @@ public class InventoryPanelUI : MonoBehaviour
     public void ClearDescription()
     {
         icon.sprite = null;
-        icon.color = new Color(1, 1, 1, 0);
+        //icon.color = new Color(1, 1, 1, 0);
 
         itemName.text = "";
         itemDesc.text = "";

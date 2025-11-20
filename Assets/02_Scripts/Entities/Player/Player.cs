@@ -24,5 +24,6 @@ public class Player : MonoBehaviour
         playerCamera = GetComponent<PlayerCamera>();
         condition = GetComponent<PlayerCondition>();
         equipment = GetComponent<Equipment>();
+        inventory = GetComponent<Inventory>();
     }
 }

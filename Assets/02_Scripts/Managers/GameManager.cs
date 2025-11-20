@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public CharacterManager characterManager;
     public CraftManager craftManager;
     public BuildModeManager buildModeManager; // 건축모드매니저 추가
+    public InventoryUI inventoryUI;
 
     public float curTime = 0f;
     public float nightTime;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         characterManager.Init();
+        inventoryUI.Init();
         spawnManager.ItemSpawn();
     }
 

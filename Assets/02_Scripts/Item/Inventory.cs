@@ -13,48 +13,34 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(WaitForPlayerSpawned());
-
-        InventoryUI.Instance.inventory = this;
-    }
-
-    IEnumerator WaitForPlayerSpawned()
-    {
-        // player가 생성될 때까지 대기
-        while (GameManager.Instance == null ||
-               GameManager.Instance.characterManager == null ||
-               GameManager.Instance.characterManager.player == null)
-        {
-            yield return null; // 한 프레임 대기
-        }
-
-        player = GameManager.Instance.characterManager.player;
-
+        player = GetComponent<Player>();
         Init();
     }
 
+
     void Init()
     {
+
         slotGrid = UIManager.Instance.inventoryPanel.gameObject.transform.Find("Middle_SlotGrid");
 
-        throwPos.position = player.transform.position + player.transform.forward;
+        throwPos = transform;
 
         //player.controller.inventory += Toggle;    // 인벤토리 테스트용 !!
         player.addItem += AddItem;
 
         //gameObject.SetActive(false);
 
-        //itemSlots = new ItemSlot[slotGrid.childCount];
+        itemSlots = new ItemSlot[slotGrid.childCount];
 
-        //for (int i = 0; i < itemSlots.Length; i++)
-        //{
-        //    itemSlots[i] = slotGrid.GetChild(i).GetComponent<ItemSlot>();
-        //    itemSlots[i].index = i;
-        //    itemSlots[i].inventory = this;
-        //}
+        for (int i = 0; i < itemSlots.Length; i++)
+        {
+            itemSlots[i] = slotGrid.GetChild(i).GetComponent<ItemSlot>();
+            itemSlots[i].index = i;
+            itemSlots[i].inventory = this;
+        }
 
         //slotGrid기반초기화제거/슬롯자동생성방식사용
-        player.inventory = this;
+        //player.inventory = this;
         
     }
 
