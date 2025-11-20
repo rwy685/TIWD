@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     private WaitForSeconds wait;
     private Animator animator;
+    private Coroutine coroutine;
 
     public float fieldOfView = 120f;
 
@@ -88,27 +89,40 @@ public class Enemy : MonoBehaviour, IDamagable
         switch (enemyState)
         {
             case EnemyState.Idle:
-                agent.isStopped = true;
+                AgentStopped(true);
                 animator.SetBool("IsWalk", false);
                 break;
 
             case EnemyState.Wander:
                 agent.speed = enemyData.walkSpeed;
-                agent.isStopped = false;
+                AgentStopped(false);
                 animator.SetBool("IsWalk", true);
                 break;
 
             case EnemyState.Chase:
                 agent.speed = enemyData.runSpeed;
-                agent.isStopped = false;
+                AgentStopped(false);
                 animator.SetBool("IsWalk", true);
                 break;
 
             case EnemyState.Attack:
-                agent.isStopped = true;
-                animator.SetTrigger("Attack");
+                coroutine = StartCoroutine(StoppedCoroutine(enemyData.attackRate));
                 break;
         }
+    }
+
+    private IEnumerator StoppedCoroutine(float waitTime)
+    {
+        agent.isStopped = true;
+        yield return new WaitForSeconds(waitTime);
+        coroutine = null;
+    }
+
+    private void AgentStopped(bool isStopped)
+    {
+        if (coroutine != null) return;
+
+        agent.isStopped = isStopped;
     }
 
     private void Chase()
@@ -132,6 +146,7 @@ public class Enemy : MonoBehaviour, IDamagable
         if (Time.time - lastAttackTime < enemyData.attackRate)
             return;
 
+        animator.SetTrigger("Attack");
         lastAttackTime = Time.time;
 
         Ray ray = new Ray(transform.position + Vector3.up * 1f, transform.forward);
