@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -7,7 +10,9 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [Header("=== Condition UI ===")]
+    public TextMeshProUGUI promptText;
+
+    [Header("Condition UI")]
     public Conditions hp;
     public Conditions hunger;
     public Conditions thirst;
@@ -40,6 +45,12 @@ public class UIManager : MonoBehaviour
         condition.thirst = thirst;
         condition.stamina = stamina;
     }
+
+    public void PromptSet(Interaction interaction)
+    {
+        interaction.promptText = promptText;
+    }
+
 
     public void ShowDialogue(string npcName, string[] npcLines)
     {
