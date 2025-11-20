@@ -215,6 +215,25 @@ public class Inventory : MonoBehaviour
     // 아이템 1개 소비
     public bool ConsumeOne(ItemData item)
     {
+        if (item.recoveryData != null)
+        {
+            foreach (var type in item.recoveryData)
+            {
+                if (type.consumableType == ConsumableType.Health)
+                {
+                    GameManager.Instance.characterManager.player.condition.Heal(type.recoveryAmount);
+                }
+                if (type.consumableType == ConsumableType.Hunger)
+                {
+                    GameManager.Instance.characterManager.player.condition.Drink(type.recoveryAmount);
+                }
+                if (type.consumableType == ConsumableType.Thirst)
+                {
+                    GameManager.Instance.characterManager.player.condition.Eat(type.recoveryAmount);
+                }
+            }
+        }
+
         return ConsumeMultiple(item, 1);
     }
 
