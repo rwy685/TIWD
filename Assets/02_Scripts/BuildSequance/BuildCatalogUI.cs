@@ -24,19 +24,12 @@ public class BuildCatalogUI : MonoBehaviour
         foreach (var data in catalog.buildList)
         {
             GameObject btnObj = Instantiate(buttonPrefab, buttonContainer);
-            Button btn = btnObj.GetComponent<Button>();
-            btn.onClick.AddListener(() => OnClickSelectBuild(data));
 
-            //  UI 표시(아이콘/텍스트)
-            var text = btnObj.GetComponentInChildren<TMPro.TMP_Text>();
-            if (text != null)
-                text.text = data.displayName;
-
-            var img = btnObj.GetComponentInChildren<Image>();
-            if (img != null)
-                img.sprite = data.icon;
+            var btn = btnObj.GetComponent<BuildCatalogButton>();
+            btn.Initialize(data, this); // BuildData 전달
         }
     }
+
 
     public void Open()
     {
