@@ -72,11 +72,13 @@ public class PlayerController : MonoBehaviour
     // 걷기 → 뛰기 상태 전환
     public void StartRun()
     {
+        condition.RecoverOff();
         SetState(PlayerState.Run);
     }
 
     public void StopRun()
     {
+        condition.RecoverOn();
         SetState(PlayerState.Walk);
     }
 
@@ -106,6 +108,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!condition.UseStamina(staminaCostRun * Time.fixedDeltaTime))
             {
+                condition.RecoverOn();
                 // 스태미너 고갈 → 걷기로 전환
                 SetState(PlayerState.Walk);
             }
