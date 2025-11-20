@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         // 달리기 상태에서 스태미너를 소모
         if (playerState == PlayerState.Run && curMovementInput.magnitude > 0)
         {
-            if (condition.UseStamina(staminaCostRun * Time.fixedDeltaTime))
+            if (!condition.UseStamina(staminaCostRun * Time.fixedDeltaTime))
             {
                 // 스태미너 고갈 → 걷기로 전환
                 SetState(PlayerState.Walk);
