@@ -1,23 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    public TextMeshProUGUI promptText;
+    private void Awake()
+    {
+        Instance = this;
+    }
 
-    [Header("Condition UI")]
-    public Conditions hp;
-    public Conditions hunger;
-    public Conditions thirst;
-    public Conditions stamina;
+    // ================================================
+    // === Condition UI (HP / Hunger / Thirst / Stamina)
+    // ================================================
+    [Header("=== Condition UI ===")]
+    public Conditions HP;
+    public Conditions Hunger;
+    public Conditions Thirst;
+    public Conditions Stamina;
 
+    public void Bind(PlayerCondition condition)
+    {
+        condition.playerHP = HP;
+        condition.hunger = Hunger;
+        condition.thirst = Thirst;
+        condition.stamina = Stamina;
+    }
+
+
+    // ================================================
+    // =============== Dialogue UI =====================
+    // ================================================
     [Header("=== Dialogue UI ===")]
     public GameObject dialoguePanel;
     public TMP_Text nameText;
@@ -28,72 +42,147 @@ public class UIManager : MonoBehaviour
     private string[] lines;
     private int index;
 
-    public event Action OnDialogueClosed;
+    // NPCController가 구독하는 이벤트
+    public event System.Action OnDialogueClosed;
 
-    private void Awake()
+    public bool IsDialogueOpen => dialoguePanel != null && dialoguePanel.activeSelf;
+
+
+    // ---- 외부에서 대화 시작 ----
+    public void ShowDialogue(string npcName, string[] dialogueLines)
     {
-        Instance = this;
-
-        if (dialoguePanel != null)
-            dialoguePanel.SetActive(false);
+        StartDialogue(npcName, dialogueLines);
     }
 
-    public void Bind(PlayerCondition condition)
+    public void StartDialogue(string npcName, string[] dialogueLines)
     {
-        condition.playerHP = hp;
-        condition.hunger = hunger;
-        condition.thirst = thirst;
-        condition.stamina = stamina;
-    }
-
-    public void PromptSet(Interaction interaction)
-    {
-        interaction.promptText = promptText;
-    }
-
-
-    public void ShowDialogue(string npcName, string[] npcLines)
-    {
-        dialoguePanel.SetActive(true);
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        lines = dialogueLines;
+        index = 0;
 
         nameText.text = npcName;
-
-        lines = npcLines;
-        index = 0;
         dialogueText.text = lines[index];
 
-        nextBtn.onClick.RemoveAllListeners();
-        closeBtn.onClick.RemoveAllListeners();
+        dialoguePanel.SetActive(true);
 
-        nextBtn.onClick.AddListener(NextLine);
-        closeBtn.onClick.AddListener(CloseDialogue);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
-    private void NextLine()
+    public void NextDialogue()
     {
         index++;
 
-        if (index >= lines.Length)
+        if (index < lines.Length)
+        {
+            dialogueText.text = lines[index];
+        }
+        else
         {
             CloseDialogue();
-            return;
         }
-
-        dialogueText.text = lines[index];
     }
 
     public void CloseDialogue()
     {
         dialoguePanel.SetActive(false);
 
-        OnDialogueClosed?.Invoke();
-
-        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        // NPCController.cs가 구독한 이벤트 호출
+        OnDialogueClosed?.Invoke();
     }
 
-    public bool IsDialogueOpen => dialoguePanel.activeSelf;
+
+    // ================================================
+    // ======== Inventory / Crafting Window ============
+    // ================================================
+    [Header("=== Inventory / Crafting UI ===")]
+    public GameObject inventoryWindow;   // InventoryCraftingWindow
+    public GameObject inventoryPanel;    // InventoryPanel
+    public GameObject craftingPanel;     // CraftingPanel
+
+    public bool IsInventoryOpen => inventoryWindow != null && inventoryWindow.activeSelf;
+
+
+    // ---- 입력 처리 (I / ESC) ----
+    private void Update()
+    {
+        // I 키로 인벤토리 열기/닫기
+        if (Input.GetKeyDown(KeyCode.I))
+            ToggleInventory();
+
+        // ESC로 닫기
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (IsInventoryOpen)
+                CloseInventory();
+            else if (IsDialogueOpen)
+                CloseDialogue();
+        }
+    }
+
+
+    // ---- Inventory Open / Close ----
+    public void ToggleInventory()
+    {
+        if (IsDialogueOpen) return; // 대화 중엔 열리지 않음
+
+        if (IsInventoryOpen)
+            CloseInventory();
+        else
+            OpenInventory();
+    }
+
+    public void OpenInventory()
+    {
+        inventoryWindow.SetActive(true);
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void CloseInventory()
+    {
+        inventoryWindow.SetActive(false);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+
+    // ---- 탭 전환 ----  
+    public void OpenInventoryTab()
+    {
+        inventoryPanel.SetActive(true);
+        craftingPanel.SetActive(false);
+    }
+
+    public void OpenCraftingTab()
+    {
+        inventoryPanel.SetActive(false);
+        craftingPanel.SetActive(true);
+    }
+
+
+    // ================================================
+    // === 다른 UI와 충돌 체크 ========================
+    // ================================================
+    public bool IsAnyUIOpen()
+    {
+        return IsDialogueOpen || IsInventoryOpen;
+    }
+
+    [Header("=== Prompt UI ===")]
+    public GameObject promptPanel;
+    public TMP_Text promptText;
+
+    public void PromptSet(bool active, string text = "")
+    {
+        if (promptPanel != null)
+            promptPanel.SetActive(active);
+
+        if (promptText != null)
+            promptText.text = text;
+    }
 }

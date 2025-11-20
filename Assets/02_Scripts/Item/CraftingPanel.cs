@@ -86,6 +86,7 @@ public class CraftingPanel : MonoBehaviour
             Debug.Log($"제작 성공: {selectedRecipe.resultItem.displayName}");
             // 다시 Info 업데이트 (재료 부족 표시 등을 반영)
             UpdateRecipeInfo(selectedRecipe);
+            InventoryUI.Instance.RefreshAllSlots();
         }
         else
         {
