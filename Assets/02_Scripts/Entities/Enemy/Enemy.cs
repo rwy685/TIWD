@@ -2,10 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public interface IDamagable
-{
-    void TakePhysicalDamage(float damage);
-}
 public class Enemy : MonoBehaviour, IDamagable
 {
     [SerializeField] private EnemyData enemyData;
