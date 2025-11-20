@@ -170,7 +170,8 @@ public class Inventory : MonoBehaviour
                 slot.quantity += addCount;
                 amount -= addCount;
 
-                // TODO: UI 갱신
+                // UI 갱신
+                slot.SetUI();
             }
         }
 
@@ -188,7 +189,8 @@ public class Inventory : MonoBehaviour
 
             amount -= putCount;
 
-            // TODO: UI 갱신
+            // UI 갱신
+            emptySlot.SetUI();
         }
 
         return true;
