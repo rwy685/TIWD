@@ -34,7 +34,7 @@ public class InventoryPanelUI : MonoBehaviour
 
         // USE 버튼 세팅
         useButton.gameObject.SetActive(true);
-        useButton.GetComponentInChildren<TMP_Text>().text = "사용";
+        //useButton.GetComponentInChildren<TMP_Text>().text = "사용";
         useButton.onClick.RemoveAllListeners();
         useButton.onClick.AddListener(OnUseButtonClicked);
 

@@ -134,6 +134,7 @@ public class InventoryUI : MonoBehaviour
 
         // UIManager → inventoryPanel 안에서 InventoryPanelUI 가져오기
         InventoryPanelUI desc = UIManager.Instance.inventoryPanel.GetComponentInChildren<InventoryPanelUI>();
+        desc.UpdateDescription(slot);
     }
 
 
