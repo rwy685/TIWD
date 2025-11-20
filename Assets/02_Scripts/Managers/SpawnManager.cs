@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
 
     public void ItemSpawn()
     {
-        //itemSpawner.Init();
+        itemSpawner.Init();
     }
 
     public void EnemySpawn()
