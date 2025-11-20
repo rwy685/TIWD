@@ -20,12 +20,13 @@ public class PlayerController : MonoBehaviour
     private PlayerCondition condition;
 
     [HideInInspector] public bool canLook = true;
-    public Equipment equipment; // Player가 가지고 있는 Equipment 컴포넌트
+    private Equipment equipment; // Player가 가지고 있는 Equipment 컴포넌트
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         condition = GetComponent<PlayerCondition>();
+        equipment = GetComponent<Equipment>();
     }
 
     private void Start()
