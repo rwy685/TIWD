@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class BuildModeUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject buildModePanel;
+
+    public void ShowBuildModePanel()
     {
-        
+        if (buildModePanel != null)
+            buildModePanel.SetActive(true);
+
+        // 빌드모드에서는 커서 잠금 유지
+       
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HideBuildModePanel()
     {
-        
+        if (buildModePanel != null)
+            buildModePanel.SetActive(false);
+
+        // Basic 모드로 돌아갈 때 InputSystemManager가 원래대로 함
     }
 }
+

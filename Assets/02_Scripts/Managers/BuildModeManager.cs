@@ -17,6 +17,7 @@ public class BuildModeManager : MonoBehaviour
 
     public BuildCatalogUI catalogUI;  // 직접 연결(임시) 추후 UI매니저 통해서 연결
     public BuildCatalog buildCatalog;
+    public BuildModeUI buildModeUI;
     public bool IsCatalogOpen { get; private set; }
 
     private void Start()
@@ -43,8 +44,7 @@ public class BuildModeManager : MonoBehaviour
         IsBuildingMode = true;
 
         // [UI] 빌드 모드 패널 켜기
-        //if (UIManager.Instance != null)
-        //    UIManager.Instance.OpenBuildUI();
+        buildModeUI.ShowBuildModePanel();
     }
 
     public void SelectBuildData(BuildData data)
@@ -117,6 +117,8 @@ public class BuildModeManager : MonoBehaviour
         }
 
         previewController.DestroyPreview();
+
+        buildModeUI.HideBuildModePanel(); // 빌드모드 패널 끄기
 
         currentBuildData = null;
     }
