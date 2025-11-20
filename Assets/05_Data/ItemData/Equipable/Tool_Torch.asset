@@ -16,12 +16,10 @@ MonoBehaviour:
   displayDesc: "\uBD88\uC744 \uBD99\uC5EC \uC2DC\uC57C\uB97C \uD655\uBCF4\uD560 \uC218
     \uC788\uB2E4."
   itemType: 0
-  inventoryIcon: {fileID: 0}
+  inventoryIcon: {fileID: 21300000, guid: 0ae0de2f9dda7ee45984c4c5ad24fb8f, type: 3}
   itemPrefab: {fileID: 7703927499795945089, guid: 1a0b954a8aaff1841b05a43268bee0fb, type: 3}
   equipableType: 2
-  attackPower: 0
-  gatherPower: 0
-  equipPrefab: {fileID: 7703927499795945089, guid: b4c6e01f9b9bf734ea68d330b54e93f2, type: 3}
+  equipPrefab: {fileID: 5964505880750669061, guid: b4c6e01f9b9bf734ea68d330b54e93f2, type: 3}
   recoveryData: []
   isStackable: 0
   maxStack: 1
