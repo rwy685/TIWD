@@ -7,9 +7,17 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    [Header("Time UI")]
+    public TMP_Text timeText;
+    public TMP_Text dayText;
+
+    private DayNightCycle dayNightCycle;
+
     private void Awake()
     {
         Instance = this;
+
+        dayNightCycle = FindObjectOfType<DayNightCycle>();
     }
 
     // ================================================
@@ -128,6 +136,29 @@ public class UIManager : MonoBehaviour
         //    else if (IsDialogueOpen)
         //        CloseDialogue();
         //}
+        {
+            UpdateTimeUI();
+        }
+
+        void UpdateTimeUI()
+        {
+            if (dayNightCycle == null) return;
+
+            float t = dayNightCycle.time;      // 낮/밤 비율
+            int day = GameManager.Instance.day;  // 날짜는 GameManager
+
+            // 시간을 실제 시간으로 변환
+            float totalMinutes = t * 24f * 60f;
+            int hour = Mathf.FloorToInt(totalMinutes / 60f);
+            int minute = Mathf.FloorToInt(totalMinutes % 60);
+
+            string ampm = (hour < 12) ? "AM" : "PM";
+            int displayHour = hour % 12;
+            if (displayHour == 0) displayHour = 12;
+
+            timeText.text = $"{ampm} {displayHour:D2}:{minute:D2}";
+            dayText.text = $"DAY {day}";
+        }
     }
 
     public void ToggleInventory()
