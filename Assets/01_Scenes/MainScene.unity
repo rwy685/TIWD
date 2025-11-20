@@ -9400,9 +9400,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8243983364757335349, guid: e4cd60d77c6a46640b2f101255a187a1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2100356407}
+    - target: {fileID: 8243983364757335349, guid: e4cd60d77c6a46640b2f101255a187a1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseDialogue
+      objectReference: {fileID: 0}
     - target: {fileID: 8533138347858778727, guid: e4cd60d77c6a46640b2f101255a187a1, type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656660703281168802, guid: e4cd60d77c6a46640b2f101255a187a1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2100356407}
+    - target: {fileID: 8656660703281168802, guid: e4cd60d77c6a46640b2f101255a187a1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextDialogue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
