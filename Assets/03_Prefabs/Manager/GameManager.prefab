@@ -49,6 +49,6 @@ MonoBehaviour:
   craftManager: {fileID: 0}
   buildModeManager: {fileID: 0}
   curTime: 0
-  nightTime: 10
-  endTime: 20
+  nightTime: 20
+  endTime: 40
   isNight: 0
