@@ -33,8 +33,8 @@ public class BuildModeManager : MonoBehaviour
         IsBuildingMode = true;
 
         // [UI] 빌드 모드 패널 켜기
-        if (UIManager.Instance != null)
-            UIManager.Instance.OpenBuildUI();
+        //if (UIManager.Instance != null)
+        //    UIManager.Instance.OpenBuildUI();
     }
 
     public void SelectBuildData(BuildData data)
@@ -68,7 +68,9 @@ public class BuildModeManager : MonoBehaviour
     {
         IsBuildingMode = false;
 
-        //[UI 가이드] : 빌드 모드 패널 비활성화 /  BuildCatalog SO를 UI도 끄기 
+        // [UI] 빌드 모드 패널 끄기
+        //if (UIManager.Instance != null)
+        //    UIManager.Instance.CloseBuildUI();
 
         previewController.DestroyPreview();
 
