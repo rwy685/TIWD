@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
         //player.controller.inventory += Toggle;    // 인벤토리 테스트용 !!
         player.addItem += AddItem;
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
 
         //itemSlots = new ItemSlot[slotGrid.childCount];
 

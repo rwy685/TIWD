@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3876411850340496043}
   - component: {fileID: 2833241878932980469}
   - component: {fileID: 6237644162204288034}
+  - component: {fileID: 4869197425739912366}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -260,6 +261,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 85d6c3af-df7a-47b0-90f6-2719738f16a9
     m_ActionName: Player/BuildDismantle[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6362409653053552656}
+        m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+        m_MethodName: OnBuildCatalogOpen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a82fcc31-9276-43f5-8183-7436e225a943
+    m_ActionName: Player/BuildCatalog[/Keyboard/v]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -388,7 +405,7 @@ MonoBehaviour:
   maxCheckDistance: 3
   layerMask:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 2432
   curInteractGameObject: {fileID: 0}
 --- !u!136 &3876411850340496043
 CapsuleCollider:
@@ -445,6 +462,21 @@ MonoBehaviour:
   thirst: {fileID: 0}
   starvingDamage: 1
   thirstyDamage: 1
+--- !u!114 &4869197425739912366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210404942003993468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f4e2a9504625e4ebc8fb2748af24f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  slotGrid: {fileID: 0}
+  itemSlots: []
 --- !u!1 &1779242415623750111
 GameObject:
   m_ObjectHideFlags: 0
