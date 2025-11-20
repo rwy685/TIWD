@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Campfire : MonoBehaviour
+public class Campfire : MonoBehaviour, IInteractable
 {
     public GameObject fireEffect;
     public Light fireLight;
+    public BuildData buildData;
 
     private bool isActive = false;
 
@@ -23,5 +24,15 @@ public class Campfire : MonoBehaviour
         fireLight.enabled = isActive;
 
     }
-    
+
+    public string GetInteractPrompt()
+    {
+        string prompt = $"{buildData.displayName}\n{buildData.displayDesc}";
+        return prompt;
+    }
+
+    public void OnInteract()
+    {
+        ToggleFire();
+    }
 }

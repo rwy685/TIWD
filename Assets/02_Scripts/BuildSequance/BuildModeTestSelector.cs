@@ -12,24 +12,21 @@ public class BuildModeTestSelector : MonoBehaviour
         buildMode = GameManager.Instance.buildModeManager;
     }
 
-    private void Update()
+    void Update()
     {
         if (!buildMode.IsBuildingMode) return;
-        if (buildCatalog == null || buildCatalog.buildList.Count == 0) return;
 
-        // 1번 키 -> 첫 번째 BuildData
         if (Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
             SelectByIndex(0);
-        }
 
-        // 2번 키 -> 두 번째 BuildData
-        if (Keyboard.current.digit2Key.wasPressedThisFrame && buildCatalog.buildList.Count > 1)
-        {
+        if (Keyboard.current.digit2Key.wasPressedThisFrame)
             SelectByIndex(1);
-        }
 
-        // 필요하면 3,4,... 도 추가
+        if (Keyboard.current.digit3Key.wasPressedThisFrame)
+            SelectByIndex(2);
+
+        if (Keyboard.current.digit4Key.wasPressedThisFrame)
+            SelectByIndex(3);
     }
 
     void SelectByIndex(int index)

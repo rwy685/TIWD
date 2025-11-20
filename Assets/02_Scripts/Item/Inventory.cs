@@ -2,17 +2,28 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    // 플레이어 캐싱용 변수
+    [SerializeField] private Player player;
+
+    // ----- TODO : InventoryUI.cs 로 옮겨 가시면 됩니다! -----
     public Transform slotGrid;      // ItemSlot 들이 배치될 그리드 UI
     public ItemSlot[] itemSlots;   // 인벤토리 내의 모든 아이템 슬롯
+    // -------------------------------------------------------
 
     private Transform throwPos;    // 아이템을 버릴 위치
 
     void Start()
     {
-        throwPos = GameManager.Instance.characterManager.player.transform;
+        player = GameManager.Instance.characterManager.player;
 
-        GameManager.Instance.characterManager.player.controller.inventory += Toggle;
-        GameManager.Instance.characterManager.player.addItem += AddItem;
+        throwPos = player.transform;
+
+        // ----- TODO : InventoryUI.cs 로 옮겨 가시면 됩니다! -----
+        // Start() 에서 등록해주세요! 추후에 player.inventoty 로 수정하시면 될 것 같습니다!
+        player.controller.inventory += Toggle;  
+        // -------------------------------------------------------
+
+        player.addItem += AddItem;
 
         gameObject.SetActive(false);
 
@@ -25,10 +36,11 @@ public class Inventory : MonoBehaviour
             itemSlots[i].inventory = this;
         }
 
-        GameManager.Instance.characterManager.player.inventory = this;
+        player.inventory = this;
 
     }
 
+    // ----- TODO : InventoryUI.cs 로 옮겨 가시면 됩니다! -----
     // 인벤토리창 활성화/비활성화 함수
     public void Toggle()
     {
@@ -41,11 +53,12 @@ public class Inventory : MonoBehaviour
             gameObject.SetActive(true);
         }
     }
+    // -------------------------------------------------------
 
     // 획득한 아이템을 인벤토리에 추가하는 함수
     void AddItem()
     {
-        ItemData curItem = GameManager.Instance.characterManager.player.acquiredItem;
+        ItemData curItem = player.acquiredItem;
 
         // Case #1. 현재 획득한 아이템이 중첩 가능한 아이템인 경우
         if (curItem.isStackable)
@@ -57,7 +70,7 @@ public class Inventory : MonoBehaviour
                 curSlot.quantity++;
                 // 테스트용 UI 갱신
                 curSlot.SetUI();
-                GameManager.Instance.characterManager.player.acquiredItem = null;
+                player.acquiredItem = null;
                 return;
             }
         }
@@ -72,14 +85,14 @@ public class Inventory : MonoBehaviour
             // TODO : 아이템 슬롯 UI 갱신
             // 테스트용 UI 갱신
             emptySlot.SetUI();
-            GameManager.Instance.characterManager.player.acquiredItem = null;
+            player.acquiredItem = null;
             return;
         }
 
         // Case #3. 인벤토리가 가득 찬 경우
         ThrowItem(curItem);
 
-        GameManager.Instance.characterManager.player.acquiredItem = null;
+        player.acquiredItem = null;
     }
 
     // 인벤토리 내에 이미 존재하는 아이템 슬롯을 반환하는 함수
