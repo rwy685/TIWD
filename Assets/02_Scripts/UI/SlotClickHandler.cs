@@ -6,6 +6,6 @@ public class SlotClickHandler : MonoBehaviour
 
     public void Click()
     {
-        InventoryUI.Instance.OnSlotClicked(index);
+        GameManager.Instance.inventoryUI.OnSlotClicked(index);
     }
 }
