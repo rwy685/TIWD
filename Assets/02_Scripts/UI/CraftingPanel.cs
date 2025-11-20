@@ -116,7 +116,7 @@ public class CraftingPanel : MonoBehaviour
     // =====================================
     private void ClearRecipeInfo()
     {
-        recipeNameText.text = "";
+        //recipeNameText.text = "";
 
         foreach (var txt in ingredientTexts)
             txt.text = "";
