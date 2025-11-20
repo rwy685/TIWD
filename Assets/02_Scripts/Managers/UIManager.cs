@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class UIManager : MonoBehaviour
     // =============== Dialogue UI =====================
     // ================================================
     [Header("=== Dialogue UI ===")]
+    public CanvasGroup dialogueGroup;
     public GameObject dialoguePanel;
     public TMP_Text nameText;
     public TMP_Text dialogueText;
@@ -63,6 +65,11 @@ public class UIManager : MonoBehaviour
         dialogueText.text = lines[index];
 
         dialoguePanel.SetActive(true);
+        dialogueGroup.alpha = 0;
+        dialogueGroup.transform.localScale = Vector3.one * 0.8f;
+
+        dialogueGroup.DOFade(1, 0.25f);
+        dialogueGroup.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -84,13 +91,18 @@ public class UIManager : MonoBehaviour
 
     public void CloseDialogue()
     {
-        dialoguePanel.SetActive(false);
+        // 닫히는 애니메이션 (페이드 + 축소)
+        dialogueGroup.DOFade(0, 0.2f);
+        dialogueGroup.transform.DOScale(0.8f, 0.2f).OnComplete(() =>
+        {
+            dialoguePanel.SetActive(false);
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
 
-        // NPCController.cs가 구독한 이벤트 호출
-        OnDialogueClosed?.Invoke();
+            // NPCController.cs로 이벤트 전달
+            OnDialogueClosed?.Invoke();
+        });
     }
 
 

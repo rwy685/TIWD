@@ -697,6 +697,7 @@ GameObject:
   - component: {fileID: 8096376815030303638}
   - component: {fileID: 4910813008248754293}
   - component: {fileID: 223723500781490920}
+  - component: {fileID: 5826027305406466191}
   m_Layer: 5
   m_Name: NPCDialoguePanel
   m_TagString: Untagged
@@ -763,3 +764,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &5826027305406466191
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7630999016980999951}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
