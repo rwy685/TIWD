@@ -17,8 +17,14 @@ public class BuildModeManager : MonoBehaviour
 
     private void Start()
     {
-        var playerCam = GameManager.Instance.characterManager.player.playerCamera.GetComponentInChildren<Camera>();
-        previewController = new BuildPreviewController(playerCam, groundMask, obstructionMask, rotateSpeed);
+        Camera cam = Camera.main;
+        if (cam == null)
+        {
+            var player = GameManager.Instance.characterManager.player;
+            if (player != null)
+                cam = player.GetComponentInChildren<Camera>();
+        }
+        previewController = new BuildPreviewController(cam, groundMask, obstructionMask, rotateSpeed);
         resourceHandler = new BuildResourceHandler();
         placementSystem = new BuildPlacementSystem();
         
@@ -122,9 +128,9 @@ public class BuildModeManager : MonoBehaviour
 
         //프리뷰 제거
         previewController.DestroyPreview();
-        currentBuildData = null;
 
         Debug.Log($"[Build] '{currentBuildData.displayName}' 설치 완료");
+        currentBuildData = null;
 
     }
 
