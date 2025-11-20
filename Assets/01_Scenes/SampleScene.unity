@@ -96,7 +96,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: df8fa04018dd9104b8038af988c223b6, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -3403,6 +3403,7 @@ MonoBehaviour:
   - {fileID: 1484556975}
   - {fileID: 1459732990}
   - {fileID: 1783688059}
+  recipeButtonLabels: []
   recipeNameText: {fileID: 1591668104}
   ingredientTexts:
   - {fileID: 710649466}
@@ -4089,7 +4090,7 @@ MonoBehaviour:
   dialogueText: {fileID: 0}
   nextBtn: {fileID: 0}
   closeBtn: {fileID: 0}
-  inventoryWindow: {fileID: 0}
+  inventorycraftingWindow: {fileID: 0}
   inventoryPanel: {fileID: 0}
   craftingPanel: {fileID: 0}
   promptPanel: {fileID: 81468630}
