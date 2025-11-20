@@ -22,10 +22,10 @@ public class UIManager : MonoBehaviour
 
     public void Bind(PlayerCondition condition)
     {
-        HP = condition.playerHP;
-        Hunger = condition.hunger;
-        Thirst = condition.thirst;
-        Stamina = condition.stamina;
+        condition.playerHP = HP;
+        condition.hunger = Hunger;
+        condition.thirst = Thirst;
+        condition.stamina = Stamina;
     }
 
 
