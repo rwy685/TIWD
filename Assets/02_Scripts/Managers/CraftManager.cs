@@ -1,14 +1,26 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class CraftManager : MonoBehaviour
 {
     [SerializeField] private List<CraftData> craftRecipes;
 
     private Inventory inventory;
-    
-    void Start()
+
+    private IEnumerator Start()
     {
+        // Player가 생성될 때까지 대기
+        while (GameManager.Instance == null ||
+               GameManager.Instance.characterManager == null ||
+               GameManager.Instance.characterManager.player == null ||
+               GameManager.Instance.characterManager.player.inventory == null)
+        {
+            yield return null;
+        }
+
+        // Player 준비 완료 후 인벤토리 연결
         inventory = GameManager.Instance.characterManager.player.inventory;
     }
 

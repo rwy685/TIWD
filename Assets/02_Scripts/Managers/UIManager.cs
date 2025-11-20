@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
     public bool IsDialogueOpen => dialoguePanel != null && dialoguePanel.activeSelf;
 
 
-    // ---- 외부에서 대화 시작 ----
+    // 외부에서 대화 시작
     public void ShowDialogue(string npcName, string[] dialogueLines)
     {
         StartDialogue(npcName, dialogueLines);
@@ -94,36 +94,30 @@ public class UIManager : MonoBehaviour
     }
 
 
-    // ================================================
-    // ======== Inventory / Crafting Window ============
-    // ================================================
     [Header("=== Inventory / Crafting UI ===")]
-    public GameObject inventoryWindow;   // InventoryCraftingWindow
+    public GameObject inventorycraftingWindow;   // InventoryCraftingWindow
     public GameObject inventoryPanel;    // InventoryPanel
     public GameObject craftingPanel;     // CraftingPanel
 
-    public bool IsInventoryOpen => inventoryWindow != null && inventoryWindow.activeSelf;
+    public bool IsInventoryOpen => inventorycraftingWindow != null && inventorycraftingWindow.activeSelf;
 
-
-    // ---- 입력 처리 (I / ESC) ----
-    private void Update()
+    private void Start()
     {
-        // I 키로 인벤토리 열기/닫기
-        if (Input.GetKeyDown(KeyCode.I))
-            ToggleInventory();
-
-        // ESC로 닫기
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (IsInventoryOpen)
-                CloseInventory();
-            else if (IsDialogueOpen)
-                CloseDialogue();
-        }
+        GameManager.Instance.characterManager.player.controller.inventory += ToggleInventory;
     }
 
+    private void Update()
+    {
+        //// ESC로 닫기
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    if (IsInventoryOpen)
+        //        CloseInventory();
+        //    else if (IsDialogueOpen)
+        //        CloseDialogue();
+        //}
+    }
 
-    // ---- Inventory Open / Close ----
     public void ToggleInventory()
     {
         if (IsDialogueOpen) return; // 대화 중엔 열리지 않음
@@ -136,7 +130,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenInventory()
     {
-        inventoryWindow.SetActive(true);
+        inventorycraftingWindow.SetActive(true);
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -144,14 +138,14 @@ public class UIManager : MonoBehaviour
 
     public void CloseInventory()
     {
-        inventoryWindow.SetActive(false);
+        inventorycraftingWindow.SetActive(false);
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
 
-    // ---- 탭 전환 ----  
+    // 탭 전환
     public void OpenInventoryTab()
     {
         inventoryPanel.SetActive(true);
@@ -164,10 +158,7 @@ public class UIManager : MonoBehaviour
         craftingPanel.SetActive(true);
     }
 
-
-    // ================================================
-    // === 다른 UI와 충돌 체크 ========================
-    // ================================================
+    // 다른 UI와 충돌 체크
     public bool IsAnyUIOpen()
     {
         return IsDialogueOpen || IsInventoryOpen;
