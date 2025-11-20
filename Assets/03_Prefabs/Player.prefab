@@ -244,6 +244,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a04afbee-e691-41ef-a8dc-c533400f1c07
     m_ActionName: Player/BuildPlace[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6362409653053552656}
+        m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+        m_MethodName: OnBuildDismantle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 85d6c3af-df7a-47b0-90f6-2719738f16a9
+    m_ActionName: Player/BuildDismantle[/Keyboard/c]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -317,7 +333,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   canLook: 1
-  equipment: {fileID: 0}
 --- !u!114 &5094301009916031229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +390,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 384
   curInteractGameObject: {fileID: 0}
-  promptText: {fileID: 0}
 --- !u!136 &3876411850340496043
 CapsuleCollider:
   m_ObjectHideFlags: 0

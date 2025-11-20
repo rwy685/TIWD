@@ -5196,7 +5196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireEffect: {fileID: 851804824767619065}
   fireLight: {fileID: 5260546199315134794}
-  buildData: {fileID: 0}
+  buildData: {fileID: 11400000, guid: f9c10072254c88f4f9a888ae635599c9, type: 2}
 --- !u!54 &957871151445117652
 Rigidbody:
   m_ObjectHideFlags: 0

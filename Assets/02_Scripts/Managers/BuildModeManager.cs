@@ -26,7 +26,7 @@ public class BuildModeManager : MonoBehaviour
         }
         previewController = new BuildPreviewController(cam, groundMask, obstructionMask, rotateSpeed);
         resourceHandler = new BuildResourceHandler();
-        placementSystem = new BuildPlacementSystem();
+        placementSystem = new BuildPlacementSystem(cam);
         
     }
 
@@ -135,7 +135,17 @@ public class BuildModeManager : MonoBehaviour
     }
 
     // =====================================================
-    // 7) 회전 기능
+    //  설치된 건축물 파괴
+    // =====================================================
+
+    public void TryDismantle()
+    {
+        placementSystem.DismantleStructure();
+    }
+
+
+    // =====================================================
+    //  회전
     // =====================================================
     public void RotateLeft()
     {
@@ -148,6 +158,7 @@ public class BuildModeManager : MonoBehaviour
         if (!IsBuildingMode) return;
         previewController.Rotate(1);
     }
+
 }
 
 
