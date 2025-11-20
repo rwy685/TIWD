@@ -55,14 +55,14 @@ public class PlayerCondition : MonoBehaviour, IDamagable
             playerHP.Minus(thirstyDamage * Time.deltaTime);
         }
 
-        if (GameManager.Instance.isNight != true)
+        if (GameManager.Instance.isNight == true)
 
         {
-            defaultThirstConsume *= 2f;
+            thirst.passiveValue = defaultThirstConsume;
         }
         else
         {
-            defaultThirstConsume = thirst.passiveValue;
+            thirst.passiveValue = defaultThirstConsume * 2;
         }
 
         if (playerHP.curValue <= 0)
