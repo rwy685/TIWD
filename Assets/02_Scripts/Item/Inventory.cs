@@ -9,8 +9,6 @@ public class Inventory : MonoBehaviour
     public Transform slotGrid;      // ItemSlot 들이 배치될 그리드 UI
     public ItemSlot[] itemSlots;   // 인벤토리 내의 모든 아이템 슬롯
 
-    //private Transform throwPos;    // 아이템을 버릴 위치
-
     void Start()
     {
         player = GetComponent<Player>();
@@ -24,12 +22,8 @@ public class Inventory : MonoBehaviour
         slotGrid = UIManager.Instance.inventoryPanel.gameObject.transform.Find("Middle_SlotGrid");
 
         Vector3 throwPivot = transform.position + Vector3.up * 1.0f + transform.forward * 1.0f;
-        //throwPos = transform;
 
-        //player.controller.inventory += Toggle;    // 인벤토리 테스트용 !!
         player.addItem += AddItem;
-
-        //gameObject.SetActive(false);
 
         itemSlots = new ItemSlot[slotGrid.childCount];
 
@@ -39,10 +33,6 @@ public class Inventory : MonoBehaviour
             itemSlots[i].index = i;
             itemSlots[i].inventory = this;
         }
-
-        //slotGrid기반초기화제거/슬롯자동생성방식사용
-        //player.inventory = this;
-        
     }
 
 
@@ -59,7 +49,8 @@ public class Inventory : MonoBehaviour
             if (curSlot != null)
             {
                 curSlot.quantity++;
-                // 테스트용 UI 갱신
+
+                // UI 갱신
                 curSlot.SetUI();
                 player.acquiredItem = null;
                 return;
@@ -73,8 +64,8 @@ public class Inventory : MonoBehaviour
         {
             emptySlot.item = curItem;
             emptySlot.quantity = 1;
-            // TODO : 아이템 슬롯 UI 갱신
-            // 테스트용 UI 갱신
+
+            // UI 갱신
             emptySlot.SetUI();
             player.acquiredItem = null;
             return;
@@ -132,8 +123,8 @@ public class Inventory : MonoBehaviour
         return total >= amount;
     }
 
-    // 인벤토리에서 아이템 소비 (건축용)
 
+    // 인벤토리에서 아이템 소비 (건축용)
     public bool ConsumeMultiple(ItemData item, int amount)
     {
         int remaining = amount;
@@ -185,7 +176,7 @@ public class Inventory : MonoBehaviour
         {
             ItemSlot emptySlot = GetEmptySlot();
             if (emptySlot == null)
-                return false; // 인벤토리가 가득 차서 일부는 못 넣음 (필요하면 땅에 드랍도 가능)
+                return false; // 인벤토리가 가득 차서 일부는 못 넣음
 
             int putCount = Mathf.Min(item.isStackable ? item.maxStack : 1, amount);
 
@@ -215,9 +206,8 @@ public class Inventory : MonoBehaviour
         return total;
     }
 
-    //
+
     // 소비아이템 사용
-    //
 
     // 아이템 1개 소비
     public bool ConsumeOne(ItemData item)
@@ -261,6 +251,4 @@ public class Inventory : MonoBehaviour
         // 3) 실제 소비
         return ConsumeOne(item);
     }
-
-
 }

@@ -8,19 +8,9 @@ public class CraftManager : MonoBehaviour
     [SerializeField] private List<CraftData> craftRecipes;
 
     private Inventory inventory;
-
-    private IEnumerator Start()
+    public void Init()
     {
-        // Player가 생성될 때까지 대기
-        while (GameManager.Instance == null ||
-               GameManager.Instance.characterManager == null ||
-               GameManager.Instance.characterManager.player == null ||
-               GameManager.Instance.characterManager.player.inventory == null)
-        {
-            yield return null;
-        }
-
-        // Player 준비 완료 후 인벤토리 연결
+        // 인벤토리 연결
         inventory = GameManager.Instance.characterManager.player.inventory;
     }
 
@@ -57,7 +47,5 @@ public class CraftManager : MonoBehaviour
         GameManager.Instance.inventoryUI.RefreshAllSlots();
         Debug.Log("[DoCraft] 제작 완료: " + recipe.resultItem.displayName);
         return true;
-
-        GameManager.Instance.inventoryUI.RefreshAllSlots();
     }
 }

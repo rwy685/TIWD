@@ -10,9 +10,6 @@ public class ItemSlot : MonoBehaviour
 
     public Inventory inventory;
 
-    // TODO :GameManager.Instance.InventoryUI 작성 후, 윗줄 지워주시고, 주석 해제해주세요!
-    //public GameManager.Instance.InventoryUI inventoryUI;
-
     public ItemData item;   // 현재 슬롯에 들어있는 아이템 정보
     public int quantity;    // 현재 슬롯에 들어있는 아이템의 개수
     public int index;       // 슬롯의 인덱스 번호
