@@ -9,18 +9,9 @@ public class CraftManager : MonoBehaviour
 
     private Inventory inventory;
 
-    private IEnumerator Start()
+    void Start()
     {
-        // Player가 생성될 때까지 대기
-        while (GameManager.Instance == null ||
-               GameManager.Instance.characterManager == null ||
-               GameManager.Instance.characterManager.player == null ||
-               GameManager.Instance.characterManager.player.inventory == null)
-        {
-            yield return null;
-        }
-
-        // Player 준비 완료 후 인벤토리 연결
+        // 인벤토리 연결
         inventory = GameManager.Instance.characterManager.player.inventory;
     }
 
