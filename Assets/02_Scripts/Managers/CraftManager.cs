@@ -57,7 +57,5 @@ public class CraftManager : MonoBehaviour
         GameManager.Instance.inventoryUI.RefreshAllSlots();
         Debug.Log("[DoCraft] 제작 완료: " + recipe.resultItem.displayName);
         return true;
-
-        GameManager.Instance.inventoryUI.RefreshAllSlots();
     }
 }
