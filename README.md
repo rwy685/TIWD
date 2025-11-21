@@ -1,10 +1,10 @@
 # 프로젝트 이름 TIWD
 
 ## 📖 목차
-1. [프로젝트 소개](https://github.com/rwy685/TIWD/edit/Develop/README.md#%E2%80%8D-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C)
-2. [주요기능](https://github.com/rwy685/TIWD/edit/Develop/README.md#-%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5)
-3. [개발기간](https://github.com/rwy685/TIWD/edit/Develop/README.md#%EF%B8%8F-%EA%B0%9C%EB%B0%9C%EA%B8%B0%EA%B0%84)
-4. [사용한 무료 에셋](https://github.com/rwy685/TIWD/edit/Develop/README.md#asset-from-unity)
+1. [프로젝트 소개](#프로젝트-소개)
+2. [주요기능](#주요기능)
+3. [개발기간](#개발기간)
+4. [사용한 무료 에셋](#asset-from-unity)
 5. [프로젝트 파일 구조](#프로젝트-파일-구조)
 
 
