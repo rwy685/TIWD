@@ -14195,6 +14195,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4867949490162795277, guid: 89c66d638d253f0429c50b1d26af0f02, type: 3}
+      propertyPath: endTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867949490162795277, guid: 89c66d638d253f0429c50b1d26af0f02, type: 3}
+      propertyPath: nightTime
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867949490162795277, guid: 89c66d638d253f0429c50b1d26af0f02, type: 3}
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 1593614761}

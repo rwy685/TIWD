@@ -104,6 +104,7 @@ public class Enemy : MonoBehaviour, IDamagable
                 break;
 
             case EnemyState.Attack:
+                animator.SetBool("IsWalk", false);
                 coroutine = StartCoroutine(StoppedCoroutine(enemyData.attackRate));
                 break;
         }
@@ -114,6 +115,7 @@ public class Enemy : MonoBehaviour, IDamagable
         agent.isStopped = true;
         yield return new WaitForSeconds(waitTime);
         coroutine = null;
+        agent.isStopped = false;
     }
 
     private void AgentStopped(bool isStopped)
