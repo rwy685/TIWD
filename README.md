@@ -96,431 +96,431 @@ Dotween
 
 ## 프로젝트 파일 구조
 
-📦Assets
- ┣ 📂01_Scenes
- ┃ ┣ 📂MainScene
- ┃ ┃ ┣ 📜NavMesh.asset
- ┃ ┃ ┗ 📜NavMesh.asset.meta
- ┃ ┣ 📂TitleScene
- ┃ ┃ ┣ 📜NavMesh.asset
- ┃ ┃ ┗ 📜NavMesh.asset.meta
- ┣ 📂02_Scripts
- ┃ ┣ 📂BuildSequance
- ┃ ┃ ┣ 📂Buildings
- ┃ ┃ ┃ ┣ 📜Campfire.cs
- ┃ ┃ ┃ ┣ 📜Campfire.cs.meta
- ┃ ┃ ┃ ┣ 📜Fence.cs
- ┃ ┃ ┃ ┣ 📜Fence.cs.meta
- ┃ ┃ ┃ ┣ 📜Rock.cs
- ┃ ┃ ┃ ┣ 📜Rock.cs.meta
- ┃ ┃ ┃ ┣ 📜Tent.cs
- ┃ ┃ ┃ ┗ 📜Tent.cs.meta
- ┃ ┃ ┣ 📜BuildCatalogButton.cs
- ┃ ┃ ┣ 📜BuildCatalogButton.cs.meta
- ┃ ┃ ┣ 📜BuildCatalogPanel.cs
- ┃ ┃ ┣ 📜BuildCatalogPanel.cs.meta
- ┃ ┃ ┣ 📜BuildCatalogUI.cs
- ┃ ┃ ┣ 📜BuildCatalogUI.cs.meta
- ┃ ┃ ┣ 📜BuildCompleteObject.cs
- ┃ ┃ ┣ 📜BuildCompleteObject.cs.meta
- ┃ ┃ ┣ 📜Buildings.meta
- ┃ ┃ ┣ 📜BuildModeController.cs
- ┃ ┃ ┣ 📜BuildModeController.cs.meta
- ┃ ┃ ┣ 📜BuildModeTestSelector.cs
- ┃ ┃ ┣ 📜BuildModeTestSelector.cs.meta
- ┃ ┃ ┣ 📜BuildModeUI.cs
- ┃ ┃ ┣ 📜BuildModeUI.cs.meta
- ┃ ┃ ┣ 📜BuildPlacementSystem.cs
- ┃ ┃ ┣ 📜BuildPlacementSystem.cs.meta
- ┃ ┃ ┣ 📜BuildPreviewController.cs
- ┃ ┃ ┣ 📜BuildPreviewController.cs.meta
- ┃ ┃ ┣ 📜BuildResourceHandler.cs
- ┃ ┃ ┗ 📜BuildResourceHandler.cs.meta
- ┃ ┣ 📂Entities
- ┃ ┃ ┣ 📂Enemy
- ┃ ┃ ┃ ┣ 📜Enemy.cs
- ┃ ┃ ┃ ┗ 📜Enemy.cs.meta
- ┃ ┃ ┣ 📂NPC
- ┃ ┃ ┃ ┣ 📜NPCController.cs
- ┃ ┃ ┃ ┗ 📜NPCController.cs.meta
- ┃ ┃ ┣ 📂Player
- ┃ ┃ ┃ ┣ 📜Conditions.cs
- ┃ ┃ ┃ ┣ 📜Conditions.cs.meta
- ┃ ┃ ┃ ┣ 📜Equipment.cs
- ┃ ┃ ┃ ┣ 📜Equipment.cs.meta
- ┃ ┃ ┃ ┣ 📜Interaction.cs
- ┃ ┃ ┃ ┣ 📜Interaction.cs.meta
- ┃ ┃ ┃ ┣ 📜Player.cs
- ┃ ┃ ┃ ┣ 📜Player.cs.meta
- ┃ ┃ ┃ ┣ 📜PlayerCamera.cs
- ┃ ┃ ┃ ┣ 📜PlayerCamera.cs.meta
- ┃ ┃ ┃ ┣ 📜PlayerCondition.cs
- ┃ ┃ ┃ ┣ 📜PlayerCondition.cs.meta
- ┃ ┃ ┃ ┣ 📜PlayerController.cs
- ┃ ┃ ┃ ┣ 📜PlayerController.cs.meta
- ┃ ┃ ┃ ┣ 📜UIConditions.cs
- ┃ ┃ ┃ ┗ 📜UIConditions.cs.meta
- ┃ ┃ ┣ 📜Enemy.meta
- ┃ ┃ ┣ 📜NPC.meta
- ┃ ┃ ┗ 📜Player.meta
- ┃ ┣ 📂Item
- ┃ ┃ ┣ 📜EquipItem.cs
- ┃ ┃ ┣ 📜EquipItem.cs.meta
- ┃ ┃ ┣ 📜GatherableObject.cs
- ┃ ┃ ┣ 📜GatherableObject.cs.meta
- ┃ ┃ ┣ 📜Inventory.cs
- ┃ ┃ ┣ 📜Inventory.cs.meta
- ┃ ┃ ┣ 📜ItemObject.cs
- ┃ ┃ ┣ 📜ItemObject.cs.meta
- ┃ ┃ ┣ 📜ItemSlot.cs
- ┃ ┃ ┣ 📜ItemSlot.cs.meta
- ┃ ┃ ┣ 📜SupplyCrate.cs
- ┃ ┃ ┗ 📜SupplyCrate.cs.meta
- ┃ ┣ 📂Managers
- ┃ ┃ ┣ 📜AudioManager.cs
- ┃ ┃ ┣ 📜AudioManager.cs.meta
- ┃ ┃ ┣ 📜BuildModeManager.cs
- ┃ ┃ ┣ 📜BuildModeManager.cs.meta
- ┃ ┃ ┣ 📜CharacterManager.cs
- ┃ ┃ ┣ 📜CharacterManager.cs.meta
- ┃ ┃ ┣ 📜CraftManager.cs
- ┃ ┃ ┣ 📜CraftManager.cs.meta
- ┃ ┃ ┣ 📜GameManager.cs
- ┃ ┃ ┣ 📜GameManager.cs.meta
- ┃ ┃ ┣ 📜InputSystemManager.cs
- ┃ ┃ ┣ 📜InputSystemManager.cs.meta
- ┃ ┃ ┣ 📜SpawnManager.cs
- ┃ ┃ ┣ 📜SpawnManager.cs.meta
- ┃ ┃ ┣ 📜TitleManager.cs
- ┃ ┃ ┣ 📜TitleManager.cs.meta
- ┃ ┃ ┣ 📜UIManager.cs
- ┃ ┃ ┗ 📜UIManager.cs.meta
- ┃ ┣ 📂Spawners
- ┃ ┃ ┣ 📜EnemySpawner.cs
- ┃ ┃ ┣ 📜EnemySpawner.cs.meta
- ┃ ┃ ┣ 📜ItemSpawner.cs
- ┃ ┃ ┗ 📜ItemSpawner.cs.meta
- ┃ ┣ 📂UI
- ┃ ┃ ┣ 📜CraftingPanel.cs
- ┃ ┃ ┣ 📜CraftingPanel.cs.meta
- ┃ ┃ ┣ 📜InventoryPanelUI.cs
- ┃ ┃ ┣ 📜InventoryPanelUI.cs.meta
- ┃ ┃ ┣ 📜InventoryUI.cs
- ┃ ┃ ┣ 📜InventoryUI.cs.meta
- ┃ ┃ ┣ 📜SlotClickHandler.cs
- ┃ ┃ ┗ 📜SlotClickHandler.cs.meta
- ┃ ┣ 📜BuildSequance.meta
- ┃ ┣ 📜DayNightCycle.cs
- ┃ ┣ 📜DayNightCycle.cs.meta
- ┃ ┣ 📜Entities.meta
- ┃ ┣ 📜Enum.cs
- ┃ ┣ 📜Enum.cs.meta
- ┃ ┣ 📜Interface.cs
- ┃ ┣ 📜Interface.cs.meta
- ┃ ┣ 📜Item.meta
- ┃ ┣ 📜Managers.meta
- ┃ ┣ 📜Spawners.meta
- ┃ ┗ 📜UI.meta
- ┣ 📂03_Prefabs
- ┃ ┣ 📂Buildings
- ┃ ┃ ┣ 📂completePrefab
- ┃ ┃ ┃ ┣ 📜CampFire.prefab
- ┃ ┃ ┃ ┣ 📜CampFire.prefab.meta
- ┃ ┃ ┃ ┣ 📜Fence.prefab
- ┃ ┃ ┃ ┣ 📜Fence.prefab.meta
- ┃ ┃ ┃ ┣ 📜Rock.prefab
- ┃ ┃ ┃ ┣ 📜Rock.prefab.meta
- ┃ ┃ ┃ ┣ 📜Tent.prefab
- ┃ ┃ ┃ ┗ 📜Tent.prefab.meta
- ┃ ┃ ┣ 📂previewPrefab
- ┃ ┃ ┃ ┣ 📜preview_Campfire.prefab
- ┃ ┃ ┃ ┣ 📜preview_Campfire.prefab.meta
- ┃ ┃ ┃ ┣ 📜preview_Fence.prefab
- ┃ ┃ ┃ ┣ 📜preview_Fence.prefab.meta
- ┃ ┃ ┃ ┣ 📜preview_Rock.prefab
- ┃ ┃ ┃ ┣ 📜preview_Rock.prefab.meta
- ┃ ┃ ┃ ┣ 📜preview_Tent.prefab
- ┃ ┃ ┃ ┗ 📜preview_Tent.prefab.meta
- ┃ ┃ ┣ 📜Button_BuildData.prefab
- ┃ ┃ ┣ 📜Button_BuildData.prefab.meta
- ┃ ┃ ┣ 📜completePrefab.meta
- ┃ ┃ ┗ 📜previewPrefab.meta
- ┃ ┣ 📂Enemy
- ┃ ┃ ┣ 📜Skeleton_Mage.prefab
- ┃ ┃ ┣ 📜Skeleton_Mage.prefab.meta
- ┃ ┃ ┣ 📜Skeleton_Minion.prefab
- ┃ ┃ ┗ 📜Skeleton_Minion.prefab.meta
- ┃ ┣ 📂Item
- ┃ ┃ ┣ 📂@originalFBX
- ┃ ┃ ┣ 📂Consumable
- ┃ ┃ ┃ ┣ 📜Apple.prefab
- ┃ ┃ ┃ ┣ 📜Apple.prefab.meta
- ┃ ┃ ┃ ┣ 📜FirstAid.prefab
- ┃ ┃ ┃ ┣ 📜FirstAid.prefab.meta
- ┃ ┃ ┃ ┣ 📜Meat.prefab
- ┃ ┃ ┃ ┣ 📜Meat.prefab.meta
- ┃ ┃ ┃ ┣ 📜PlasticBottle.prefab
- ┃ ┃ ┃ ┗ 📜PlasticBottle.prefab.meta
- ┃ ┃ ┣ 📂Equipable
- ┃ ┃ ┃ ┣ 📂EquipPrefab
- ┃ ┃ ┃ ┃ ┣ 📜E_BaseballBat_Nails.prefab
- ┃ ┃ ┃ ┃ ┣ 📜E_BaseballBat_Nails.prefab.meta
- ┃ ┃ ┃ ┃ ┣ 📜E_Machete.prefab
- ┃ ┃ ┃ ┃ ┣ 📜E_Machete.prefab.meta
- ┃ ┃ ┃ ┃ ┣ 📜E_Stone Axe.prefab
- ┃ ┃ ┃ ┃ ┣ 📜E_Stone Axe.prefab.meta
- ┃ ┃ ┃ ┃ ┣ 📜E_Torch.prefab
- ┃ ┃ ┃ ┃ ┣ 📜E_Torch.prefab.meta
- ┃ ┃ ┃ ┃ ┣ 📜E_Wooden Axe.prefab
- ┃ ┃ ┃ ┃ ┣ 📜E_Wooden Axe.prefab.meta
- ┃ ┃ ┃ ┃ ┣ 📜E_Wooden Club.prefab
- ┃ ┃ ┃ ┃ ┗ 📜E_Wooden Club.prefab.meta
- ┃ ┃ ┃ ┣ 📜BaseballBat_Nails.prefab
- ┃ ┃ ┃ ┣ 📜BaseballBat_Nails.prefab.meta
- ┃ ┃ ┃ ┣ 📜EquipPrefab.meta
- ┃ ┃ ┃ ┣ 📜Machete.prefab
- ┃ ┃ ┃ ┣ 📜Machete.prefab.meta
- ┃ ┃ ┃ ┣ 📜Stone Axe.prefab
- ┃ ┃ ┃ ┣ 📜Stone Axe.prefab.meta
- ┃ ┃ ┃ ┣ 📜Torch.prefab
- ┃ ┃ ┃ ┣ 📜Torch.prefab.meta
- ┃ ┃ ┃ ┣ 📜Wooden Axe.prefab
- ┃ ┃ ┃ ┣ 📜Wooden Axe.prefab.meta
- ┃ ┃ ┃ ┣ 📜Wooden Club.prefab
- ┃ ┃ ┃ ┗ 📜Wooden Club.prefab.meta
- ┃ ┃ ┣ 📂GatherableObject
- ┃ ┃ ┃ ┣ 📂Crate
- ┃ ┃ ┃ ┃ ┣ 📜Crate texture.png
- ┃ ┃ ┃ ┃ ┣ 📜Crate texture.png.meta
- ┃ ┃ ┃ ┃ ┣ 📜crate.fbx
- ┃ ┃ ┃ ┃ ┣ 📜crate.fbx.meta
- ┃ ┃ ┃ ┃ ┣ 📜crateMat.mat
- ┃ ┃ ┃ ┃ ┣ 📜crateMat.mat.meta
- ┃ ┃ ┃ ┃ ┣ 📜SupplyCrate.prefab
- ┃ ┃ ┃ ┃ ┗ 📜SupplyCrate.prefab.meta
- ┃ ┃ ┃ ┣ 📜Crate.meta
- ┃ ┃ ┃ ┣ 📜Rock002.prefab
- ┃ ┃ ┃ ┣ 📜Rock002.prefab.meta
- ┃ ┃ ┃ ┣ 📜Tree_01.prefab
- ┃ ┃ ┃ ┗ 📜Tree_01.prefab.meta
- ┃ ┃ ┣ 📂Resource
- ┃ ┃ ┃ ┣ 📜Branch.prefab
- ┃ ┃ ┃ ┣ 📜Branch.prefab.meta
- ┃ ┃ ┃ ┣ 📜Flint.prefab
- ┃ ┃ ┃ ┣ 📜Flint.prefab.meta
- ┃ ┃ ┃ ┣ 📜Stick.prefab
- ┃ ┃ ┃ ┣ 📜Stick.prefab.meta
- ┃ ┃ ┃ ┣ 📜Stone.prefab
- ┃ ┃ ┃ ┗ 📜Stone.prefab.meta
- ┃ ┃ ┣ 📜@originalFBX.meta
- ┃ ┃ ┣ 📜Consumable.meta
- ┃ ┃ ┣ 📜Equipable.meta
- ┃ ┃ ┣ 📜GatherableObject.meta
- ┃ ┃ ┗ 📜Resource.meta
- ┃ ┣ 📂Manager
- ┃ ┃ ┣ 📜AudioManager.prefab
- ┃ ┃ ┣ 📜AudioManager.prefab.meta
- ┃ ┃ ┣ 📜CraftManager.prefab
- ┃ ┃ ┣ 📜CraftManager.prefab.meta
- ┃ ┃ ┣ 📜GameManager.prefab
- ┃ ┃ ┗ 📜GameManager.prefab.meta
- ┃ ┣ 📂Spawner
- ┃ ┃ ┣ 📜EnemySpawner.prefab
- ┃ ┃ ┣ 📜EnemySpawner.prefab.meta
- ┃ ┃ ┣ 📜ItemSpawner.prefab
- ┃ ┃ ┗ 📜ItemSpawner.prefab.meta
- ┃ ┣ 📂UI
- ┃ ┃ ┣ 📜ConditionalPanel.prefab
- ┃ ┃ ┣ 📜ConditionalPanel.prefab.meta
- ┃ ┃ ┣ 📜InventoryCraftingWindow.prefab
- ┃ ┃ ┣ 📜InventoryCraftingWindow.prefab.meta
- ┃ ┃ ┣ 📜NPCDialoguePanel.prefab
- ┃ ┃ ┣ 📜NPCDialoguePanel.prefab.meta
- ┃ ┃ ┣ 📜RecipeButton.prefab
- ┃ ┃ ┣ 📜RecipeButton.prefab.meta
- ┃ ┃ ┣ 📜Slot.prefab
- ┃ ┃ ┗ 📜Slot.prefab.meta
- ┃ ┣ 📜Buildings.meta
- ┃ ┣ 📜DayAndNight.prefab
- ┃ ┣ 📜DayAndNight.prefab.meta
- ┃ ┣ 📜Enemy.meta
- ┃ ┣ 📜Item.meta
- ┃ ┣ 📜Manager.meta
- ┃ ┣ 📜Player.prefab
- ┃ ┣ 📜Player.prefab.meta
- ┃ ┣ 📜Spawner.meta
- ┃ ┗ 📜UI.meta
- ┣ 📂04_Animations
- ┃ ┣ 📂Enemy
- ┃ ┃ ┣ 📜Skeleton_Mage.controller
- ┃ ┃ ┣ 📜Skeleton_Mage.controller.meta
- ┃ ┃ ┣ 📜Skeleton_Minion.controller
- ┃ ┃ ┗ 📜Skeleton_Minion.controller.meta
- ┃ ┣ 📂Equip
- ┃ ┃ ┣ 📂BaseballBat
- ┃ ┃ ┃ ┣ 📜Attack.anim
- ┃ ┃ ┃ ┣ 📜Attack.anim.meta
- ┃ ┃ ┃ ┣ 📜BaseballBat.controller
- ┃ ┃ ┃ ┣ 📜BaseballBat.controller.meta
- ┃ ┃ ┃ ┣ 📜Idle.anim
- ┃ ┃ ┃ ┗ 📜Idle.anim.meta
- ┃ ┃ ┣ 📂Machete
- ┃ ┃ ┃ ┣ 📜Attack.anim
- ┃ ┃ ┃ ┣ 📜Attack.anim.meta
- ┃ ┃ ┃ ┣ 📜Idle.anim
- ┃ ┃ ┃ ┣ 📜Idle.anim.meta
- ┃ ┃ ┃ ┣ 📜Machete.controller
- ┃ ┃ ┃ ┗ 📜Machete.controller.meta
- ┃ ┃ ┣ 📂StoneAxe
- ┃ ┃ ┃ ┣ 📜Attack.anim
- ┃ ┃ ┃ ┣ 📜Attack.anim.meta
- ┃ ┃ ┃ ┣ 📜Idle.anim
- ┃ ┃ ┃ ┣ 📜Idle.anim.meta
- ┃ ┃ ┃ ┣ 📜StoneAxe.controller
- ┃ ┃ ┃ ┗ 📜StoneAxe.controller.meta
- ┃ ┃ ┣ 📂Torch
- ┃ ┃ ┃ ┣ 📜Attack.anim
- ┃ ┃ ┃ ┣ 📜Attack.anim.meta
- ┃ ┃ ┃ ┣ 📜Idle.anim
- ┃ ┃ ┃ ┣ 📜Idle.anim.meta
- ┃ ┃ ┃ ┣ 📜Torch.controller
- ┃ ┃ ┃ ┗ 📜Torch.controller.meta
- ┃ ┃ ┣ 📂WoodenAxe
- ┃ ┃ ┃ ┣ 📜Attack.anim
- ┃ ┃ ┃ ┣ 📜Attack.anim.meta
- ┃ ┃ ┃ ┣ 📜Idle.anim
- ┃ ┃ ┃ ┣ 📜Idle.anim.meta
- ┃ ┃ ┃ ┣ 📜WoodenAxe.controller
- ┃ ┃ ┃ ┗ 📜WoodenAxe.controller.meta
- ┃ ┃ ┣ 📂WoodenClub
- ┃ ┃ ┃ ┣ 📜Attack.anim
- ┃ ┃ ┃ ┣ 📜Attack.anim.meta
- ┃ ┃ ┃ ┣ 📜Idle.anim
- ┃ ┃ ┃ ┣ 📜Idle.anim.meta
- ┃ ┃ ┃ ┣ 📜WoodenClub.controller
- ┃ ┃ ┃ ┗ 📜WoodenClub.controller.meta
- ┃ ┃ ┣ 📜BaseballBat.meta
- ┃ ┃ ┣ 📜Machete.meta
- ┃ ┃ ┣ 📜StoneAxe.meta
- ┃ ┃ ┣ 📜Torch.meta
- ┃ ┃ ┣ 📜WoodenAxe.meta
- ┃ ┃ ┗ 📜WoodenClub.meta
- ┃ ┣ 📂NPC
- ┃ ┃ ┣ 📜NPC_Controller.controller
- ┃ ┃ ┗ 📜NPC_Controller.controller.meta
- ┃ ┣ 📜Enemy.meta
- ┃ ┣ 📜Equip.meta
- ┃ ┗ 📜NPC.meta
- ┣ 📂05_Data
- ┃ ┣ 📂BuildData
- ┃ ┃ ┣ 📂BuildCatalog
- ┃ ┃ ┃ ┣ 📜BuildCatalog.asset
- ┃ ┃ ┃ ┣ 📜BuildCatalog.asset.meta
- ┃ ┃ ┃ ┣ 📜BuildCatalog.cs
- ┃ ┃ ┃ ┗ 📜BuildCatalog.cs.meta
- ┃ ┃ ┣ 📜BuildCatalog.meta
- ┃ ┃ ┣ 📜BuildData.cs
- ┃ ┃ ┣ 📜BuildData.cs.meta
- ┃ ┃ ┣ 📜BuildData_CampFire.asset
- ┃ ┃ ┣ 📜BuildData_CampFire.asset.meta
- ┃ ┃ ┣ 📜BuildData_Fence.asset
- ┃ ┃ ┣ 📜BuildData_Fence.asset.meta
- ┃ ┃ ┣ 📜BuildData_Rock.asset
- ┃ ┃ ┣ 📜BuildData_Rock.asset.meta
- ┃ ┃ ┣ 📜BuildData_Tent.asset
- ┃ ┃ ┗ 📜BuildData_Tent.asset.meta
- ┃ ┣ 📂CraftData
- ┃ ┃ ┣ 📜CraftData.cs
- ┃ ┃ ┣ 📜CraftData.cs.meta
- ┃ ┃ ┣ 📜Craft_StoneAxe.asset
- ┃ ┃ ┣ 📜Craft_StoneAxe.asset.meta
- ┃ ┃ ┣ 📜Craft_Torch.asset
- ┃ ┃ ┣ 📜Craft_Torch.asset.meta
- ┃ ┃ ┣ 📜Craft_WoodenAxe.asset
- ┃ ┃ ┗ 📜Craft_WoodenAxe.asset.meta
- ┃ ┣ 📂DropData
- ┃ ┃ ┣ 📂GatherableObject
- ┃ ┃ ┃ ┣ 📜Drop_Branch.asset
- ┃ ┃ ┃ ┣ 📜Drop_Branch.asset.meta
- ┃ ┃ ┃ ┣ 📜Drop_Flint.asset
- ┃ ┃ ┃ ┣ 📜Drop_Flint.asset.meta
- ┃ ┃ ┃ ┣ 📜Drop_Stick.asset
- ┃ ┃ ┃ ┣ 📜Drop_Stick.asset.meta
- ┃ ┃ ┃ ┣ 📜Drop_Stone.asset
- ┃ ┃ ┃ ┗ 📜Drop_Stone.asset.meta
- ┃ ┃ ┣ 📂SupplyCrate
- ┃ ┃ ┃ ┣ 📜Drop_Apple.asset
- ┃ ┃ ┃ ┣ 📜Drop_Apple.asset.meta
- ┃ ┃ ┃ ┣ 📜Drop_Bat.asset
- ┃ ┃ ┃ ┣ 📜Drop_Bat.asset.meta
- ┃ ┃ ┃ ┣ 📜Drop_FirstAid.asset
- ┃ ┃ ┃ ┣ 📜Drop_FirstAid.asset.meta
- ┃ ┃ ┃ ┣ 📜Drop_Machete.asset
- ┃ ┃ ┃ ┣ 📜Drop_Machete.asset.meta
- ┃ ┃ ┃ ┣ 📜Drop_Meat.asset
- ┃ ┃ ┃ ┣ 📜Drop_Meat.asset.meta
- ┃ ┃ ┃ ┣ 📜Drop_PlasticBottle.asset
- ┃ ┃ ┃ ┗ 📜Drop_PlasticBottle.asset.meta
- ┃ ┃ ┣ 📜DropData.cs
- ┃ ┃ ┣ 📜DropData.cs.meta
- ┃ ┃ ┣ 📜GatherableObject.meta
- ┃ ┃ ┗ 📜SupplyCrate.meta
- ┃ ┣ 📂Enemy
- ┃ ┃ ┣ 📂Data
- ┃ ┃ ┃ ┣ 📜SkeletonMage.asset
- ┃ ┃ ┃ ┣ 📜SkeletonMage.asset.meta
- ┃ ┃ ┃ ┣ 📜SkeletonMinion.asset
- ┃ ┃ ┃ ┗ 📜SkeletonMinion.asset.meta
- ┃ ┃ ┣ 📜Data.meta
- ┃ ┃ ┣ 📜EnemyData.cs
- ┃ ┃ ┗ 📜EnemyData.cs.meta
- ┃ ┣ 📂ItemData
- ┃ ┃ ┣ 📂Consumable
- ┃ ┃ ┃ ┣ 📜Consumable_Apple.asset
- ┃ ┃ ┃ ┣ 📜Consumable_Apple.asset.meta
- ┃ ┃ ┃ ┣ 📜Consumable_BottledWater.asset
- ┃ ┃ ┃ ┣ 📜Consumable_BottledWater.asset.meta
- ┃ ┃ ┃ ┣ 📜Consumable_FirstAid.asset
- ┃ ┃ ┃ ┣ 📜Consumable_FirstAid.asset.meta
- ┃ ┃ ┃ ┣ 📜Consumable_Meat.asset
- ┃ ┃ ┃ ┗ 📜Consumable_Meat.asset.meta
- ┃ ┃ ┣ 📂Equipable
- ┃ ┃ ┃ ┣ 📜Tool_StoneAxe.asset
- ┃ ┃ ┃ ┣ 📜Tool_StoneAxe.asset.meta
- ┃ ┃ ┃ ┣ 📜Tool_Torch.asset
- ┃ ┃ ┃ ┣ 📜Tool_Torch.asset.meta
- ┃ ┃ ┃ ┣ 📜Tool_WoodenAxe.asset
- ┃ ┃ ┃ ┣ 📜Tool_WoodenAxe.asset.meta
- ┃ ┃ ┃ ┣ 📜Tool_WoodenClub.asset
- ┃ ┃ ┃ ┣ 📜Tool_WoodenClub.asset.meta
- ┃ ┃ ┃ ┣ 📜Weapon_Bat.asset
- ┃ ┃ ┃ ┣ 📜Weapon_Bat.asset.meta
- ┃ ┃ ┃ ┣ 📜Weapon_Machete.asset
- ┃ ┃ ┃ ┗ 📜Weapon_Machete.asset.meta
- ┃ ┃ ┣ 📂Resource
- ┃ ┃ ┃ ┣ 📜Resource_Branch.asset
- ┃ ┃ ┃ ┣ 📜Resource_Branch.asset.meta
- ┃ ┃ ┃ ┣ 📜Resource_Flint.asset
- ┃ ┃ ┃ ┣ 📜Resource_Flint.asset.meta
- ┃ ┃ ┃ ┣ 📜Resource_Stick.asset
- ┃ ┃ ┃ ┣ 📜Resource_Stick.asset.meta
- ┃ ┃ ┃ ┣ 📜Resource_Stone.asset
- ┃ ┃ ┃ ┗ 📜Resource_Stone.asset.meta
- ┃ ┃ ┣ 📜Consumable.meta
- ┃ ┃ ┣ 📜Equipable.meta
- ┃ ┃ ┣ 📜ItemData.cs
- ┃ ┃ ┣ 📜ItemData.cs.meta
- ┃ ┃ ┗ 📜Resource.meta
- ┃ ┣ 📜BuildData.meta
- ┃ ┣ 📜CraftData.meta
- ┃ ┣ 📜DropData.meta
- ┃ ┣ 📜Enemy.meta
- ┃ ┗ 📜ItemData.meta
- ┣ 📜01_Scenes.meta
- ┣ 📜02_Scripts.meta
- ┣ 📜03_Prefabs.meta
- ┣ 📜04_Animations.meta
- ┣ 📜05_Data.meta
- ┣ 📜Plugins.meta
- ┣ 📜Resources.meta
- ┗ 📜TextMesh Pro.meta
+📦Assets<br>
+ ┣ 📂01_Scenes<br>
+ ┃ ┣ 📂MainScene<br>
+ ┃ ┃ ┣ 📜NavMesh.asset<br>
+ ┃ ┃ ┗ 📜NavMesh.asset.meta<br>
+ ┃ ┣ 📂TitleScene<br>
+ ┃ ┃ ┣ 📜NavMesh.asset<br>
+ ┃ ┃ ┗ 📜NavMesh.asset.meta<br>
+ ┣ 📂02_Scripts<br>
+ ┃ ┣ 📂BuildSequance<br>
+ ┃ ┃ ┣ 📂Buildings<br>
+ ┃ ┃ ┃ ┣ 📜Campfire.cs<br>
+ ┃ ┃ ┃ ┣ 📜Campfire.cs.meta<br>
+ ┃ ┃ ┃ ┣ 📜Fence.cs<br>
+ ┃ ┃ ┃ ┣ 📜Fence.cs.meta<br>
+ ┃ ┃ ┃ ┣ 📜Rock.cs<br>
+ ┃ ┃ ┃ ┣ 📜Rock.cs.meta<br>
+ ┃ ┃ ┃ ┣ 📜Tent.cs<br>
+ ┃ ┃ ┃ ┗ 📜Tent.cs.meta<br>
+ ┃ ┃ ┣ 📜BuildCatalogButton.cs<br>
+ ┃ ┃ ┣ 📜BuildCatalogButton.cs.meta<br>
+ ┃ ┃ ┣ 📜BuildCatalogPanel.cs<br>
+ ┃ ┃ ┣ 📜BuildCatalogPanel.cs.meta<br>
+ ┃ ┃ ┣ 📜BuildCatalogUI.cs<br>
+ ┃ ┃ ┣ 📜BuildCatalogUI.cs.meta<br>
+ ┃ ┃ ┣ 📜BuildCompleteObject.cs<br>
+ ┃ ┃ ┣ 📜BuildCompleteObject.cs.meta<br>
+ ┃ ┃ ┣ 📜Buildings.meta<br>
+ ┃ ┃ ┣ 📜BuildModeController.cs<br>
+ ┃ ┃ ┣ 📜BuildModeController.cs.meta<br>
+ ┃ ┃ ┣ 📜BuildModeTestSelector.cs<br>
+ ┃ ┃ ┣ 📜BuildModeTestSelector.cs.meta<br>
+ ┃ ┃ ┣ 📜BuildModeUI.cs<br>
+ ┃ ┃ ┣ 📜BuildModeUI.cs.meta<br>
+ ┃ ┃ ┣ 📜BuildPlacementSystem.cs<br>
+ ┃ ┃ ┣ 📜BuildPlacementSystem.cs.meta<br>
+ ┃ ┃ ┣ 📜BuildPreviewController.cs<br>
+ ┃ ┃ ┣ 📜BuildPreviewController.cs.meta<br>
+ ┃ ┃ ┣ 📜BuildResourceHandler.cs<br>
+ ┃ ┃ ┗ 📜BuildResourceHandler.cs.meta<br>
+ ┃ ┣ 📂Entities<br>
+ ┃ ┃ ┣ 📂Enemy<br>
+ ┃ ┃ ┃ ┣ 📜Enemy.cs<br>
+ ┃ ┃ ┃ ┗ 📜Enemy.cs.meta<br>
+ ┃ ┃ ┣ 📂NPC<br>
+ ┃ ┃ ┃ ┣ 📜NPCController.cs<br>
+ ┃ ┃ ┃ ┗ 📜NPCController.cs.meta<br>
+ ┃ ┃ ┣ 📂Player<br>
+ ┃ ┃ ┃ ┣ 📜Conditions.cs<br>
+ ┃ ┃ ┃ ┣ 📜Conditions.cs.meta<br>
+ ┃ ┃ ┃ ┣ 📜Equipment.cs<br>
+ ┃ ┃ ┃ ┣ 📜Equipment.cs.meta<br>
+ ┃ ┃ ┃ ┣ 📜Interaction.cs<br>
+ ┃ ┃ ┃ ┣ 📜Interaction.cs.meta<br>
+ ┃ ┃ ┃ ┣ 📜Player.cs<br>
+ ┃ ┃ ┃ ┣ 📜Player.cs.meta<br>
+ ┃ ┃ ┃ ┣ 📜PlayerCamera.cs<br>
+ ┃ ┃ ┃ ┣ 📜PlayerCamera.cs.meta<br>
+ ┃ ┃ ┃ ┣ 📜PlayerCondition.cs<br>
+ ┃ ┃ ┃ ┣ 📜PlayerCondition.cs.meta<br>
+ ┃ ┃ ┃ ┣ 📜PlayerController.cs<br>
+ ┃ ┃ ┃ ┣ 📜PlayerController.cs.meta<br>
+ ┃ ┃ ┃ ┣ 📜UIConditions.cs<br>
+ ┃ ┃ ┃ ┗ 📜UIConditions.cs.meta<br>
+ ┃ ┃ ┣ 📜Enemy.meta<br>
+ ┃ ┃ ┣ 📜NPC.meta<br>
+ ┃ ┃ ┗ 📜Player.meta<br>
+ ┃ ┣ 📂Item<br>
+ ┃ ┃ ┣ 📜EquipItem.cs<br>
+ ┃ ┃ ┣ 📜EquipItem.cs.meta<br>
+ ┃ ┃ ┣ 📜GatherableObject.cs<br>
+ ┃ ┃ ┣ 📜GatherableObject.cs.meta<br>
+ ┃ ┃ ┣ 📜Inventory.cs<br>
+ ┃ ┃ ┣ 📜Inventory.cs.meta<br>
+ ┃ ┃ ┣ 📜ItemObject.cs<br>
+ ┃ ┃ ┣ 📜ItemObject.cs.meta<br>
+ ┃ ┃ ┣ 📜ItemSlot.cs<br>
+ ┃ ┃ ┣ 📜ItemSlot.cs.meta<br>
+ ┃ ┃ ┣ 📜SupplyCrate.cs<br>
+ ┃ ┃ ┗ 📜SupplyCrate.cs.meta<br>
+ ┃ ┣ 📂Managers<br>
+ ┃ ┃ ┣ 📜AudioManager.cs<br>
+ ┃ ┃ ┣ 📜AudioManager.cs.meta<br>
+ ┃ ┃ ┣ 📜BuildModeManager.cs<br>
+ ┃ ┃ ┣ 📜BuildModeManager.cs.meta<br>
+ ┃ ┃ ┣ 📜CharacterManager.cs<br>
+ ┃ ┃ ┣ 📜CharacterManager.cs.meta<br>
+ ┃ ┃ ┣ 📜CraftManager.cs<br>
+ ┃ ┃ ┣ 📜CraftManager.cs.meta<br>
+ ┃ ┃ ┣ 📜GameManager.cs<br>
+ ┃ ┃ ┣ 📜GameManager.cs.meta<br>
+ ┃ ┃ ┣ 📜InputSystemManager.cs<br>
+ ┃ ┃ ┣ 📜InputSystemManager.cs.meta<br>
+ ┃ ┃ ┣ 📜SpawnManager.cs<br>
+ ┃ ┃ ┣ 📜SpawnManager.cs.meta<br>
+ ┃ ┃ ┣ 📜TitleManager.cs<br>
+ ┃ ┃ ┣ 📜TitleManager.cs.meta<br>
+ ┃ ┃ ┣ 📜UIManager.cs<br>
+ ┃ ┃ ┗ 📜UIManager.cs.meta<br>
+ ┃ ┣ 📂Spawners<br>
+ ┃ ┃ ┣ 📜EnemySpawner.cs<br>
+ ┃ ┃ ┣ 📜EnemySpawner.cs.meta<br>
+ ┃ ┃ ┣ 📜ItemSpawner.cs<br>
+ ┃ ┃ ┗ 📜ItemSpawner.cs.meta<br>
+ ┃ ┣ 📂UI<br>
+ ┃ ┃ ┣ 📜CraftingPanel.cs<br>
+ ┃ ┃ ┣ 📜CraftingPanel.cs.meta<br>
+ ┃ ┃ ┣ 📜InventoryPanelUI.cs<br>
+ ┃ ┃ ┣ 📜InventoryPanelUI.cs.meta<br>
+ ┃ ┃ ┣ 📜InventoryUI.cs<br>
+ ┃ ┃ ┣ 📜InventoryUI.cs.meta<br>
+ ┃ ┃ ┣ 📜SlotClickHandler.cs<br>
+ ┃ ┃ ┗ 📜SlotClickHandler.cs.meta<br>
+ ┃ ┣ 📜BuildSequance.meta<br>
+ ┃ ┣ 📜DayNightCycle.cs<br>
+ ┃ ┣ 📜DayNightCycle.cs.meta<br>
+ ┃ ┣ 📜Entities.meta<br>
+ ┃ ┣ 📜Enum.cs<br>
+ ┃ ┣ 📜Enum.cs.meta<br>
+ ┃ ┣ 📜Interface.cs<br>
+ ┃ ┣ 📜Interface.cs.meta<br>
+ ┃ ┣ 📜Item.meta<br>
+ ┃ ┣ 📜Managers.meta<br>
+ ┃ ┣ 📜Spawners.meta<br>
+ ┃ ┗ 📜UI.meta<br>
+ ┣ 📂03_Prefabs<br>
+ ┃ ┣ 📂Buildings<br>
+ ┃ ┃ ┣ 📂completePrefab<br>
+ ┃ ┃ ┃ ┣ 📜CampFire.prefab<br>
+ ┃ ┃ ┃ ┣ 📜CampFire.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Fence.prefab<br>
+ ┃ ┃ ┃ ┣ 📜Fence.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Rock.prefab<br>
+ ┃ ┃ ┃ ┣ 📜Rock.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Tent.prefab<br>
+ ┃ ┃ ┃ ┗ 📜Tent.prefab.meta<br>
+ ┃ ┃ ┣ 📂previewPrefab<br>
+ ┃ ┃ ┃ ┣ 📜preview_Campfire.prefab<br>
+ ┃ ┃ ┃ ┣ 📜preview_Campfire.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜preview_Fence.prefab<br>
+ ┃ ┃ ┃ ┣ 📜preview_Fence.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜preview_Rock.prefab<br>
+ ┃ ┃ ┃ ┣ 📜preview_Rock.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜preview_Tent.prefab<br>
+ ┃ ┃ ┃ ┗ 📜preview_Tent.prefab.meta<br>
+ ┃ ┃ ┣ 📜Button_BuildData.prefab<br>
+ ┃ ┃ ┣ 📜Button_BuildData.prefab.meta<br>
+ ┃ ┃ ┣ 📜completePrefab.meta<br>
+ ┃ ┃ ┗ 📜previewPrefab.meta<br>
+ ┃ ┣ 📂Enemy<br>
+ ┃ ┃ ┣ 📜Skeleton_Mage.prefab<br>
+ ┃ ┃ ┣ 📜Skeleton_Mage.prefab.meta<br>
+ ┃ ┃ ┣ 📜Skeleton_Minion.prefab<br>
+ ┃ ┃ ┗ 📜Skeleton_Minion.prefab.meta<br>
+ ┃ ┣ 📂Item<br>
+ ┃ ┃ ┣ 📂@originalFBX<br>
+ ┃ ┃ ┣ 📂Consumable<br>
+ ┃ ┃ ┃ ┣ 📜Apple.prefab<br>
+ ┃ ┃ ┃ ┣ 📜Apple.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜FirstAid.prefab<br>
+ ┃ ┃ ┃ ┣ 📜FirstAid.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Meat.prefab<br>
+ ┃ ┃ ┃ ┣ 📜Meat.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜PlasticBottle.prefab<br>
+ ┃ ┃ ┃ ┗ 📜PlasticBottle.prefab.meta<br>
+ ┃ ┃ ┣ 📂Equipable<br>
+ ┃ ┃ ┃ ┣ 📂EquipPrefab<br>
+ ┃ ┃ ┃ ┃ ┣ 📜E_BaseballBat_Nails.prefab<br>
+ ┃ ┃ ┃ ┃ ┣ 📜E_BaseballBat_Nails.prefab.meta<br>
+ ┃ ┃ ┃ ┃ ┣ 📜E_Machete.prefab<br>
+ ┃ ┃ ┃ ┃ ┣ 📜E_Machete.prefab.meta<br>
+ ┃ ┃ ┃ ┃ ┣ 📜E_Stone Axe.prefab<br>
+ ┃ ┃ ┃ ┃ ┣ 📜E_Stone Axe.prefab.meta<br>
+ ┃ ┃ ┃ ┃ ┣ 📜E_Torch.prefab<br>
+ ┃ ┃ ┃ ┃ ┣ 📜E_Torch.prefab.meta<br>
+ ┃ ┃ ┃ ┃ ┣ 📜E_Wooden Axe.prefab<br>
+ ┃ ┃ ┃ ┃ ┣ 📜E_Wooden Axe.prefab.meta<br>
+ ┃ ┃ ┃ ┃ ┣ 📜E_Wooden Club.prefab<br>
+ ┃ ┃ ┃ ┃ ┗ 📜E_Wooden Club.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜BaseballBat_Nails.prefab<br>
+ ┃ ┃ ┃ ┣ 📜BaseballBat_Nails.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜EquipPrefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Machete.prefab<br>
+ ┃ ┃ ┃ ┣ 📜Machete.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Stone Axe.prefab<br>
+ ┃ ┃ ┃ ┣ 📜Stone Axe.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Torch.prefab<br>
+ ┃ ┃ ┃ ┣ 📜Torch.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Wooden Axe.prefab<br>
+ ┃ ┃ ┃ ┣ 📜Wooden Axe.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Wooden Club.prefab<br>
+ ┃ ┃ ┃ ┗ 📜Wooden Club.prefab.meta<br>
+ ┃ ┃ ┣ 📂GatherableObject<br>
+ ┃ ┃ ┃ ┣ 📂Crate<br>
+ ┃ ┃ ┃ ┃ ┣ 📜Crate texture.png<br>
+ ┃ ┃ ┃ ┃ ┣ 📜Crate texture.png.meta<br>
+ ┃ ┃ ┃ ┃ ┣ 📜crate.fbx<br>
+ ┃ ┃ ┃ ┃ ┣ 📜crate.fbx.meta<br>
+ ┃ ┃ ┃ ┃ ┣ 📜crateMat.mat<br>
+ ┃ ┃ ┃ ┃ ┣ 📜crateMat.mat.meta<br>
+ ┃ ┃ ┃ ┃ ┣ 📜SupplyCrate.prefab<br>
+ ┃ ┃ ┃ ┃ ┗ 📜SupplyCrate.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Crate.meta<br>
+ ┃ ┃ ┃ ┣ 📜Rock002.prefab<br>
+ ┃ ┃ ┃ ┣ 📜Rock002.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Tree_01.prefab<br>
+ ┃ ┃ ┃ ┗ 📜Tree_01.prefab.meta<br>
+ ┃ ┃ ┣ 📂Resource<br>
+ ┃ ┃ ┃ ┣ 📜Branch.prefab<br>
+ ┃ ┃ ┃ ┣ 📜Branch.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Flint.prefab<br>
+ ┃ ┃ ┃ ┣ 📜Flint.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Stick.prefab<br>
+ ┃ ┃ ┃ ┣ 📜Stick.prefab.meta<br>
+ ┃ ┃ ┃ ┣ 📜Stone.prefab<br>
+ ┃ ┃ ┃ ┗ 📜Stone.prefab.meta<br>
+ ┃ ┃ ┣ 📜@originalFBX.meta<br>
+ ┃ ┃ ┣ 📜Consumable.meta<br>
+ ┃ ┃ ┣ 📜Equipable.meta<br>
+ ┃ ┃ ┣ 📜GatherableObject.meta<br>
+ ┃ ┃ ┗ 📜Resource.meta<br>
+ ┃ ┣ 📂Manager<br>
+ ┃ ┃ ┣ 📜AudioManager.prefab<br>
+ ┃ ┃ ┣ 📜AudioManager.prefab.meta<br>
+ ┃ ┃ ┣ 📜CraftManager.prefab<br>
+ ┃ ┃ ┣ 📜CraftManager.prefab.meta<br>
+ ┃ ┃ ┣ 📜GameManager.prefab<br>
+ ┃ ┃ ┗ 📜GameManager.prefab.meta<br>
+ ┃ ┣ 📂Spawner<br>
+ ┃ ┃ ┣ 📜EnemySpawner.prefab<br>
+ ┃ ┃ ┣ 📜EnemySpawner.prefab.meta<br>
+ ┃ ┃ ┣ 📜ItemSpawner.prefab<br>
+ ┃ ┃ ┗ 📜ItemSpawner.prefab.meta<br>
+ ┃ ┣ 📂UI<br>
+ ┃ ┃ ┣ 📜ConditionalPanel.prefab<br>
+ ┃ ┃ ┣ 📜ConditionalPanel.prefab.meta<br>
+ ┃ ┃ ┣ 📜InventoryCraftingWindow.prefab<br>
+ ┃ ┃ ┣ 📜InventoryCraftingWindow.prefab.meta<br>
+ ┃ ┃ ┣ 📜NPCDialoguePanel.prefab<br>
+ ┃ ┃ ┣ 📜NPCDialoguePanel.prefab.meta<br>
+ ┃ ┃ ┣ 📜RecipeButton.prefab<br>
+ ┃ ┃ ┣ 📜RecipeButton.prefab.meta<br>
+ ┃ ┃ ┣ 📜Slot.prefab<br>
+ ┃ ┃ ┗ 📜Slot.prefab.meta<br>
+ ┃ ┣ 📜Buildings.meta<br>
+ ┃ ┣ 📜DayAndNight.prefab<br>
+ ┃ ┣ 📜DayAndNight.prefab.meta<br>
+ ┃ ┣ 📜Enemy.meta<br>
+ ┃ ┣ 📜Item.meta<br>
+ ┃ ┣ 📜Manager.meta<br>
+ ┃ ┣ 📜Player.prefab<br>
+ ┃ ┣ 📜Player.prefab.meta<br>
+ ┃ ┣ 📜Spawner.meta<br>
+ ┃ ┗ 📜UI.meta<br>
+ ┣ 📂04_Animations<br>
+ ┃ ┣ 📂Enemy<br>
+ ┃ ┃ ┣ 📜Skeleton_Mage.controller<br>
+ ┃ ┃ ┣ 📜Skeleton_Mage.controller.meta<br>
+ ┃ ┃ ┣ 📜Skeleton_Minion.controller<br>
+ ┃ ┃ ┗ 📜Skeleton_Minion.controller.meta<br>
+ ┃ ┣ 📂Equip<br>
+ ┃ ┃ ┣ 📂BaseballBat<br>
+ ┃ ┃ ┃ ┣ 📜Attack.anim<br>
+ ┃ ┃ ┃ ┣ 📜Attack.anim.meta<br>
+ ┃ ┃ ┃ ┣ 📜BaseballBat.controller<br>
+ ┃ ┃ ┃ ┣ 📜BaseballBat.controller.meta<br>
+ ┃ ┃ ┃ ┣ 📜Idle.anim<br>
+ ┃ ┃ ┃ ┗ 📜Idle.anim.meta<br>
+ ┃ ┃ ┣ 📂Machete<br>
+ ┃ ┃ ┃ ┣ 📜Attack.anim<br>
+ ┃ ┃ ┃ ┣ 📜Attack.anim.meta<br>
+ ┃ ┃ ┃ ┣ 📜Idle.anim<br>
+ ┃ ┃ ┃ ┣ 📜Idle.anim.meta<br>
+ ┃ ┃ ┃ ┣ 📜Machete.controller<br>
+ ┃ ┃ ┃ ┗ 📜Machete.controller.meta<br>
+ ┃ ┃ ┣ 📂StoneAxe<br>
+ ┃ ┃ ┃ ┣ 📜Attack.anim<br>
+ ┃ ┃ ┃ ┣ 📜Attack.anim.meta<br>
+ ┃ ┃ ┃ ┣ 📜Idle.anim<br>
+ ┃ ┃ ┃ ┣ 📜Idle.anim.meta<br>
+ ┃ ┃ ┃ ┣ 📜StoneAxe.controller<br>
+ ┃ ┃ ┃ ┗ 📜StoneAxe.controller.meta<br>
+ ┃ ┃ ┣ 📂Torch<br>
+ ┃ ┃ ┃ ┣ 📜Attack.anim<br>
+ ┃ ┃ ┃ ┣ 📜Attack.anim.meta<br>
+ ┃ ┃ ┃ ┣ 📜Idle.anim<br>
+ ┃ ┃ ┃ ┣ 📜Idle.anim.meta<br>
+ ┃ ┃ ┃ ┣ 📜Torch.controller<br>
+ ┃ ┃ ┃ ┗ 📜Torch.controller.meta<br>
+ ┃ ┃ ┣ 📂WoodenAxe<br>
+ ┃ ┃ ┃ ┣ 📜Attack.anim<br>
+ ┃ ┃ ┃ ┣ 📜Attack.anim.meta<br>
+ ┃ ┃ ┃ ┣ 📜Idle.anim<br>
+ ┃ ┃ ┃ ┣ 📜Idle.anim.meta<br>
+ ┃ ┃ ┃ ┣ 📜WoodenAxe.controller<br>
+ ┃ ┃ ┃ ┗ 📜WoodenAxe.controller.meta<br>
+ ┃ ┃ ┣ 📂WoodenClub<br>
+ ┃ ┃ ┃ ┣ 📜Attack.anim<br>
+ ┃ ┃ ┃ ┣ 📜Attack.anim.meta<br>
+ ┃ ┃ ┃ ┣ 📜Idle.anim<br>
+ ┃ ┃ ┃ ┣ 📜Idle.anim.meta<br>
+ ┃ ┃ ┃ ┣ 📜WoodenClub.controller<br>
+ ┃ ┃ ┃ ┗ 📜WoodenClub.controller.meta<br>
+ ┃ ┃ ┣ 📜BaseballBat.meta<br>
+ ┃ ┃ ┣ 📜Machete.meta<br>
+ ┃ ┃ ┣ 📜StoneAxe.meta<br>
+ ┃ ┃ ┣ 📜Torch.meta<br>
+ ┃ ┃ ┣ 📜WoodenAxe.meta<br>
+ ┃ ┃ ┗ 📜WoodenClub.meta<br>
+ ┃ ┣ 📂NPC<br>
+ ┃ ┃ ┣ 📜NPC_Controller.controller<br>
+ ┃ ┃ ┗ 📜NPC_Controller.controller.meta<br>
+ ┃ ┣ 📜Enemy.meta<br>
+ ┃ ┣ 📜Equip.meta<br>
+ ┃ ┗ 📜NPC.meta<br>
+ ┣ 📂05_Data<br>
+ ┃ ┣ 📂BuildData<br>
+ ┃ ┃ ┣ 📂BuildCatalog<br>
+ ┃ ┃ ┃ ┣ 📜BuildCatalog.asset<br>
+ ┃ ┃ ┃ ┣ 📜BuildCatalog.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜BuildCatalog.cs<br>
+ ┃ ┃ ┃ ┗ 📜BuildCatalog.cs.meta<br>
+ ┃ ┃ ┣ 📜BuildCatalog.meta<br>
+ ┃ ┃ ┣ 📜BuildData.cs<br>
+ ┃ ┃ ┣ 📜BuildData.cs.meta<br>
+ ┃ ┃ ┣ 📜BuildData_CampFire.asset<br>
+ ┃ ┃ ┣ 📜BuildData_CampFire.asset.meta<br>
+ ┃ ┃ ┣ 📜BuildData_Fence.asset<br>
+ ┃ ┃ ┣ 📜BuildData_Fence.asset.meta<br>
+ ┃ ┃ ┣ 📜BuildData_Rock.asset<br>
+ ┃ ┃ ┣ 📜BuildData_Rock.asset.meta<br>
+ ┃ ┃ ┣ 📜BuildData_Tent.asset<br>
+ ┃ ┃ ┗ 📜BuildData_Tent.asset.meta<br>
+ ┃ ┣ 📂CraftData<br>
+ ┃ ┃ ┣ 📜CraftData.cs<br>
+ ┃ ┃ ┣ 📜CraftData.cs.meta<br>
+ ┃ ┃ ┣ 📜Craft_StoneAxe.asset<br>
+ ┃ ┃ ┣ 📜Craft_StoneAxe.asset.meta<br>
+ ┃ ┃ ┣ 📜Craft_Torch.asset<br>
+ ┃ ┃ ┣ 📜Craft_Torch.asset.meta<br>
+ ┃ ┃ ┣ 📜Craft_WoodenAxe.asset<br>
+ ┃ ┃ ┗ 📜Craft_WoodenAxe.asset.meta<br>
+ ┃ ┣ 📂DropData<br>
+ ┃ ┃ ┣ 📂GatherableObject<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Branch.asset<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Branch.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Flint.asset<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Flint.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Stick.asset<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Stick.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Stone.asset<br>
+ ┃ ┃ ┃ ┗ 📜Drop_Stone.asset.meta<br>
+ ┃ ┃ ┣ 📂SupplyCrate<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Apple.asset<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Apple.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Bat.asset<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Bat.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Drop_FirstAid.asset<br>
+ ┃ ┃ ┃ ┣ 📜Drop_FirstAid.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Machete.asset<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Machete.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Meat.asset<br>
+ ┃ ┃ ┃ ┣ 📜Drop_Meat.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Drop_PlasticBottle.asset<br>
+ ┃ ┃ ┃ ┗ 📜Drop_PlasticBottle.asset.meta<br>
+ ┃ ┃ ┣ 📜DropData.cs<br>
+ ┃ ┃ ┣ 📜DropData.cs.meta<br>
+ ┃ ┃ ┣ 📜GatherableObject.meta<br>
+ ┃ ┃ ┗ 📜SupplyCrate.meta<br>
+ ┃ ┣ 📂Enemy<br>
+ ┃ ┃ ┣ 📂Data<br>
+ ┃ ┃ ┃ ┣ 📜SkeletonMage.asset<br>
+ ┃ ┃ ┃ ┣ 📜SkeletonMage.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜SkeletonMinion.asset<br>
+ ┃ ┃ ┃ ┗ 📜SkeletonMinion.asset.meta<br>
+ ┃ ┃ ┣ 📜Data.meta<br>
+ ┃ ┃ ┣ 📜EnemyData.cs<br>
+ ┃ ┃ ┗ 📜EnemyData.cs.meta<br>
+ ┃ ┣ 📂ItemData<br>
+ ┃ ┃ ┣ 📂Consumable<br>
+ ┃ ┃ ┃ ┣ 📜Consumable_Apple.asset<br>
+ ┃ ┃ ┃ ┣ 📜Consumable_Apple.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Consumable_BottledWater.asset<br>
+ ┃ ┃ ┃ ┣ 📜Consumable_BottledWater.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Consumable_FirstAid.asset<br>
+ ┃ ┃ ┃ ┣ 📜Consumable_FirstAid.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Consumable_Meat.asset<br>
+ ┃ ┃ ┃ ┗ 📜Consumable_Meat.asset.meta<br>
+ ┃ ┃ ┣ 📂Equipable<br>
+ ┃ ┃ ┃ ┣ 📜Tool_StoneAxe.asset<br>
+ ┃ ┃ ┃ ┣ 📜Tool_StoneAxe.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Tool_Torch.asset<br>
+ ┃ ┃ ┃ ┣ 📜Tool_Torch.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Tool_WoodenAxe.asset<br>
+ ┃ ┃ ┃ ┣ 📜Tool_WoodenAxe.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Tool_WoodenClub.asset<br>
+ ┃ ┃ ┃ ┣ 📜Tool_WoodenClub.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Weapon_Bat.asset<br>
+ ┃ ┃ ┃ ┣ 📜Weapon_Bat.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Weapon_Machete.asset<br>
+ ┃ ┃ ┃ ┗ 📜Weapon_Machete.asset.meta<br>
+ ┃ ┃ ┣ 📂Resource<br>
+ ┃ ┃ ┃ ┣ 📜Resource_Branch.asset<br>
+ ┃ ┃ ┃ ┣ 📜Resource_Branch.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Resource_Flint.asset<br>
+ ┃ ┃ ┃ ┣ 📜Resource_Flint.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Resource_Stick.asset<br>
+ ┃ ┃ ┃ ┣ 📜Resource_Stick.asset.meta<br>
+ ┃ ┃ ┃ ┣ 📜Resource_Stone.asset<br>
+ ┃ ┃ ┃ ┗ 📜Resource_Stone.asset.meta<br>
+ ┃ ┃ ┣ 📜Consumable.meta<br>
+ ┃ ┃ ┣ 📜Equipable.meta<br>
+ ┃ ┃ ┣ 📜ItemData.cs<br>
+ ┃ ┃ ┣ 📜ItemData.cs.meta<br>
+ ┃ ┃ ┗ 📜Resource.meta<br>
+ ┃ ┣ 📜BuildData.meta<br>
+ ┃ ┣ 📜CraftData.meta<br>
+ ┃ ┣ 📜DropData.meta<br>
+ ┃ ┣ 📜Enemy.meta<br>
+ ┃ ┗ 📜ItemData.meta<br>
+ ┣ 📜01_Scenes.meta<br>
+ ┣ 📜02_Scripts.meta<br>
+ ┣ 📜03_Prefabs.meta<br>
+ ┣ 📜04_Animations.meta<br>
+ ┣ 📜05_Data.meta<br>
+ ┣ 📜Plugins.meta<br>
+ ┣ 📜Resources.meta<br>
+ ┗ 📜TextMesh Pro.meta<br>
