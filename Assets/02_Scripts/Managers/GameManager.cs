@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public CraftManager craftManager;
     public BuildModeManager buildModeManager; // 건축모드매니저 추가
     public InventoryUI inventoryUI;
+    public DayNightCycle dayNightCycle;
 
     public float curTime = 0f;
     public float nightTime;
@@ -30,21 +31,22 @@ public class GameManager : MonoBehaviour
         inventoryUI.Init();
         spawnManager.ItemSpawn();
     }
-
+    
     private void Update()
     {
-        curTime += Time.deltaTime;
+        curTime = dayNightCycle.time * 24f;
 
-        if (curTime >= endTime && isNight)
-        {
-            day++;
-            isNight = false;
-            curTime = 0f;
-        }
-        else if (curTime >= nightTime && !isNight)
+        bool nowNight = (curTime >= nightTime || curTime < endTime);
+
+        if (nowNight && !isNight)
         {
             isNight = true;
             spawnManager.EnemySpawn();
+        }
+        else if (!nowNight && isNight)
+        {
+            isNight = false;
+            day++;
         }
     }
 }
