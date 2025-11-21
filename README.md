@@ -1,6 +1,4 @@
-# 프로젝트 이름 TIWD
-
-## 📖 목차
+# 📖 목차
 1. [프로젝트 소개](https://github.com/rwy685/TIWD/edit/Develop/README.md#%E2%80%8D-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C)
 2. [주요기능](https://github.com/rwy685/TIWD/edit/Develop/README.md#-%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5)
 3. [개발기간](https://github.com/rwy685/TIWD/edit/Develop/README.md#%EF%B8%8F-%EA%B0%9C%EB%B0%9C%EA%B8%B0%EA%B0%84)
@@ -8,32 +6,32 @@
 5. [프로젝트 파일 구조](#프로젝트-파일-구조)
 
 
-## 👨‍🏫 프로젝트 소개
-- 프로젝트 명 : TIWD(Tommorow I WIll Die)
+# 👨‍🏫 프로젝트 소개
+- 프로젝트 명 : **TIWD** (<ins>**T**</ins>ommorow <ins>**I**</ins> <ins>**W**</ins>Ill <ins>**D**</ins>ie)
 - 프로젝트 설명 : 사막에서 생존하며 적에게 살아남기
 - 프로젝트 시작 계기 : 유니티 숙련과제 발제 중 3D 서바이벌 장르를 보고 제작하게 됨
 - 프로젝트 구성 인원 : 유원영, 정재우, 류광섭, 조아라, 박재아
 
 
-## 💜 주요기능
+# 💜 주요기능
 
--GameManager 를 통해 게임의 전반적인 구동을 담당
+- `GameManager` : 게임의 전반적인 구동을 담당
 
--AudioManager에서 음악의 출력을 담당
+- `AudioManager` : 음악의 출력을 담당
 
--CraftManager에서 Item을 조합해 제작하는 부분을 담당
+- `CraftManager` : `Item` 을 조합해 새로운 `Item` 을 제작하는 부분을 담당
 
--SpawnManager를 통해 플레이어의 생성 및 적 생성을 담당
+- `SpawnManager` : `Player` 및 `Item` 의 자동 생성을 담당
 
--UIManager에서 UI의 출력을 담당 Inventory UI / NpcDialog / Condition UI
+- `UIManager` : UI의 출력을 담당 ( `Inventory UI` / `NPCDialog` / `Condition UI` )
 
--InputSystemManager를 통해 PlayerController/BuildModeController의 입력값을 관리
+- `InputSystemManager` : `PlayerController` / `BuildModeController` 의 입력값을 관리
 
--ItemData/BuildData/BuildCatalog 에서 오브젝트들의 정보를 표시하는 Data형식의 파일 생성을 담당
+- `ItemData` / `BuildData` / `BuildCatalog` 에서 오브젝트들의 정보를 표시하는 Data형식의 파일 생성을 담당
 
--Interaction 에서 오브젝트들과의 상호작용을 담당
+- `Interaction` : 오브젝트들과의 상호작용을 담당
 
--Inventory에서 습득한 아이템의 저장을 담당.
+- `Inventory` : 습득한 아이템 저장 및 버리기 등 전반적인 인벤토리 기능 담당
 
 
 
@@ -62,27 +60,27 @@
 ## Asset From Unity
 
 
-*모델링
+* 모델링
 
-KayKit_Skeletons_1.1_FREE
+  KayKit_Skeletons_1.1_FREE
 
-Just Survive
+  Just Survive
 
-Tiny Teacup Studio
-
-
-*UI
-
-Cryo's Mini GUI
-
-fantasy_pixelart_ui
-
-Retro Pixel Ribbons, Banners and Frames 2
+  Tiny Teacup Studio
 
 
-*AssetPackage
+* UI
 
-Dotween
+  Cryo's Mini GUI
+
+  fantasy_pixelart_ui
+
+  Retro Pixel Ribbons, Banners and Frames 2
+
+
+* AssetPackage
+
+  Dotween
 
 
 
