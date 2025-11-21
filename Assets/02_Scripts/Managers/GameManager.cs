@@ -42,11 +42,13 @@ public class GameManager : MonoBehaviour
         {
             isNight = true;
             spawnManager.EnemySpawn();
+            AudioManager.Instance.PlayBGM(AudioManager.BGMType.Night);
         }
         else if (!nowNight && isNight)
         {
             isNight = false;
             day++;
+            AudioManager.Instance.PlayBGM(AudioManager.BGMType.Day);
         }
     }
 }
