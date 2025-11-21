@@ -37,13 +37,13 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     private void Update()
     {
-        hunger.Minus(hunger.passiveValue * Time.deltaTime);
-        thirst.Minus(thirst.passiveValue * Time.deltaTime);
-        stamina.Add(stamina.passiveValue * Time.deltaTime);
+        hunger.Minus(hunger.passiveValue * Time.deltaTime); // 시간에 따른 포만감감소
+        thirst.Minus(thirst.passiveValue * Time.deltaTime); // 시간에 따른 수분감소
+        stamina.Add(stamina.passiveValue * Time.deltaTime); // 스태미너는 자동 회복
 
         if (hunger.curValue <= 0)
         {
-            playerHP.Minus(starvingDamage * Time.deltaTime);
+            playerHP.Minus(starvingDamage * Time.deltaTime); // 관리안한 포만감이 0이되면 체력이 감소됨
         }
         else if (hunger.curValue >= 240) // 허기가 240 이상일경우 자동회복
         {
@@ -52,13 +52,13 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
         if (thirst.curValue <= 0)
         {
-            playerHP.Minus(thirstyDamage * Time.deltaTime);
+            playerHP.Minus(thirstyDamage * Time.deltaTime); // 관리안한 수분이 0이되면 체력이 감소됨
         }
 
         if (GameManager.Instance.isNight == true)
 
         {
-            thirst.passiveValue = defaultThirstConsume;
+            thirst.passiveValue = defaultThirstConsume; // 낮시간 동안은 수분감소가 증가함(더우니까)
         }
         else
         {
@@ -67,7 +67,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
         if (playerHP.curValue <= 0)
         {
-            Die();
+            Die();  //사망처리 로직
         }
 
         
