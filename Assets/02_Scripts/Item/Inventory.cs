@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
     public Transform slotGrid;      // ItemSlot 들이 배치될 그리드 UI
     public ItemSlot[] itemSlots;   // 인벤토리 내의 모든 아이템 슬롯
 
-    private Transform throwPos;    // 아이템을 버릴 위치
+    //private Transform throwPos;    // 아이템을 버릴 위치
 
     void Start()
     {
@@ -23,7 +23,8 @@ public class Inventory : MonoBehaviour
 
         slotGrid = UIManager.Instance.inventoryPanel.gameObject.transform.Find("Middle_SlotGrid");
 
-        throwPos = transform;
+        Vector3 throwPivot = transform.position + Vector3.up * 1.0f + transform.forward * 1.0f;
+        //throwPos = transform;
 
         //player.controller.inventory += Toggle;    // 인벤토리 테스트용 !!
         player.addItem += AddItem;
@@ -109,9 +110,11 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
-    void ThrowItem(ItemData data)
+    public void ThrowItem(ItemData data)
     {
-        Instantiate(data.itemPrefab, throwPos.position, Quaternion.Euler(Vector3.one * Random.value * 360));
+        Vector3 throwPivot = transform.position + Vector3.up * 1.0f + transform.forward * 1.0f;
+
+        Instantiate(data.itemPrefab, throwPivot, Quaternion.Euler(Vector3.one * Random.value * 360));
     }
 
     // 인벤토리 재고 확인용
