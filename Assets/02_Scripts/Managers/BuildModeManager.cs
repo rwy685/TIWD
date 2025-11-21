@@ -121,6 +121,9 @@ public class BuildModeManager : MonoBehaviour
 
         previewController.DestroyPreview();
 
+        var player = GameManager.Instance.characterManager.player;
+        player.controller.canLook = true;
+
         buildModeUI.HideBuildModePanel(); // 빌드모드 패널 끄기
 
         currentBuildData = null;

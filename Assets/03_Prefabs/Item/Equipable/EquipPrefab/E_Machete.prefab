@@ -130,10 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRate: 1
-  attackDistance: 2
+  attackDistance: 4
   damage: 30
   gatherPower: 0
-  camera: {fileID: 0}
 --- !u!95 &9097533884140804321
 Animator:
   serializedVersion: 5

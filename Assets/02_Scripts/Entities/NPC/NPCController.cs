@@ -46,6 +46,8 @@ public class NPCController : MonoBehaviour, IInteractable
             Inventory playerInv = GameManager.Instance.characterManager.player.inventory;
             playerInv.AddItemToInventory(rewardItem, 1);
 
+            GameManager.Instance.inventoryUI.RefreshAllSlots(); // ui갱신
+
             itemGiven = true;
         }
     }

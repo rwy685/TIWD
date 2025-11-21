@@ -112,6 +112,7 @@ public class InventoryPanelUI : MonoBehaviour
             if (curSlot.quantity <= 0)
                 curSlot.item = null;
 
+            GameManager.Instance.characterManager.player.inventory.ThrowItem(item);
             Debug.Log($"{item.displayName} 버림");
 
             GameManager.Instance.inventoryUI.RefreshAllSlots();
