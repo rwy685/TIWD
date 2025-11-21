@@ -72,12 +72,4 @@ public class SupplyCrate : MonoBehaviour, IGatherable
         // 아이템 생성
         Instantiate(itemPrefab, dropPosition, Quaternion.identity);
     }
-
-    // Test용 충돌 처리 (플레이어와 충돌 시 데미지 받음)
-    // TODO : 플레이어 도구로 공격 시 데미지 받도록 변경
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-            this.TakeGatheringDamage(1);
-    }
 }
