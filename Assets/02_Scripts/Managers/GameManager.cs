@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         characterManager.Init();
+        craftManager.Init();
         inventoryUI.Init();
         spawnManager.ItemSpawn();
     }

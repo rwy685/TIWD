@@ -8,8 +8,7 @@ public class CraftManager : MonoBehaviour
     [SerializeField] private List<CraftData> craftRecipes;
 
     private Inventory inventory;
-
-    void Start()
+    public void Init()
     {
         // 인벤토리 연결
         inventory = GameManager.Instance.characterManager.player.inventory;
