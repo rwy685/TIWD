@@ -10314,6 +10314,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1877428058 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2478684306966301611, guid: 5655e865ae4c1534bac79e2e88ae159a, type: 3}
+  m_PrefabInstance: {fileID: 2143202828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0f5360b1102de43813f410f2be7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1884771420
 GameObject:
   m_ObjectHideFlags: 0
@@ -14195,6 +14206,10 @@ PrefabInstance:
       propertyPath: spawnManager
       value: 
       objectReference: {fileID: 1884771422}
+    - target: {fileID: 4867949490162795277, guid: 89c66d638d253f0429c50b1d26af0f02, type: 3}
+      propertyPath: dayNightCycle
+      value: 
+      objectReference: {fileID: 1877428058}
     - target: {fileID: 4867949490162795277, guid: 89c66d638d253f0429c50b1d26af0f02, type: 3}
       propertyPath: buildModeManager
       value: 
